@@ -1,0 +1,70 @@
+# Valesco System v3.5 (GitHub Context)
+
+Valesco System is a deterministic estimating engine MVP with a governed, modular
+pipeline for processing scope descriptions and producing consistent, auditable
+outputs. It is designed to be run locally with strict separation of concerns
+and no learning side effects.
+
+## What this repository contains
+
+- Deterministic engine modules for CE retrieval routing, validation, estimator
+  runtime, merge, pricing, and resource grouping.
+- Runner scripts for interactive and programmatic flows under `engine/scripts/`.
+- Test suites that enforce determinism and schema compliance under `engine/tests/`.
+- Governance snapshots and DIBs that declare system state and allowed changes
+  under `governance/`.
+- Static library data (packs, catalog) under `library/`.
+
+## Core pipeline (high level)
+
+CE backend -> Router -> Architect -> Validator -> Estimator Runtime -> Merge Agent
+
+Pricing and quantity operations are separate, explicit steps in the runner
+scripts and test suites.
+
+## CE backend configuration (runner scripts)
+
+Runner scripts (e.g., `engine/scripts/mvp_runner_v2_2.py`) invoke a CE backend
+via environment variables:
+
+- `VALESCO_CE_BACKEND_CMD`: full command to execute
+- `VALESCO_CE_BACKEND_SCRIPT`: Python script path (invoked with the runner's
+  interpreter)
+
+The backend reads JSON from stdin with:
+
+```
+{"description": "<scope text>"}
+```
+
+and returns JSON with:
+
+```
+{
+  "hit_count": int,
+  "top_score": float | null,
+  "score_gap_to_next": float | null,
+  "coverage_flags": dict,
+  "retrieved_items": list[dict]
+}
+```
+
+## Running tests
+
+Use the portable test runner:
+
+```
+engine/python_runtime/python.exe engine/scripts/run_tests_portable.py
+```
+
+You can override the discovery pattern:
+
+```
+set VALESCO_TEST_PATTERN=integration_test_suite_v2_1.py
+```
+
+## System state
+
+The current system status (active/frozen/pending subsystems) is tracked in:
+
+- `governance/valesco_snapshot_v3.5.txt`
