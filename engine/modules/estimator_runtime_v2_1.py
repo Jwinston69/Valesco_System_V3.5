@@ -12,6 +12,9 @@
 # Behaviour is strictly deterministic.
 
 from typing import Any, Dict, List, Optional
+import copy
+
+import engine.modules.resource_builder as resource_builder
 
 
 def _map_required_action_to_next_action(required_action: str) -> Optional[str]:
@@ -181,6 +184,19 @@ def estimator_runtime_step(validator_output: Dict[str, Any], user_reply: Optiona
         "estimator_message": "I cannot proceed with that item.",
         "next_action": "ERROR",
     }
+
+
+def estimator_runtime_resource_step(eli_output: Any, ce_output: Optional[Any] = None) -> Dict[str, Any]:
+    """
+    Orchestrate provisional resources from ELI output via Resource Builder.
+    """
+    resources = resource_builder.build_resources(eli_output, ce_output=ce_output)
+    if resources.get("all_provisional") is True:
+        return resources
+
+    resources_copy = copy.deepcopy(resources)
+    resources_copy["all_provisional"] = True
+    return resources_copy
 
 
 if __name__ == "__main__":

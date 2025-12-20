@@ -12,6 +12,10 @@
 #   - introduces no new CE logic and does not modify metadata.
 
 import sys
+import json
+import os
+import shlex
+import subprocess
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -40,7 +44,6 @@ def _assert_ready_v3_5_silent_on_success() -> None:
         raise SystemExit(1)
 
 
-from engine.modules.ce_retrieval_layer_v2_1 import retrieve as retrieve_signals
 from engine.modules.router_v2_1 import route
 from engine.modules.architect_v2_1 import build_architect_payload
 from engine.modules.validator_v2_1 import validate
@@ -57,6 +60,109 @@ from engine.modules.material_manager_v2_1 import get_metadata
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
+_CE_BACKEND_CMD_ENV = "VALESCO_CE_BACKEND_CMD"
+_CE_BACKEND_SCRIPT_ENV = "VALESCO_CE_BACKEND_SCRIPT"
+
+
+def _ce_backend_command() -> List[str]:
+    cmd = os.environ.get(_CE_BACKEND_CMD_ENV, "").strip()
+    if cmd:
+        return shlex.split(cmd)
+    script = os.environ.get(_CE_BACKEND_SCRIPT_ENV, "").strip()
+    if script:
+        return [sys.executable, script]
+    raise RuntimeError(
+        "CE backend command not configured. Set VALESCO_CE_BACKEND_CMD or VALESCO_CE_BACKEND_SCRIPT."
+    )
+
+
+def _normalize_ce_output(ce_output: Dict[str, Any]) -> Dict[str, Any]:
+    if not isinstance(ce_output, dict):
+        raise RuntimeError("CE backend output must be a dict.")
+
+    required_keys = {
+        "hit_count",
+        "top_score",
+        "score_gap_to_next",
+        "coverage_flags",
+        "retrieved_items",
+    }
+    extra_keys = set(ce_output.keys()) - required_keys
+    missing_keys = required_keys - set(ce_output.keys())
+    if missing_keys or extra_keys:
+        raise RuntimeError(
+            f"CE backend output keys invalid. Missing: {sorted(missing_keys)} Extra: {sorted(extra_keys)}"
+        )
+
+    hit_count = ce_output["hit_count"]
+    if not isinstance(hit_count, int):
+        raise RuntimeError("CE backend hit_count must be an int.")
+
+    top_score = ce_output["top_score"]
+    if top_score is not None and not isinstance(top_score, (int, float)):
+        raise RuntimeError("CE backend top_score must be numeric or None.")
+
+    score_gap = ce_output["score_gap_to_next"]
+    if score_gap is not None and not isinstance(score_gap, (int, float)):
+        raise RuntimeError("CE backend score_gap_to_next must be numeric or None.")
+
+    coverage_flags = ce_output["coverage_flags"]
+    if not isinstance(coverage_flags, dict):
+        raise RuntimeError("CE backend coverage_flags must be a dict.")
+
+    retrieved_items = ce_output["retrieved_items"]
+    if not isinstance(retrieved_items, list):
+        raise RuntimeError("CE backend retrieved_items must be a list.")
+
+    if hit_count != len(retrieved_items):
+        raise RuntimeError("CE backend hit_count must match retrieved_items length.")
+
+    normalized_items: List[Dict[str, Any]] = []
+    for item in retrieved_items:
+        if not isinstance(item, dict):
+            raise RuntimeError("CE backend retrieved_items entries must be dicts.")
+        if not all(key in item for key in ("id", "name", "category")):
+            raise RuntimeError("CE backend retrieved_items must include id, name, category.")
+        normalized_items.append(item)
+
+    def _sort_key(item: Dict[str, Any]) -> tuple:
+        score = item.get("score")
+        if not isinstance(score, (int, float)):
+            score = 0.0
+        return (-float(score), str(item.get("id", "")), str(item.get("name", "")))
+
+    normalized_items = sorted(normalized_items, key=_sort_key)
+
+    return {
+        "hit_count": hit_count,
+        "top_score": float(top_score) if isinstance(top_score, (int, float)) else None,
+        "score_gap_to_next": float(score_gap) if isinstance(score_gap, (int, float)) else None,
+        "coverage_flags": coverage_flags,
+        "retrieved_items": normalized_items,
+    }
+
+
+def _retrieve_signals(description: str) -> Dict[str, Any]:
+    command = _ce_backend_command()
+    payload = {"description": description}
+    result = subprocess.run(
+        command,
+        input=json.dumps(payload),
+        text=True,
+        capture_output=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            "CE backend invocation failed with exit code "
+            f"{result.returncode}: {result.stderr.strip()}"
+        )
+    try:
+        ce_output = json.loads(result.stdout)
+    except ValueError as exc:
+        raise RuntimeError("CE backend output was not valid JSON.") from exc
+    return _normalize_ce_output(ce_output)
+
 
 def _wrap_validator_output(core_result: Dict[str, Any], architect_output: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -102,7 +208,7 @@ def _run_single_item(description: str) -> None:
         # --------------------------------------------------------------
         # CE → Router → Architect → Validator
         # --------------------------------------------------------------
-        ce_output = retrieve_signals(current_description)
+        ce_output = _retrieve_signals(current_description)
         router_output = route(ce_output)
         architect_output = build_architect_payload(router_output)
         validator_core = validate(ce_output, router_output, architect_output)
@@ -222,7 +328,7 @@ def run_mvp_case_programmatic(description: str, user_responses: List[str]) -> Di
     response_index = 0
 
     while True:
-        ce_output = retrieve_signals(current_description)
+        ce_output = _retrieve_signals(current_description)
         router_output = route(ce_output)
         architect_output = build_architect_payload(router_output)
         validator_core = validate(ce_output, router_output, architect_output)
@@ -338,7 +444,11 @@ def main() -> None:
             continue
 
         # Treat any other input as an item description
-        _run_single_item(line)
+        try:
+            _run_single_item(line)
+        except RuntimeError as exc:
+            print(f"CE backend error: {exc}")
+            raise SystemExit(1)
         _print_current_estimate_snapshot()
 
 

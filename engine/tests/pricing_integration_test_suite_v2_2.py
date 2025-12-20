@@ -12,6 +12,10 @@
 
 import unittest
 import copy
+import os
+import tempfile
+import textwrap
+from pathlib import Path
 
 from engine.modules.merge_agent_v2_1 import (
     init_estimate,
@@ -26,7 +30,130 @@ from engine.modules.material_manager_v2_1 import get_metadata
 from engine.scripts.mvp_runner_v2_2 import run_mvp_case_programmatic
 
 
+def _write_ce_backend_stub(path: Path) -> None:
+    stub = textwrap.dedent(
+        """
+        import json
+        import sys
+
+        MOCK_ITEMS = {
+            "clean_match": [
+                {"id": "A001", "name": "Single Clean-Match Item", "category": "core", "score": 0.98}
+            ],
+            "ambiguous": [
+                {"id": "B001", "name": "Ambiguous Item 1", "category": "core", "score": 0.72},
+                {"id": "B002", "name": "Ambiguous Item 2", "category": "core", "score": 0.71},
+                {"id": "B003", "name": "Ambiguous Item 3", "category": "core", "score": 0.70},
+            ],
+            "insufficient": [
+                {"id": "C001", "name": "Weak Coverage Item", "category": "misc", "score": 0.40}
+            ],
+            "compatible": [
+                {"id": "E001", "name": "Compatible Item 1", "category": "alt", "score": 0.65},
+                {"id": "E002", "name": "Compatible Item 2", "category": "alt", "score": 0.63},
+            ],
+            "empty": [],
+        }
+
+        PROFILE_MAP = {
+            "clean": "clean_match",
+            "exact": "clean_match",
+            "single": "clean_match",
+            "ambiguous": "ambiguous",
+            "three": "ambiguous",
+            "close": "ambiguous",
+            "insufficient": "insufficient",
+            "unclear": "insufficient",
+            "weak": "insufficient",
+            "none": "empty",
+            "missing": "empty",
+            "nomatch": "empty",
+            "compatible": "compatible",
+            "alternative": "compatible",
+            "alt": "compatible",
+        }
+
+        def _select_profile(description: str) -> str:
+            text = description.lower()
+            for key, profile in PROFILE_MAP.items():
+                if key in text:
+                    return profile
+            return "ambiguous"
+
+        def _build_signals(profile, items):
+            hit_count = len(items)
+            if hit_count == 0:
+                return {
+                    "hit_count": 0,
+                    "top_score": None,
+                    "score_gap_to_next": None,
+                    "coverage_flags": {"none": True, "weak": False, "strong": False},
+                    "retrieved_items": [],
+                }
+
+            ordered = sorted(items, key=lambda x: x["score"], reverse=True)
+            top_score = ordered[0]["score"]
+            score_gap = None
+            if hit_count > 1:
+                score_gap = top_score - ordered[1]["score"]
+
+            if profile == "clean_match":
+                coverage = {"strong": True, "weak": False, "conflicting": False}
+            elif profile == "ambiguous":
+                coverage = {"strong": True, "weak": False, "conflicting": False}
+            elif profile == "insufficient":
+                coverage = {"strong": False, "weak": True, "conflicting": False}
+            elif profile == "compatible":
+                coverage = {"strong": True, "compatible": True}
+            else:
+                coverage = {"weak": True}
+
+            return {
+                "hit_count": hit_count,
+                "top_score": top_score,
+                "score_gap_to_next": score_gap,
+                "coverage_flags": coverage,
+                "retrieved_items": ordered,
+            }
+
+        def main():
+            payload = json.load(sys.stdin)
+            description = payload.get("description", "")
+            profile = _select_profile(description)
+            items = MOCK_ITEMS.get(profile, [])
+            output = _build_signals(profile, list(items))
+            json.dump(output, sys.stdout)
+
+        if __name__ == "__main__":
+            main()
+        """
+    ).lstrip()
+    path.write_text(stub, encoding="utf-8")
+
+
 class TestFullSystemPricingIntegration(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls._backend_tmp = tempfile.TemporaryDirectory()
+        cls._backend_script = Path(cls._backend_tmp.name) / "ce_backend_stub.py"
+        _write_ce_backend_stub(cls._backend_script)
+        cls._prev_backend_cmd = os.environ.get("VALESCO_CE_BACKEND_CMD")
+        cls._prev_backend_script = os.environ.get("VALESCO_CE_BACKEND_SCRIPT")
+        os.environ["VALESCO_CE_BACKEND_SCRIPT"] = str(cls._backend_script)
+        if "VALESCO_CE_BACKEND_CMD" in os.environ:
+            del os.environ["VALESCO_CE_BACKEND_CMD"]
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        if cls._prev_backend_cmd is None:
+            os.environ.pop("VALESCO_CE_BACKEND_CMD", None)
+        else:
+            os.environ["VALESCO_CE_BACKEND_CMD"] = cls._prev_backend_cmd
+        if cls._prev_backend_script is None:
+            os.environ.pop("VALESCO_CE_BACKEND_SCRIPT", None)
+        else:
+            os.environ["VALESCO_CE_BACKEND_SCRIPT"] = cls._prev_backend_script
+        cls._backend_tmp.cleanup()
 
     # ------------------------------------------------------------------
     # GROUP A — Basic Pricing Integration

@@ -1,11 +1,9 @@
-SNAPSHOT v3.5.4
+SNAPSHOT v3.5.6
 
 AI Guidance Contracts (Active)
 
 option_selection_contract: v2
-
 missing_item_routing_contract: v2
-
 variant_generation_contract: v2
 
 AI authority is limited strictly to these contracts.
@@ -14,9 +12,7 @@ Validator veto applies in all cases.
 Learning Memory
 
 enabled: false
-
 enabled_domains: []
-
 outcome_learning_enabled: false
 
 Learning Memory is advisory only and does not alter truth, pricing, or validation.
@@ -26,15 +22,10 @@ Required Decision Metadata
 All AI-led decisions must record:
 
 functional_intent_id
-
 declared_confidence
-
 evidence_count
-
 effective_confidence (placeholder; system-derived in Phase 2+)
-
 learning_memory_used (true/false)
-
 memory_context_hash (if learning memory enabled)
 
 SYSTEM STATE
@@ -42,58 +33,31 @@ SYSTEM STATE
 implemented/stable
 
 CE Retrieval v2.1
-
 Router v2.1
-
 Architect v2.1
-
 Validator v2.1
-
 Merge Agent v2.1
-
 Material Manager v2.1
-
 Missing-Item Engine v2.1 (States A–E complete)
-
 Logging / Telemetry v4.x
-
 Error Handling v4.x
-
 Performance Optimisation v4.x
-
 System Packaging v4.x
-
-Cortex v1.0 (Phases 1–3 complete: schemas, enforcement, deterministic baseline)
+Cortex v1.0 (deterministic baseline frozen)
+ELI v1.0
+Resource Builder v1.0
 
 implemented/frozen
 
-Catalog ingestion v3.0
-
-Catalog CE adapter v3.1
-
-CE backend adapter v3.2
-
-Pricing subsystem components:
-
-rate_library_ingestion_v3.1
-
-rate_retrieval_v3.2
-
-rate_build_up_v3.3
-
-pricing_engine_v3.4
-
-ELI v1.0 (implemented; deterministic parsing + gap detection; outputs provisional/traceable)
+Universal Runner v2.2 (real CE backend invocation; mock removed)
 
 implemented/active
 
-Estimator Runtime v2.1 (no Cortex integration yet)
+Estimator Runtime v2.1 (Resource Builder wiring only; provisional resource pass-through; no pricing, validation, or Cortex changes)
 
 pending
 
-Universal Runner v2.2 (mock CE; upgrade pending)
-
-Resource Builder (pending reintegration under AI Guidance Contracts)
+(none)
 
 Health
 
@@ -106,75 +70,50 @@ Any subsystem not listed as active or pending is frozen.
 Explicitly frozen for this phase:
 
 CE Retrieval
-
 Router
-
 Architect
-
 Validator
-
 Missing-Item Engine
-
 Merge Agent
-
 Material Manager
-
 Logging / Telemetry
-
 Error Handling
-
 Performance Optimisation
-
 System Packaging
-
 Catalog ingestion
-
-CE backend adapters
-
+Catalog CE adapter
+CE backend adapter
 Pricing Engine and all Pricing subsystem components
-
-Universal Runner (except CE replacement upgrade step)
-
 ELI v1.0
+Resource Builder v1.0
+Universal Runner v2.2
 
 ACTIVE SUBSYSTEMS
 
-Estimator Runtime: implemented/active (no Cortex integration yet)
-
-No other subsystem is queued for modification.
+Estimator Runtime v2.1 (limited activation: Resource Builder wiring only)
 
 ACTIVE SUBSYSTEM MODULE & TEST PATHS
 
-(None — Cortex is now stable; no active subsystem development at this time.)
+module path: <VALESCO_ENGINE>/modules/estimator_runtime_v2_1.py
+test path: <VALESCO_ENGINE>/tests/test_estimator_runtime_resource_builder.py
 
 SYSTEM LIMITATION
 
-The system cannot yet produce real resource build-ups or final costs because Resource Builder remains pending; pricing remains non end-to-end until reintegration.
+Pricing remains non end-to-end. Estimator Runtime consumes only provisional Resource Builder outputs and must not price, validate, or mutate truth.
 
 OUTSTANDING CONCERNS (CRITICAL CONTEXT)
 
 AI authority remains limited strictly to the declared contracts.
-
-Cortex deterministic baseline exists and must remain unchanged for comparison when AI reasoning is introduced.
-
-Cortex must not invoke Router, Architect, or Validator directly; all invocation remains mediated by Estimator Runtime.
-
-Universal Runner must be upgraded to replace mock CE with real backend before full pipeline operation.
-
-Resource Builder must use real Valesco resource data only.
-
-All ELI and Resource Builder outputs must be traceable and flagged provisional.
-
-Missing-Item Engine A–E rules continue to apply.
-
-System must remain lightweight; avoid unnecessary abstractions.
+Cortex deterministic baseline must remain unchanged.
+All Resource Builder outputs consumed by Estimator Runtime must remain provisional and traceable.
+Universal Runner now invokes real CE backend (mock removed).
 
 NEXT REQUIRED STEP
 
-Resource Builder: implement v1.0 (build_resources(eli_output, ce_output) -> dict) and schema-compliance tests for provisional labour/plant/material outputs.
+Estimator Runtime: validate Resource Builder wiring under embedded Windows runtime and close DIB for wiring scope.
 
 CONCERNS
 
 (None blocking at this time.)
 
-END OF SNAPSHOT v3.5.4
+END OF SNAPSHOT v3.5.6
