@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./valesco_proposals.schema.json",
+  "title": "Valesco AI Proposals v1.0",
+  "type": "object",
+  "required": [
+    "boq_id",
+    "generated_at_utc",
+    "lines"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "boq_id": {
+      "type": "string"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "context",
+          "suggestions"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "suggestions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "value",
+                "basis",
+                "impact",
+                "confidence"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "assumption",
+                    "task_mapping",
+                    "material_code",
+                    "material_new",
+                    "subcontractor_ref",
+                    "composite_buildup"
+                  ]
+                },
+                "value": {
+                  "type": "string"
+                },
+                "basis": {
+                  "type": "string"
+                },
+                "impact": {
+                  "type": "string"
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "source": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

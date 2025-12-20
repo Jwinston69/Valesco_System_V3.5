@@ -1,0 +1,416 @@
+# Valesco Pack — v1.6.4 (Standardized)
+# Updated: 2025-11-15
+# Status: Fully standardized to Block Style (Safe for commas/special chars).
+
+meta:
+  schema_version: "1.4.0-unified"
+  pack_version: "v1.6.4"
+  pack_name: "TRP Play Area Pricing Pack"
+  date: "2025-11-15"
+  author: "Valesco Dev"
+  currency: "GBP"
+  region: "UK"
+  unit_tokens_allowed: [m, m2, m3, lm, hr, nr, day, week, item, t, l, kg, each]
+
+prelims:
+  percent: 10
+  apply_once: true
+  order:
+    - pre01_supervision_management
+    - pre02_offices_welfare
+    - pre03_additional_plant
+    - pre04_traffic_management
+    - pre05_mobilisation
+    - pre06_storage
+    - pre07_miscellaneous
+
+  pre01_supervision_management:
+    items:
+      - type: Project Manager
+        unit: day
+        rate_per_unit: 450.0
+      - type: Contracts Manager
+        unit: day
+        rate_per_unit: 400.0
+      - type: Site Manager
+        unit: day
+        rate_per_unit: 350.0
+      - type: Commercial Manager
+        unit: day
+        rate_per_unit: 450.0
+      - type: Quantity Surveyor
+        unit: day
+        rate_per_unit: 450.0
+      - type: Planner
+        unit: day
+        rate_per_unit: 400.0
+      - type: Engineer
+        unit: day
+        rate_per_unit: 400.0
+      - type: Setting Out / Plants Man
+        unit: day
+        rate_per_unit: 300.0
+      - type: Health & Safety Officer
+        unit: day
+        rate_per_unit: 300.0
+      - type: "Health & Safety Plan / Lift Plan"
+        unit: item
+        rate_per_unit: 600.0
+      - type: Project Co-Ordinator
+        unit: day
+        rate_per_unit: 300.0
+      - type: Admin
+        unit: day
+        rate_per_unit: 200.0
+      - type: Yard Man / Non-Productive Labour
+        unit: day
+        rate_per_unit: 220.0
+      - type: Plant Operator
+        unit: day
+        rate_per_unit: 230.0
+      - type: "Security (24/7 guard)"
+        unit: week
+        rate_per_unit: 2000.0
+
+  pre02_offices_welfare:
+    items:
+      - type: "Small Office – 12x8"
+        unit: week
+        rate_per_unit: 65.0
+      - type: "Large Office – 24x9"
+        unit: week
+        rate_per_unit: 90.0
+      - type: "Foreman’s Office – 16x8"
+        unit: week
+        rate_per_unit: 75.0
+      - type: "Meeting Room (additional)"
+        unit: week
+        rate_per_unit: 90.0
+      - type: "Small Canteen – 12x8"
+        unit: week
+        rate_per_unit: 70.0
+      - type: "Large Canteen – 24x9"
+        unit: week
+        rate_per_unit: 100.0
+      - type: "Canteen / Mess Room (general use)"
+        unit: week
+        rate_per_unit: 120.0
+      - type: "Small Container – 12x8"
+        unit: week
+        rate_per_unit: 50.0
+      - type: "Large Container – 24x9"
+        unit: week
+        rate_per_unit: 75.0
+      - type: "Plant Unit"
+        unit: week
+        rate_per_unit: 60.0
+      - type: "Oasis Unit"
+        unit: week
+        rate_per_unit: 400.0
+      - type: "Toilet / Shower Unit (inc. weekly service)"
+        unit: week
+        rate_per_unit: 300.0
+      - type: "Welfare Maintenance – weekly servicing"
+        unit: week
+        rate_per_unit: 100.0
+      - type: "Consumables – PPE"
+        unit: week
+        rate_per_unit: 100.0
+
+  pre03_additional_plant:
+    items:
+      - type: "Telehandler (14–17m reach)"
+        unit: week
+        rate_per_unit: 750.0
+      - type: "Tractor & Trailer"
+        unit: week
+        rate_per_unit: 1000.0
+      - type: "Road Sweeper (per shift, 8hr)"
+        unit: item
+        rate_per_unit: 325.0
+      - type: "Site Generator (20–40kVA)"
+        unit: week
+        rate_per_unit: 275.0
+      - type: "Diesel Bowser"
+        unit: week
+        rate_per_unit: 55.0
+      - type: "Water Bowser"
+        unit: week
+        rate_per_unit: 50.0
+      - type: "Merlo (Roto, 20m+)"
+        unit: week
+        rate_per_unit: 1600.0
+      - type: "Merlo Delivery – Inc Each Way"
+        unit: item
+        rate_per_unit: 1000.0
+
+  pre04_traffic_management:
+    items:
+      - type: "General TM (Signage, cones, Chapter 8)"
+        unit: item
+        rate_per_unit: 7500.0
+
+  pre05_mobilisation:
+    items:
+      - type: "Haulage – off-site transport/delivery moves"
+        unit: item
+        rate_per_unit: 5000.0
+      - type: "Heras Fencing (per metre, weekly hire)"
+        unit: item
+        rate_per_unit: 4.0
+
+  pre06_storage:
+    items: []
+
+  pre07_miscellaneous:
+    items:
+      - type: "Diesel (White, Bulk Delivery)"
+        unit: l
+        rate_per_unit: 1.6
+      - type: "Water Supply – standpipe"
+        unit: item
+        rate_per_unit: 750.0
+      - type: "Tree Protection Fencing (per metre, weekly hire)"
+        unit: item
+        rate_per_unit: 7.5
+      - type: "Signage – permanent + H&S boards"
+        unit: item
+        rate_per_unit: 2500.0
+      - type: "CBR Testing – 4–6 tests incl. lab fees"
+        unit: item
+        rate_per_unit: 1500.0
+      - type: "Testing / Sampling – concrete cubes"
+        unit: item
+        rate_per_unit: 2000.0
+      - type: "Temporary Works – TW design and checks"
+        unit: item
+        rate_per_unit: 12000.0
+      - type: "Temporary Compound Matting – haul road"
+        unit: item
+        rate_per_unit: 7500.0
+      - type: "Clear Site – demobilisation"
+        unit: item
+        rate_per_unit: 10000.0
+      - type: "Bond – 10% performance bond premium"
+        unit: item
+        rate_per_unit: 3000.0
+      - type: "CDM Compliance – PD/PC documentation"
+        unit: item
+        rate_per_unit: 3000.0
+      - type: "O&M Manual – as-builts"
+        unit: item
+        rate_per_unit: 2500.0
+      - type: "CCS – Considerate Constructors Scheme"
+        unit: item
+        rate_per_unit: 750.0
+      - type: "Local Authority Licences and Fees for Sewer Connection"
+        unit: item
+        rate_per_unit: 1000.0
+
+labour:
+  - type: Foreman Landscaper
+    unit: day
+    rate_per_unit: 280.0
+  - type: Hard Landscaper
+    unit: day
+    rate_per_unit: 250.0
+  - type: Skilled Lab I.E Carpenter
+    unit: day
+    rate_per_unit: 250.0
+  - type: General Lab
+    unit: day
+    rate_per_unit: 230.0
+  - type: Clearance Op
+    unit: day
+    rate_per_unit: 220.0
+  - type: Maintenance Operative
+    unit: day
+    rate_per_unit: 210.0
+  - type: Planting Labour
+    unit: day
+    rate_per_unit: 253.0
+  - type: Seeding Labour
+    unit: day
+    rate_per_unit: 230.0
+  - type: Plant Operative
+    unit: day
+    rate_per_unit: 220.0
+  - type: Bricklayer
+    unit: day
+    rate_per_unit: 250.0
+  - type: Joiner
+    unit: day
+    rate_per_unit: 250.0
+  - type: Macadam Labour
+    unit: day
+    rate_per_unit: 230.0
+  - type: Fencing Labour
+    unit: day
+    rate_per_unit: 250.0
+  - type: Ecological Supervision
+    unit: day
+    rate_per_unit: 500.0
+  - type: "Arborist (Root-Zone Works)"
+    unit: day
+    rate_per_unit: 285.0
+
+plant:
+  - type: Cherry Picker
+    unit: day
+    rate_per_unit: 222.0
+  - type: Mewp
+    unit: day
+    rate_per_unit: 222.0
+  - type: Scissor Lift
+    unit: day
+    rate_per_unit: 217.0
+  - type: Breaker For 3T Mini Digger
+    unit: day
+    rate_per_unit: 69.0
+  - type: Breaker For 5T Mini Digger
+    unit: day
+    rate_per_unit: 92.0
+  - type: Breaker For 8T Mini Digger
+    unit: day
+    rate_per_unit: 128.0
+  - type: Breaker For 12T Excavator
+    unit: day
+    rate_per_unit: 100.0
+  - type: "Crusher (Jaw)"
+    unit: day
+    rate_per_unit: 910.0
+  - type: Robotrak Screen
+    unit: day
+    rate_per_unit: 832.0
+  - type: 1T Dumper
+    unit: day
+    rate_per_unit: 49.0
+  - type: 3T Dumper
+    unit: day
+    rate_per_unit: 62.0
+  - type: 6T Dumper
+    unit: day
+    rate_per_unit: 75.0
+  - type: 9T Dumper
+    unit: day
+    rate_per_unit: 93.0
+  - type: Tracked Dumper
+    unit: day
+    rate_per_unit: 219.0
+  - type: Hydrema
+    unit: day
+    rate_per_unit: 243.0
+  - type: 25T Dump Truck
+    unit: day
+    rate_per_unit: 370.0
+  - type: 3T Mini Digger
+    unit: day
+    rate_per_unit: 79.0
+  - type: 5T Mini Digger
+    unit: day
+    rate_per_unit: 107.0
+  - type: 8T Mini Digger
+    unit: day
+    rate_per_unit: 148.0
+  - type: 13T Tracked Excavator
+    unit: day
+    rate_per_unit: 184.0
+  - type: 20T Tracked Excavator
+    unit: day
+    rate_per_unit: 264.0
+  - type: Generator
+    unit: day
+    rate_per_unit: 26.0
+  - type: Mobile Fuel Bowser
+    unit: day
+    rate_per_unit: 20.0
+  - type: Mobile Water Bowser
+    unit: day
+    rate_per_unit: 25.0
+  - type: Bomag 80 Roller
+    unit: day
+    rate_per_unit: 49.0
+  - type: Bomag 120 Roller
+    unit: day
+    rate_per_unit: 67.0
+  - type: Rammax Trench Roller
+    unit: day
+    rate_per_unit: 92.0
+  - type: "Forklift Truck/Telehandler"
+    unit: day
+    rate_per_unit: 156.0
+  - type: JCB 3CX
+    unit: day
+    rate_per_unit: 154.0
+
+waste:
+  disposal:
+    description: Tipping rates by material
+    items:
+      - type: Vegetation
+        unit: m3
+        rate: 45
+      - type: Topsoil
+        unit: m3
+        rate: 38
+      - type: Tarmac
+        unit: m3
+        rate: 28
+      - type: Concrete
+        unit: m3
+        rate: 35
+      - type: Hard Material
+        unit: m3
+        rate: 32
+      - type: Inert Material
+        unit: m3
+        rate: 38
+      - type: Non-Hazardous
+        unit: m3
+        rate: 195
+      - type: Hazardous
+        unit: m3
+        rate: 380
+      - type: Asbestos
+        unit: m3
+        rate: 500
+      - type: Knotweed
+        unit: m3
+        rate: 500
+  haulage:
+    description: Muckaway by m3
+    items:
+      - type: 8 Wheel Grab Wagon
+        unit: m3
+        rate: 30
+      - type: 8 Wheel Tipper Wagon
+        unit: m3
+        rate: 24
+  skips:
+    description: Skips and RoRos
+    items:
+      - type: Skip 8yd General
+        unit: each
+        rate: 240
+      - type: Skip 12yd General
+        unit: each
+        rate: 344
+      - type: RoRo 20yd General inc 1t
+        unit: each
+        rate: 639
+
+productivity:
+  description: Reference outputs
+  items:
+    - activity: excavation_hand
+      output_m3_day: 3
+    - activity: planting_shrubs
+      output_nr_day: 250
+    - activity: planting_trees_std
+      output_nr_day: 20
+    - activity: surfacing_tarmac
+      output_m2_day: 150
+    - activity: fencing_bowtop
+      output_lm_day: 20
+
+rules: []

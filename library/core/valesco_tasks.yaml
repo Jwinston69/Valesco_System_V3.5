@@ -1,0 +1,315 @@
+# Valesco Tasks — v1.6
+# Updated: 2025-11-14
+# Status: Aligned to MAT.STD.XX.YY.NNN structure.
+
+meta:
+  schema_version: "1.0"
+  tasks_version: "v1.6"
+  date: "2025-11-14"
+  author: "Valesco Dev"
+  units: [m, m2, m3, lm, hr, nr, day, item, t, l, kg, each]
+
+tasks:
+  # --- Excavation & Movement ---
+  - id: hand_excavation_rpa
+    name: "Hand excavation within Root Protection Area"
+    unit: m3
+    productivity: { output_m3_day: 3 }
+    rates: { derived_unit_rate_m3: 125.33 }
+    tags: [excavation_movement]
+
+  - id: small_exc_gang_3t
+    name: "Small excavation gang using 3T digger and 1T dumper"
+    unit: m3
+    productivity: { output_m3_day: 64 }
+    rates: { derived_unit_rate_m3: 12.78 }
+    tags: [excavation_movement]
+
+  - id: medium_exc_gang_8t
+    name: "Medium excavation gang using 8T digger and 6T dumper"
+    unit: m3
+    productivity: { output_m3_day: 96 }
+    rates: { derived_unit_rate_m3: 9.51 }
+    tags: [excavation_movement]
+
+  - id: large_exc_gang_12t
+    name: "Large excavation gang using 13T excavator and 9T dumper"
+    unit: m3
+    productivity: { output_m3_day: 120 }
+    rates: { derived_unit_rate_m3: 8.06 }
+    tags: [excavation_movement]
+
+  - id: small_material_movement_gang_3td
+    name: "Small material movement gang using 3T digger and 3T dumper"
+    unit: m3
+    productivity: { output_m3_day: 84 }
+    rates: { derived_unit_rate_m3: 7.15 }
+    tags: [excavation_movement]
+
+  - id: medium_material_movement_gang_6td
+    name: "Medium material movement gang using 8T digger and 6T dumper"
+    unit: m3
+    productivity: { output_m3_day: 120 }
+    rates: { derived_unit_rate_m3: 5.69 }
+    tags: [excavation_movement]
+
+  - id: large_material_movement_gang_9td
+    name: "Large material movement gang using 13T excavator and 9T dumper"
+    unit: m3
+    productivity: { output_m3_day: 144 }
+    rates: { derived_unit_rate_m3: 5.12 }
+    tags: [excavation_movement]
+
+  - id: small_trenching_gang_3t_500_750mm
+    name: "Small trenching gang 500–750mm using 3T digger and 3T dumper"
+    unit: lm
+    productivity: { output_lm_day: 125 }
+    rates: { derived_unit_rate_lm: 6.65 }
+    tags: [excavation_movement]
+
+  - id: medium_trenching_gang_8t_500_750mm
+    name: "Medium trenching gang 500–750mm using 8T digger and 6T dumper"
+    unit: lm
+    productivity: { output_lm_day: 200 }
+    rates: { derived_unit_rate_lm: 4.56 }
+    tags: [excavation_movement]
+
+  - id: large_trenching_gang_12t_500_750mm
+    name: "Large trenching gang 500–750mm using 13T digger and 9T dumper"
+    unit: lm
+    productivity: { output_lm_day: 250 }
+    rates: { derived_unit_rate_lm: 3.87 }
+    tags: [excavation_movement]
+
+  - id: small_grading_gang_3t
+    name: "Small grading gang using 3T mini digger"
+    unit: m2
+    productivity: { output_m2_day: 300 }
+    rates: { derived_unit_rate_m2: 2.56 }
+    tags: [excavation_movement]
+
+  - id: medium_grading_gang_8t
+    name: "Medium grading gang using 8T mini digger"
+    unit: m2
+    productivity: { output_m2_day: 420 }
+    rates: { derived_unit_rate_m2: 2.00 }
+    tags: [excavation_movement]
+
+  - id: large_grading_gang_12t
+    name: "Large grading gang using 13T tracked excavator"
+    unit: m2
+    productivity: { output_m2_day: 500 }
+    rates: { derived_unit_rate_m2: 1.75 }
+    tags: [excavation_movement]
+
+  # --- Supply, Spread & Fill (Linked to New Material Codes) ---
+
+  - id: supply_spread_topsoil_subsoil_100mm
+    name: "Supply and spread topsoil/subsoil to 100mm thickness"
+    unit: m2
+    # MAT.STD.07.02.001 = Topsoil imported screened
+    materials:
+      - { code: MAT.STD.07.02.001, qty_per_unit: 0.100, unit: m3 }
+    productivity: { output_m2_day: 640.000 }
+    rates: { derived_unit_rate_m2: 6.17 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_topsoil_subsoil_150mm
+    name: "Supply and spread topsoil/subsoil to 150mm thickness"
+    unit: m2
+    materials:
+      - { code: MAT.STD.07.02.001, qty_per_unit: 0.150, unit: m3 }
+    productivity: { output_m2_day: 480.000 }
+    rates: { derived_unit_rate_m2: 9.02 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_topsoil_subsoil_300mm
+    name: "Supply and spread topsoil/subsoil to 300mm thickness"
+    unit: m2
+    materials:
+      - { code: MAT.STD.07.02.001, qty_per_unit: 0.300, unit: m3 }
+    productivity: { output_m2_day: 266.667 }
+    rates: { derived_unit_rate_m2: 17.67 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_topsoil_subsoil_450mm
+    name: "Supply and spread topsoil/subsoil to 450mm thickness"
+    unit: m2
+    materials:
+      - { code: MAT.STD.07.02.001, qty_per_unit: 0.450, unit: m3 }
+    productivity: { output_m2_day: 177.778 }
+    rates: { derived_unit_rate_m2: 26.50 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_topsoil_subsoil_hand_bulkbag
+    name: "Supply/spread topsoil/subsoil by hand from bulk bags"
+    unit: m3
+    # MAT.STD.07.02.002 = Topsoil Bulk Bag (0.85t)
+    # MAT.STD.07.02.003 = Subsoil Bulk Bag (0.85t)
+    # Rate calc mixed, but defaulting to Topsoil for now
+    materials:
+      - { code: MAT.STD.07.02.002, qty_per_unit: 1.880, unit: item }
+    productivity: { output_m3_day: 15.000 }
+    rates: { derived_unit_rate_m3: 180.80 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_lightweight_soil_hand_bulkbag
+    name: "Supply/spread lightweight soil by hand from bulk bags"
+    unit: m3
+    materials:
+      - { code: MAT.STD.07.02.002, qty_per_unit: 0.588, unit: item }
+    productivity: { output_m3_day: 15.000 }
+    rates: { derived_unit_rate_m3: 145.64 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_self_binding_gravel_50_75mm_high
+    name: "Supply/place self-binding gravel 50–75mm (high productivity)"
+    unit: m2
+    # MAT.STD.04.03.002 = Self-binding gravel 10mm to dust
+    materials:
+      - { code: MAT.STD.04.03.002, qty_per_unit: 0.187, unit: t }
+    productivity: { output_m2_day: 746.667 }
+    rates: { derived_unit_rate_m2: 27.85 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_self_binding_gravel_50_75mm_medium
+    name: "Supply/place self-binding gravel 50–75mm (medium productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.03.002, qty_per_unit: 0.187, unit: t }
+    productivity: { output_m2_day: 533.333 }
+    rates: { derived_unit_rate_m2: 28.45 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_self_binding_gravel_50_75mm_low
+    name: "Supply/place self-binding gravel 50–75mm (low productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.03.002, qty_per_unit: 0.125, unit: t }
+    productivity: { output_m2_day: 480.000 }
+    rates: { derived_unit_rate_m2: 19.84 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_50_100mm_high
+    name: "Supply/place compacted fill 50–100mm (high productivity)"
+    unit: m2
+    # MAT.STD.04.01.002 = Type 1 (m3)
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.100, unit: m3 }
+    productivity: { output_m2_day: 746.667 }
+    rates: { derived_unit_rate_m2: 11.96 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_50_100mm_medium
+    name: "Supply/place compacted fill 50–100mm (medium productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.100, unit: m3 }
+    productivity: { output_m2_day: 533.333 }
+    rates: { derived_unit_rate_m2: 12.55 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_50_100mm_low
+    name: "Supply/place compacted fill 50–100mm (low productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.100, unit: m3 }
+    productivity: { output_m2_day: 320.000 }
+    rates: { derived_unit_rate_m2: 13.82 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_150mm_high
+    name: "Supply/place compacted fill 150mm (high productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.150, unit: m3 }
+    productivity: { output_m2_day: 560.000 }
+    rates: { derived_unit_rate_m2: 22.88 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_150mm_medium
+    name: "Supply/place compacted fill 150mm (medium productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.150, unit: m3 }
+    productivity: { output_m2_day: 400.000 }
+    rates: { derived_unit_rate_m2: 23.67 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_150mm_low
+    name: "Supply/place compacted fill 150mm (low productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.150, unit: m3 }
+    productivity: { output_m2_day: 240.000 }
+    rates: { derived_unit_rate_m2: 25.36 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_200mm_high
+    name: "Supply/place compacted fill 200mm (high productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.200, unit: m3 }
+    productivity: { output_m2_day: 560.000 }
+    rates: { derived_unit_rate_m2: 29.81 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_200mm_medium
+    name: "Supply/place compacted fill 200mm (medium productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.200, unit: m3 }
+    productivity: { output_m2_day: 400.000 }
+    rates: { derived_unit_rate_m2: 30.60 }
+    tags: [supply_spread_fill]
+
+  - id: supply_spread_compacted_fill_200mm_low
+    name: "Supply/place compacted fill 200mm (low productivity)"
+    unit: m2
+    materials:
+      - { code: MAT.STD.04.01.002, qty_per_unit: 0.200, unit: m3 }
+    productivity: { output_m2_day: 240.000 }
+    rates: { derived_unit_rate_m2: 32.29 }
+    tags: [supply_spread_fill]
+
+  - id: large_spread_gang_12t_loose_material
+    name: "Large spread gang for loose material"
+    unit: m3
+    productivity: { output_m3_day: 96.000 }
+    rates: { derived_unit_rate_m3: 10.07 }
+    tags: [supply_spread_fill]
+
+  - id: medium_spread_gang_8t_loose_material
+    name: "Medium spread gang for loose material"
+    unit: m3
+    productivity: { output_m3_day: 80.000 }
+    rates: { derived_unit_rate_m3: 11.41 }
+    tags: [supply_spread_fill]
+
+  - id: small_spread_gang_3t_loose_material
+    name: "Small spread gang for loose material"
+    unit: m3
+    productivity: { output_m3_day: 56.000 }
+    rates: { derived_unit_rate_m3: 14.61 }
+    tags: [supply_spread_fill]
+
+  - id: large_spread_gang_12t_compact_material
+    name: "Large spread gang for compacted material"
+    unit: m3
+    productivity: { output_m3_day: 96.000 }
+    rates: { derived_unit_rate_m3: 13.17 }
+    tags: [supply_spread_fill]
+
+  - id: medium_spread_gang_8t_compact_material
+    name: "Medium spread gang for compacted material"
+    unit: m3
+    productivity: { output_m3_day: 80.000 }
+    rates: { derived_unit_rate_m3: 15.12 }
+    tags: [supply_spread_fill]
+
+  - id: small_spread_gang_3t_compact_material
+    name: "Small spread gang for compacted material"
+    unit: m3
+    productivity: { output_m3_day: 56.000 }
+    rates: { derived_unit_rate_m3: 19.59 }
+    tags: [supply_spread_fill]

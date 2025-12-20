@@ -1,0 +1,128 @@
+SNAPSHOT TEMPLATE — v3.5
+## AI Guidance Contracts (Carry Forward)
+
+Declare the AI guidance state for the next system snapshot.
+
+Required fields:
+- option_selection_contract: (version or disabled)
+- missing_item_routing_contract: (version or disabled)
+- variant_generation_contract: (version or disabled)
+
+Learning Memory:
+- enabled: true/false
+- enabled_domains: [preference, pattern, outcome]
+- memory_context_version or hash (if enabled)
+
+If AI guidance contracts change, explain why in the snapshot notes.
+
+SYSTEM STATE
+List each subsystem with one of:
+implemented/stable
+
+implemented/frozen
+
+implemented/active
+
+pending
+
+Only subsystems explicitly marked active or queued may be modified.
+ All unlisted subsystems are frozen by default.
+Include a two-line health declaration:
+Environment bootstrap: required and assumed successful
+
+Canonical test runner: exit code 0 required
+
+
+FROZEN SUBSYSTEMS
+List subsystems frozen for this phase.
+ Any subsystem not listed as active or queued is frozen automatically.
+
+ACTIVE SUBSYSTEMS
+List all subsystems currently under development.
+ If another subsystem will follow immediately, list it as queued.
+
+ACTIVE SUBSYSTEM MODULE & TEST PATHS
+For each active subsystem, specify the deterministic logical paths:
+module path: <VALESCO_ENGINE>/modules/<subsystem_name>_vX_Y.py
+test path:   <VALESCO_ENGINE>/tests/test_<subsystem_name>_vX_Y.py
+
+(The environment bootstrap resolves <VALESCO_ENGINE> to its OS path.)
+
+ELI REQUIRED FUNCTIONS
+(Include this section only if ELI is ACTIVE.)
+parse_boq_text(text) -> dict
+identify_missing_information(parsed) -> list
+generate_resource_hints(parsed, missing) -> dict
+eli_interpret(text) -> dict
+
+
+ELI OUTPUT SCHEMA
+(Include only if ELI is ACTIVE.)
+{
+  "parsed": {...},
+  "missing_information": [...],
+  "resource_hints": {
+    "labour_categories": [...],
+    "plant_categories": [...],
+    "material_categories": [...],
+    "output_ranges": [...],
+    "assumptions": [...]
+  },
+  "all_provisional": true
+}
+
+Provisional Category Rule
+Generic human-readable provisional labour/plant/material categories are allowed.
+ These are not library items and remain advisory only.
+
+RESOURCE BUILDER REQUIRED FUNCTION
+(Include only if Resource Builder is ACTIVE.)
+build_resources(eli_output, ce_output) -> dict
+
+
+RESOURCE BUILDER OUTPUT SCHEMA
+(Include only if Resource Builder is ACTIVE.)
+{
+  "labour": [...],
+  "plant": [...],
+  "materials": [...],
+  "assumptions": [...],
+  "all_provisional": true
+}
+
+Pricing Contract
+Pricing Engine (frozen) consumes Resource Builder output.
+ Minimal bridging code is permitted if it respects declared schemas and does not alter authoritative data.
+
+DESIGN INFERENCE RULE
+Missing minor design details do not constitute a fork.
+ The Advisor must infer only the minimal structures required to satisfy the Snapshot’s declared APIs and schemas.
+ Do not include implementation details or internal reasoning.
+(This applies only to ACTIVE subsystems.)
+
+HEALTH CHECK
+Environment
+Run: canonical environment bootstrap script
+
+Expect: exit code 0
+
+System Tests
+Run: the canonical test runner defined in ops/runtime documentation
+
+Expect: exit code 0
+
+A subsystem may not be considered healthy without a corresponding passing test suite.
+
+NEXT REQUIRED STEP
+A single deterministic action beginning with the subsystem name.
+ Examples:
+ELI: implement eli_interpret() and corresponding tests.
+
+Resource Builder: implement build_resources() and schema-compliance tests.
+
+
+CONCERNS
+List any non-blocking concerns, one sentence each.
+
+END OF TEMPLATE v3.5
+

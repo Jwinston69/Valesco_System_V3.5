@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./valesco_pack.schema.json",
+  "title": "Valesco Pack (v1.7 Strict)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "labour", "plant", "prelims", "rules"],
+  "$defs": {
+    "unitToken": {
+      "type": "string",
+      "description": "Allowed units (week added per v1.6 decision)",
+      "enum": ["m", "m2", "m3", "lm", "hr", "nr", "day", "week", "item", "t", "l", "kg", "each"]
+    },
+    "resourceItem": {
+      "type": "object",
+      "required": ["type", "unit", "rate_per_unit"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "unit": { "$ref": "#/$defs/unitToken" },
+        "rate_per_unit": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "pack_version", "pack_name", "date", "currency"],
+      "properties": {
+        "schema_version": { "type": "string", "const": "1.4.0-unified" },
+        "pack_version": { "type": "string" },
+        "pack_name": { "type": "string" },
+        "date": { "type": "string" },
+        "author": { "type": "string" },
+        "currency": { "type": "string" },
+        "region": { "type": "string" },
+        "unit_tokens_allowed": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/unitToken" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "labour": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/resourceItem" }
+    },
+    "plant": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/resourceItem" }
+    },
+    "prelims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["percent", "apply_once", "order"],
+      "properties": {
+        "percent": { "type": "number", "minimum": 0 },
+        "apply_once": { "type": "boolean" },
+        "order": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      },
+      "patternProperties": {
+        "^pre\\d{2}_[a-z0-9_]+$": {
+          "type": "object",
+          "required": ["items"],
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/resourceItem" }
+            }
+          }
+        }
+      }
+    },
+    "waste": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "disposal": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["type", "unit", "rate"],
+                "properties": {
+                  "type": { "type": "string" },
+                  "unit": { "$ref": "#/$defs/unitToken" },
+                  "rate": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "haulage": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["type", "unit", "rate"],
+                "properties": {
+                  "type": { "type": "string" },
+                  "unit": { "$ref": "#/$defs/unitToken" },
+                  "rate": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "skips": {
+          "type": "object",
+          "properties": {
+            "description": { "type": "string" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["type", "unit", "rate"],
+                "properties": {
+                  "type": { "type": "string" },
+                  "unit": { "$ref": "#/$defs/unitToken" },
+                  "rate": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "productivity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["activity"],
+            "properties": {
+              "activity": { "type": "string" }
+            },
+            "patternProperties": {
+              "^output_(m|m2|m3|lm|hr|nr|day|week|item|t|l|kg|each)_day$": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["code", "unit", "rate_per_unit"],
+                  "properties": {
+                    "code": { "type": "string" },
+                    "unit": { "$ref": "#/$defs/unitToken" },
+                    "rate_per_unit": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

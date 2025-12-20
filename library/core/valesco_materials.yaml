@@ -1,0 +1,5462 @@
+meta:
+  schema_version: 1.1.2
+  materials_version: v1.2.1
+  date: '2025-11-17'
+  author: Valesco Dev
+  currency: GBP
+materials:
+- code: MAT.STD.01.01.001
+  description: Aborted Charge
+  rate: 135.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.002
+  description: AM Charge (pre-12:00)
+  rate: 25.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.003
+  description: Delivery Charge (Standard / M25)
+  rate: 45.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.004
+  description: Damage Charge (at cost + 15% admin)
+  rate: 50.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.005
+  description: Same Day Delivery Charge
+  rate: 85.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.006
+  description: Handling Charge (manual/offload assist)
+  rate: 55.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.007
+  description: Low Order Charge (orders < £150)
+  rate: 25.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.008
+  description: Off-Load Charge (Nr onsite offload)
+  rate: 45.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.009
+  description: Pallet Charge (Non-returnable)
+  rate: 15.0
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.010
+  description: Transfer Charge (re-route/re-delivery)
+  rate: 55.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.011
+  description: 1Hr Waiting Time (first 30 min free)
+  rate: 60.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.01.01.012
+  description: Access Charges (restricted/site specific)
+  rate: 65.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.01.001
+  description: Barriers – pedestrian (supply only)
+  rate: 45.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.01.002
+  description: Heras Fencing 3.5m Panel – supply only
+  rate: 38.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.001
+  description: Chestnut cleft rail kit (supply-only, per lm)
+  rate: 25.0
+  unit: lm
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Chestnut_Cleft_Rail_Kit'
+- code: MAT.STD.02.02.002
+  description: Chainlink fencing PVC green coated 1.2m high with steel posts, top rail & mesh – supply only
+  rate: 21.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.003
+  description: Chainlink fencing galvanised 1.8m high with steel posts, top rail & mesh – supply only
+  rate: 23.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.004
+  description: Chainlink PVC coated 900mm x 25yd roll x 3.15mm wire – supply only
+  rate: 3.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.005
+  description: Chainlink PVC coated 1200mm x 25yd roll x 3.15mm wire – supply only
+  rate: 4.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.006
+  description: Chainlink PVC coated 1500mm x 25yd roll x 3.15mm wire – supply only
+  rate: 5.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.007
+  description: Chainlink PVC coated 1800mm x 25yd roll x 3.15mm wire – supply only
+  rate: 6.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.008
+  description: Chainlink galvanised 900mm x 25yd roll x 2.0mm wire – supply only
+  rate: 2.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.009
+  description: Chainlink galvanised 1200mm x 25yd roll x 2.0mm wire – supply only
+  rate: 3.2
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.010
+  description: Chainlink galvanised 1500mm x 25yd roll x 2.0mm wire – supply only
+  rate: 3.9000000000000004
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.011
+  description: Chainlink galvanised 1800mm x 25yd roll x 2.0mm wire – supply only
+  rate: 4.6000000000000005
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.012
+  description: Mesh fencing (CLD Exempla profiled) 3.03m high incl. posts – supply only
+  rate: 60.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.013
+  description: Euroguard® Regular 1520mm high x 3000mm wide panel – supply only
+  rate: 75.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.014
+  description: Euroguard® Regular 1810mm high x 3000mm wide panel – supply only
+  rate: 85.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.015
+  description: Euroguard® Regular 2010mm high x 3000mm wide panel – supply only
+  rate: 95.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.016
+  description: Euroguard® Regular 2410mm high x 3000mm wide panel – supply only
+  rate: 110.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.017
+  description: Weldmesh panel 1.0m high – supply only
+  rate: 9.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.018
+  description: Palisade fencing galvanised 2.4m high – supply only
+  rate: 45.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.019
+  description: Cleft chestnut fencing 0.9m high with round posts – supply only
+  rate: 12.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.020
+  description: Chilham fence panels 1.83 x 1.83m Jakcured – supply only
+  rate: 95.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.021
+  description: Featherboard panel fencing & posts 1.95m high – supply only
+  rate: 61.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.022
+  description: Stock fencing 1.2m high with round posts & mesh wire – supply only
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.023
+  description: Venetian panel fencing 1.8m high with timber slotted posts – supply only
+  rate: 55.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.024
+  description: Post & four rail fence 1.2m high incl. mesh wire – supply only
+  rate: 17.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.025
+  description: Picket fence round top 1.2m high incl. posts – supply only
+  rate: 27.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.026
+  description: Lattice trellis 0.3 x 1.83m – supply only
+  rate: 45.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.027
+  description: Wattle panels 800 x 1300mm – supply only
+  rate: 60.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.028
+  description: Willow panels 6ft x 5ft – supply only
+  rate: 95.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.029
+  description: Cleft chestnut fencing 1.2m high – supply only
+  rate: 16.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.030
+  description: Close boarded fencing 1.6m high – supply only
+  rate: 60.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.031
+  description: Timber fence panel 1800 x 1800mm – supply only
+  rate: 38.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.032
+  description: Barbed wire 2-ply 2.5mm dia – supply only
+  rate: 0.9
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.033
+  description: Galvanised plain wire 4mm dia – supply only
+  rate: 1.2000000000000002
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.034
+  description: Line wire 2.65mm dia spring steel – supply only
+  rate: 0.8500000000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.035
+  description: Rabbit netting 600mm high – supply only
+  rate: 3.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.036
+  description: Sheep netting 900mm high (large squares) – supply only
+  rate: 4.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.037
+  description: Sheep wire high tensile 8/80/15 – supply only
+  rate: 1.1
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.038
+  description: Mild steel barbed wire 4" – supply only
+  rate: 0.25
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.039
+  description: Sheep wire high tensile light gauge – supply only
+  rate: 0.9500000000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.040
+  description: Chicken wire 900mm x 50m x 25mm holes – supply only
+  rate: 1.1
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.041
+  description: Chicken wire 1200mm x 50m x 25mm holes – supply only
+  rate: 1.4000000000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.042
+  description: High tensile line wire 2.5mm – 25Kg roll – supply only
+  rate: 0.45
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.043
+  description: Wire securing 2.5mm – per metre – supply only
+  rate: 0.30000000000000004
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.02.044
+  description: Climber wire system tensioned stainless steel with 2 brackets – allowance
+  rate: 65.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.001
+  description: Post mix concrete – 20Kg bag
+  rate: 5.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.002
+  description: Timber field gate – single leaf 2.40m wide
+  rate: 150.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.003
+  description: Timber field gate – single leaf 2.70m wide
+  rate: 165.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.004
+  description: Timber field gate – single leaf 3.00m wide
+  rate: 180.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.005
+  description: Timber field gate – single leaf 3.60m wide
+  rate: 210.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.006
+  description: Hanging system for timber field gate incl. posts, hinges, catch & fittings (1.8–3.6m wide)
+  rate: 140.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.007
+  description: Galvanised steel hanging post 89mm Ø x 2.0m long
+  rate: 65.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.008
+  description: Galvanised steel slamming post 89mm Ø x 1.8m long
+  rate: 48.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.009
+  description: Galvanised strap 400 x 50mm x 22G for birdsmouth fencing
+  rate: 3.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.010
+  description: Reinforced concrete post 1.65m high for steel tube fencing
+  rate: 40.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.011
+  description: Steel tube 50mm Ø – supply only
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.012
+  description: Kee-Clamp elbow connector – 50mm Ø
+  rate: 7.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.013
+  description: Kee-Clamp T-joint – 50mm Ø
+  rate: 8.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.014
+  description: Kee-Clamp universal connector – 50mm Ø
+  rate: 6.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.015
+  description: Field gate 3600 x 1270mm incl. cattle-proof lockable latch
+  rate: 260.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.016
+  description: Mobility kissing gate – 1500mm wide complete
+  rate: 320.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.017
+  description: Self-closing timber gate – 1.2m wide complete
+  rate: 180.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.018
+  description: Galvanised steel field gate – single leaf 4.60m wide
+  rate: 430.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.019
+  description: Timber gate – 900mm wide
+  rate: 45.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.020
+  description: Chilham capping rail 1.83m x 65 x 35mm – supply only
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.021
+  description: Chilham fence post 1.8m high above ground – supply only
+  rate: 28.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.022
+  description: Cleft chestnut stakes 1.8m – supply only
+  rate: 14.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.023
+  description: Timber rails 38 x 87mm x 2.85m scarfed ends – supply only
+  rate: 9.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.024
+  description: Timber prick post 38 x 87mm x 1.85m high – supply only
+  rate: 6.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.025
+  description: Timber morticed post 75 x 100mm x 1.8m high – supply only
+  rate: 18.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.026
+  description: Timber morticed post 75 x 100mm x 2.1m high – supply only
+  rate: 22.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.027
+  description: Capping rail 65 x 38mm twice weathered for close board fencing – supply only
+  rate: 10.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.028
+  description: Counter rail 50 x 32mm for close board fencing – supply only
+  rate: 12.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.029
+  description: Gravel board 200 x 50mm timber for close board fencing – supply only
+  rate: 13.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.030
+  description: Timber pales 75 x 20mm pointed for 1.2m high fencing – supply only
+  rate: 6.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.031
+  description: Birdsmouth posts 91 x 91mm x 0.9m – supply only
+  rate: 7.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.032
+  description: Birdsmouth posts 91 x 91mm x 1.2m – supply only
+  rate: 9.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.033
+  description: Timber rail 38 x 100mm x 3.6m – supply only
+  rate: 9.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.034
+  description: Timber rail 70 x 70mm x 2.8m (for birdsmouth fencing) – supply only
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.035
+  description: Knee rail 150 x 150 x 2400mm SW treated – supply only
+  rate: 8.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.036
+  description: Timber post 200 x 100 x 1200mm – supply only
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.037
+  description: Timber post 100 x 100 x 1200mm – supply only
+  rate: 22.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.038
+  description: Galvanised staples 4mm x 40mm – 25Kg pack
+  rate: 45.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.039
+  description: Reinforced concrete recessed post 2.5m high for close board fencing – supply only
+  rate: 55.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.040
+  description: Gravel board PCC 200 x 50mm for close board fencing – supply only
+  rate: 12.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.02.03.041
+  description: Post concrete for galvanised tubing – supply only
+  rate: 25.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.001
+  description: Type 1 803, quarried
+  rate: 30.0
+  unit: t
+  supplier: Supplier_X_2025-10-20
+  notes: 'Legacy: MOT_Type_1_quarried'
+- code: MAT.STD.04.01.002
+  description: Type 1 803, quarried (per m³ @ ~2.1t/m³ conv)
+  rate: 63.0
+  unit: m3
+  supplier: Derived_from_tonne_rate_2025-10-30
+  notes: 'Legacy: MOT_Type_1_quarried_m3'
+- code: MAT.STD.04.01.003
+  description: DoT Type 3 Sub-base (open graded)
+  rate: 48.0
+  unit: t
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: DoT_Type_3_Subbase'
+- code: MAT.STD.04.01.004
+  description: 'Example: Type 1 MOT (Delete me)'
+  rate: 35.0
+  unit: t
+  supplier: Tarmac
+  notes: Bulk import batch 1
+- code: MAT.STD.04.01.005
+  description: Limestone 20mm
+  rate: 42.5
+  unit: t
+  supplier: Import
+  notes: Phase 2 Validation
+- code: MAT.STD.04.01.006
+  description: Pea Shingle/Gravel (per m3)
+  rate: 84.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.007
+  description: Pea Shingle/Gravel (per Bag)
+  rate: 60.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.008
+  description: Pea Shingle/Gravel (per tonne)
+  rate: 40.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.009
+  description: tarmac
+  rate: 70.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.010
+  description: Coarse Sand
+  rate: 20.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.011
+  description: Sand (Bulk Bag, 850kg)
+  rate: 40.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.012
+  description: Sand (Fill)
+  rate: 20.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.013
+  description: Washed Sharp Sand (per m3)
+  rate: 37.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.014
+  description: Sand (Soft, Mortar)
+  rate: 20.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.015
+  description: Washed Sharp Sand (per tonne)
+  rate: 20.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.016
+  description: Sand (Kiln Dried) - 25kg
+  rate: 5.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.017
+  description: Sand (Cable)
+  rate: 20.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.018
+  description: MOt type 1 (Quarried, per tonne)
+  rate: 32.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.019
+  description: MOt type 1 (Recycled)
+  rate: 22.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.020
+  description: MOT Type 1 (Quarried, per m3)
+  rate: 63.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.021
+  description: MOT Type 1 (Bulk Bag)
+  rate: 45.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.022
+  description: MOt type 3 (Loose)
+  rate: 35.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.023
+  description: Granular Trenchfill
+  rate: 42.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.024
+  description: Pipe Bedding
+  rate: 22.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.025
+  description: type B Filter Material
+  rate: 22.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.026
+  description: Permeable Stone 50-63mm
+  rate: 32.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.027
+  description: Permeable Stone 0-5mm
+  rate: 32.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.028
+  description: Single Sized Stone
+  rate: 24.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.029
+  description: 20mm Stone
+  rate: 22.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.030
+  description: 40mm Stone Agg
+  rate: 24.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.031
+  description: Type 1 Crushed Concrete
+  rate: 48.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.032
+  description: 6F1
+  rate: 44.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.033
+  description: 6F2
+  rate: 48.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.034
+  description: 6F2 (Per tonne)
+  rate: 24.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.035
+  description: 6F4 (Per tonne)
+  rate: 25.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.036
+  description: 6F5 Crushed Concrete
+  rate: 44.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.037
+  description: Class 1 Fill
+  rate: 24.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.038
+  description: Class 2 Fill
+  rate: 22.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.039
+  description: Class 6H Fill
+  rate: 26.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.040
+  description: Class 6N Fill
+  rate: 26.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.041
+  description: Class 8 Fill
+  rate: 28.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.042
+  description: Crushed Rock Fill
+  rate: 34.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.01.043
+  description: Sand (Bedding)
+  rate: 20.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.001
+  description: ST1 ready-mix concrete
+  rate: 150.0
+  unit: m3
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: ST1_Concrete'
+- code: MAT.STD.04.02.002
+  description: Walling Stone
+  rate: 24.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.003
+  description: Gabion Stone
+  rate: 22.3
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.004
+  description: Limestone Cobble
+  rate: 18.85
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.005
+  description: Steintec Bed; 30mm Thick
+  rate: 9.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.006
+  description: Steintec Bed; 50mm Thick
+  rate: 14.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.007
+  description: Jointing Steintec; 100X100X100mm
+  rate: 12.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.008
+  description: Jointing Steintec; 400X400X50mm
+  rate: 7.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.009
+  description: Jointing Steintec; 450X450X50mm
+  rate: 7.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.010
+  description: Jointing Steintec; 600X600X50mm
+  rate: 6.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.011
+  description: Jointing Steintec; 900X600X50mm
+  rate: 5.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.012
+  description: Bar Reinforcement
+  rate: 600.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.013
+  description: A142 Mesh
+  rate: 4.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.014
+  description: A193 Mesh
+  rate: 5.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.015
+  description: A252 Mesh
+  rate: 6.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.016
+  description: A393 Mesh
+  rate: 9.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.017
+  description: B503 Mesh
+  rate: 8.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.018
+  description: B785 Mesh
+  rate: 12.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.019
+  description: B1131 Mesh
+  rate: 17.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.020
+  description: D49 Mesh
+  rate: 3.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.021
+  description: D98 Mesh
+  rate: 4.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.022
+  description: 12mm Dowel Bars; 300mm Long
+  rate: 0.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.023
+  description: 12mm Dowel Bars; 600mm Long
+  rate: 1.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.024
+  description: 16mm Dowel Bars; 300mm Long
+  rate: 0.8500000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.025
+  description: 16mm Dowel Bars; 600mm Long
+  rate: 1.7000000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.026
+  description: Dowel Bar Caps
+  rate: 0.35000000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.027
+  description: Spacer Blocks - 100nr
+  rate: 8.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.028
+  description: Tying Wire
+  rate: 600.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.029
+  description: Joint Filler
+  rate: 0.25
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.030
+  description: Joint Sealant
+  rate: 0.25
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.031
+  description: Crack Inducer (Type A)
+  rate: 2.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.032
+  description: Flexcel
+  rate: 12.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.033
+  description: 25mm Ply
+  rate: 12.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.034
+  description: 100 X 100mm Treated Sawn Softwood
+  rate: 3.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.035
+  description: 50 X 100mm Treated Sawn Softwood
+  rate: 2.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.036
+  description: 100 X 150mm Treated Sawn Softwood
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.037
+  description: 18mm Ply
+  rate: 8.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.038
+  description: 12mm Ply
+  rate: 5.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.039
+  description: 25X100mm Treated Sawn Softwood
+  rate: 2.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.040
+  description: 220X150mm Treated Sawn Softwood Pegs
+  rate: 8.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.041
+  description: 2.4M X 200mm X 100mm Timber Sleeper
+  rate: 35.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.042
+  description: 1.2 X 100mm X 100mm Corner Post
+  rate: 10.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.043
+  description: Engineering Bricks - 1000nr
+  rate: 330.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.044
+  description: Bituthene
+  rate: 10.0
+  unit: kg
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.045
+  description: Cement Mortar (Standard, 80/m3)
+  rate: 80.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.046
+  description: 100mm 3.5N Blocks
+  rate: 9.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.047
+  description: Water Bar
+  rate: 15.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.048
+  description: Water Bar 3 Way Junction
+  rate: 25.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.049
+  description: Stainless Steel Rungs
+  rate: 20.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.050
+  description: E/O Rungs For Steel Ladder
+  rate: 100.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.051
+  description: Crack Inducer (Type B)
+  rate: 2.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.052
+  description: Slurry Over Floor
+  rate: 125.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.053
+  description: Delset / Temporary Tarmac
+  rate: 220.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.054
+  description: Barrier
+  rate: 60.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.055
+  description: Keyed Common Bricks - 1000nr
+  rate: 225.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.056
+  description: Common Bricks - 1000nr
+  rate: 160.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.057
+  description: Selected Regrades - 1000nr
+  rate: 185.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.058
+  description: Class A Engineering Bricks Red - 1000nr
+  rate: 315.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.059
+  description: Class B Engineering Bricks Red - 1000nr
+  rate: 330.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.060
+  description: Class A Engineering Bricks Blue - 1000nr
+  rate: 485.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.061
+  description: Class B Engineering Bricks Blue - 1000nr
+  rate: 375.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.062
+  description: Facing Bricks Pc £400.00/1000
+  rate: 400.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.063
+  description: Facing Bricks (Provisional, P15) - 1000nr
+  rate: 210.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.064
+  description: Facing Bricks (Provisional, P210) - 1000nr
+  rate: 210.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.065
+  description: 100mm Wide Slip Brick
+  rate: 4.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.066
+  description: 140mm Wide Slip Brick
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.067
+  description: 75mm Solid Concrete Blocks
+  rate: 3.45
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.068
+  description: 90mm Solid Concrete Blocks
+  rate: 4.3500000000000005
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.069
+  description: 100mm Concrete Blocks 7N
+  rate: 9.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.070
+  description: 140mm Concrete Blocks 7N
+  rate: 15.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.071
+  description: 150mm Concrete Blocks
+  rate: 14.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.072
+  description: 190mm Concrete Blocks
+  rate: 10.15
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.073
+  description: 200mm Concrete Blocks
+  rate: 12.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.074
+  description: 215mm Concrete Blocks 7N
+  rate: 19.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.075
+  description: 50mm Solid Concrete Blocks
+  rate: 9.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.076
+  description: 100mm Concrete Blocks 3.5N
+  rate: 9.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.077
+  description: 255mm Thermalite Trenchblock/Tongue & Groove
+  rate: 22.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.078
+  description: 275mm Thermalite Trenchblock/Tongue & Groove
+  rate: 23.650000000000002
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.079
+  description: 300mm Thermalite Trenchblock/Tongue & Groove
+  rate: 36.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.080
+  description: 355mm Thermalite Trenchblock/Tongue & Groove
+  rate: 30.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.081
+  description: 100mm Thermalite Hi-Strength 7
+  rate: 10.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.082
+  description: 140mm Thermalite Hi-Strength 7
+  rate: 14.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.083
+  description: 150mm Thermalite Hi-Strength 7
+  rate: 13.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.084
+  description: 190mm Thermalite Hi-Strength 7
+  rate: 16.400000000000002
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.085
+  description: 200mm Thermalite Hi-Strength 7
+  rate: 17.900000000000002
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.086
+  description: 215mm Thermalite Hi-Strength 7
+  rate: 18.6
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.087
+  description: 100mm Thermalite Hi-Strength 10
+  rate: 9.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.088
+  description: 140mm Thermalite Hi-Strength 10
+  rate: 13.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.089
+  description: 150mm Thermalite Hi-Strength 10
+  rate: 14.600000000000001
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.090
+  description: 190mm Thermalite Hi-Strength 10
+  rate: 18.6
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.091
+  description: 200mm Thermalite Hi-Strength 10
+  rate: 19.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.092
+  description: 215mm Thermalite Hi-Strength 10
+  rate: 20.950000000000003
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.093
+  description: Wall Ties Galvanised Butterfly - 1000nr
+  rate: 85.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.094
+  description: Wall Ties Galvanised Twisted - 1000nr
+  rate: 88.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.095
+  description: Wall Ties Stainless Steel - 1000nr
+  rate: 160.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.096
+  description: Wall Ties Brick/Timber Stainless Steel
+  rate: 185.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.097
+  description: Hyload Pitch Polymer Dpc
+  rate: 5.6000000000000005
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.098
+  description: Hyload Dpm Adhesive
+  rate: 2.6500000000000004
+  unit: l
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.099
+  description: Polyethene Dpc
+  rate: 2.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.100
+  description: Insulated Cavity Closer 85 mm
+  rate: 4.25
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.101
+  description: Insulated Cavity Closer 100 mm
+  rate: 6.8500000000000005
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.102
+  description: Riw Paint
+  rate: 15.0
+  unit: l
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.103
+  description: 1000G Bituthene Dpm
+  rate: 10.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.104
+  description: Beamform Sacrificial Shutter
+  rate: 7.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.105
+  description: Pekafil Sacrificial Shutter
+  rate: 12.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.106
+  description: Black Correx Board
+  rate: 3.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.107
+  description: 50mm Claymaster
+  rate: 5.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.108
+  description: 75mm Claymaster
+  rate: 4.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.109
+  description: 220mm Cellcore
+  rate: 23.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.110
+  description: 300mm Cellcore
+  rate: 26.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.111
+  description: 155mm Cellcore
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.112
+  description: Grout
+  rate: 30.0
+  unit: kg
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.113
+  description: Gabion Basket Woven 1 X 1 X 0.5
+  rate: 11.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.114
+  description: Gabion Basket Woven Pvc 1 X 1 X 0.5
+  rate: 13.8
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.115
+  description: Gabion Basket Woven 1 X 1 X 1
+  rate: 17.3
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.116
+  description: Gabion Basket Woven Pvc 1 X 1 X 1
+  rate: 20.700000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.117
+  description: Gabion Basket Woven 1.5 X 1 X 0.5
+  rate: 14.450000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.118
+  description: Gabion Basket Woven Pvc 1.5 X 1 X 0.5
+  rate: 19.35
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.119
+  description: Gabion Basket Woven 1.5 X 1 X 1
+  rate: 21.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.120
+  description: Gabion Basket Woven Pvc 1.5 X 1 X 1
+  rate: 28.450000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.121
+  description: Gabion Basket Woven 2 X 1 X 0.5
+  rate: 19.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.122
+  description: Gabion Basket Woven Pvc 2 X 1 X 0.5
+  rate: 25.900000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.123
+  description: Gabion Basket Woven 2 X 1 X 1
+  rate: 29.1
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.124
+  description: Gabion Basket Woven Pvc 2 X 1 X 1
+  rate: 37.9
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.125
+  description: Gabion Mattress Pvc (3 X 2 X 170mm Ditto)
+  rate: 6.6000000000000005
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.126
+  description: Gabion Mattress Pvc (3 X 2 X 300mm Ditto)
+  rate: 7.3500000000000005
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.127
+  description: Gabion Mattress Pvc (2 X 2 X 300mm Ditto)
+  rate: 7.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.128
+  description: Gabion Mattress Pvc (6 X 2 X 300mm Ditto)
+  rate: 7.4
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.129
+  description: Gabion Stone Class 6G
+  rate: 30.1
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.130
+  description: Weldmesh Gabions 1X1X1M, 3.0mm Zinc Coated Wire
+  rate: 19.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.131
+  description: Weldmesh Gabions 1X1X1M, 4.0mm Zinc Coated Wire
+  rate: 31.8
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.132
+  description: Weldmesh Gabions 1X1X1M, 3.0mm/4.0mm Face Zinc Coated Wire
+  rate: 21.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.133
+  description: Weldmesh Gabions 1X1X1M, 3.0mm Pvc Coated Wire
+  rate: 22.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.134
+  description: Weldmesh Gabions 1.5X1X1M, 3.0mm Zinc Coated Wire
+  rate: 26.400000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.135
+  description: Weldmesh Gabions 1.5X1X1M, 3.0mm/4.0mm Face Zinc Coated Wire
+  rate: 29.700000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.136
+  description: Weldmesh Gabions 1.5X1X1M, 3.0mm Pvc Coated Wire
+  rate: 30.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.137
+  description: Weldmesh Gabions 2X1X1M, 3.0mm Zinc Coated Wire
+  rate: 36.2
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.138
+  description: Weldmesh Gabions 2X1X1M, 4.0mm Zinc Coated Wire
+  rate: 60.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.139
+  description: Weldmesh Gabions 2X1X1M, 3.0mm/4.0mm Face Zinc Coated Wire
+  rate: 40.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.140
+  description: Weldmesh Gabions 2X1X1M, 3.0mm Pvc Coated Wire
+  rate: 41.7
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.141
+  description: Weldmesh Gabions 2X1X0.5M, 3.0mm Zinc Coated Wire
+  rate: 25.35
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.142
+  description: Weldmesh Gabions 2X1X0.5M, 4.0mm Zinc Coated Wire
+  rate: 42.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.143
+  description: Weldmesh Gabions 2X1X0.5M, 3.0mm/4.0mm Face Zinc Coated Wire
+  rate: 27.6
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.144
+  description: Weldmesh Gabions 2X1X0.5M, 3.0mm Pvc Coated Wire
+  rate: 30.35
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.145
+  description: Weldmesh Gabions 1.5X1X0.5M, 3.0mm Zinc Coated Wire
+  rate: 18.6
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.146
+  description: Weldmesh Gabions 1.5X1X0.5M, 4.0mm Zinc Coated Wire
+  rate: 31.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.147
+  description: Weldmesh Gabions 1.5X1X0.5M, 3.0mm/4.0mm Face Zinc Coated Wire
+  rate: 20.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.148
+  description: Weldmesh Gabions 1.5X1X0.5M, 3.0mm Pvc Coated Wire
+  rate: 22.450000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.149
+  description: Weldmesh Gabions 1X1X0.5M, 3.0mm Zinc Coated Wire
+  rate: 13.450000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.150
+  description: Weldmesh Gabions 1X1X0.5M, 3.0mm Pvc Coated Wire
+  rate: 16.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.151
+  description: Weldmesh Gabions 1X1X0.5M, 3.0mm/4.0mm Face Zinc Coated Wire
+  rate: 14.55
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.152
+  description: Weldmesh Gabions 1X1X0.5M 4.0mm Zinc Coated Wire
+  rate: 21.85
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.153
+  description: 25M X 2M Wide Rock Netting
+  rate: 3.2
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.154
+  description: Sand Cement Bed
+  rate: 110.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.155
+  description: Jointing Sand Cement; 100X100X100mm
+  rate: 6.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.156
+  description: Jointing Sand Cement; 400X400X50mm
+  rate: 3.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.157
+  description: Jointing Sand Cement; 450X450X50mm
+  rate: 3.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.158
+  description: Jointing Sand Cement; 600X600X50mm
+  rate: 3.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.159
+  description: Jointing Sand Cement; 900X600X50mm
+  rate: 3.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.160
+  description: Cement Bagged
+  rate: 220.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.161
+  description: GEN1 Concrete
+  rate: 110.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.162
+  description: GEN2 Concrete
+  rate: 115.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.163
+  description: GEN3 Concrete
+  rate: 120.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.164
+  description: RC25/30 Concrete
+  rate: 125.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.165
+  description: RC30/35 Concrete
+  rate: 135.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.166
+  description: RC35/40 Concrete
+  rate: 145.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.167
+  description: RC40/50 Concrete
+  rate: 155.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.168
+  description: FND2 Concrete
+  rate: 120.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.169
+  description: FND3 Concrete
+  rate: 125.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.170
+  description: FND4 Concrete
+  rate: 130.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.171
+  description: PAV1 Concrete
+  rate: 135.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.172
+  description: PAV2 Concrete
+  rate: 140.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.173
+  description: ST1 Concrete
+  rate: 110.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.174
+  description: ST2 Concrete
+  rate: 115.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.175
+  description: ST3 Concrete
+  rate: 120.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.176
+  description: ST4 Concrete
+  rate: 130.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.177
+  description: CBM3 Leanmix
+  rate: 95.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.178
+  description: RC35 Fibre Concrete
+  rate: 160.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.179
+  description: RC35 Caltite Waterproof Concrete
+  rate: 210.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.180
+  description: RC35 Sika Waterproof Concrete
+  rate: 235.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.181
+  description: Cement Mortar (High Strength, 140/m3)
+  rate: 140.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.182
+  description: Drainage Backfill Stone
+  rate: 12.5
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.183
+  description: 100mm Clay Pipe
+  rate: 10.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.184
+  description: 150mm Clay Pipe
+  rate: 16.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.185
+  description: 225mm Clay Pipe
+  rate: 31.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.186
+  description: 300mm Clay Pipe
+  rate: 63.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.187
+  description: 100mm Clay Bend
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.188
+  description: 150mm Clay Bend
+  rate: 23.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.189
+  description: 225mm Clay Bend
+  rate: 58.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.190
+  description: 300mm Clay Bend
+  rate: 111.35000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.191
+  description: 100mm Clay Rest Bend
+  rate: 10.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.192
+  description: 150mm Clay Rest Bend
+  rate: 17.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.193
+  description: 225mm Clay Rest Bend
+  rate: 58.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.194
+  description: 300mm Clay Rest Bend
+  rate: 112.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.195
+  description: 100mm Clay Rocker
+  rate: 4.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.196
+  description: 150mm Clay Rocker
+  rate: 7.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.197
+  description: 225mm Clay Rocker
+  rate: 18.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.198
+  description: 300mm Clay Rocker
+  rate: 35.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.199
+  description: 100X100mm Clay Junction
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.200
+  description: 150X150mm Clay Junction
+  rate: 18.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.201
+  description: 225X225mm Clay Junction
+  rate: 96.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.202
+  description: 300X300mm Clay Junction
+  rate: 205.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.203
+  description: 150X225mm Clay Junction
+  rate: 85.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.204
+  description: 150mm X 600mm Clay Straight Channel
+  rate: 6.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.205
+  description: 150mm Clay Channel Bend
+  rate: 8.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.206
+  description: 150mm Clay Channel Double Junction
+  rate: 38.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.207
+  description: 100mm Plastic Pipe
+  rate: 2.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.208
+  description: 150mm Plastic Pipe
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.209
+  description: 225mm Plastic Pipe
+  rate: 16.6
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.210
+  description: 300mm Plastic Pipe
+  rate: 29.6
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.211
+  description: 100mm Plastic Bend
+  rate: 4.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.212
+  description: 150mm Plastic Bend
+  rate: 14.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.213
+  description: 225mm Plastic Bend
+  rate: 60.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.214
+  description: 300mm Plastic Bend
+  rate: 103.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.215
+  description: 100mm Plastic Rest Bend
+  rate: 7.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.216
+  description: 150mm Plastic Rest Bend
+  rate: 15.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.217
+  description: 225mm Plastic Rest Bend
+  rate: 76.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.218
+  description: 300mm Plastic Rest Bend
+  rate: 120.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.219
+  description: 100X100mm Plastic Junction
+  rate: 6.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.220
+  description: 150X150mm Plastic Junction
+  rate: 28.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.221
+  description: 225X225mm Plastic Junction
+  rate: 113.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.222
+  description: 300X300mm Plastic Junction
+  rate: 161.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.223
+  description: Plastic Gully
+  rate: 19.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.224
+  description: Plastic Rodding Eye
+  rate: 9.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.225
+  description: Plastic Bottle Gully
+  rate: 20.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.226
+  description: Plastic Back Inlet Gully
+  rate: 20.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.227
+  description: 150mm Upvc Perforated Pipe
+  rate: 8.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.228
+  description: Plastic Gully Grate
+  rate: 23.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.229
+  description: Plastic RWP Adaptor
+  rate: 7.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.230
+  description: Plastic 150-110mm Reducer
+  rate: 15.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.231
+  description: 80mm Perforated Pipe
+  rate: 1.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.232
+  description: 250mm Small Inspection Chamber
+  rate: 35.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.233
+  description: 450mm Inspection Chamber (1.00M Deep)
+  rate: 175.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.234
+  description: 450mm Inspection Chamber (1.50M Deep)
+  rate: 200.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.235
+  description: 600mm Inspection Chamber (1.00M Deep)
+  rate: 115.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.236
+  description: 600mm Inspection Chamber (1.50M Deep)
+  rate: 428.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.237
+  description: 150mm Plastic Base
+  rate: 85.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.238
+  description: nrn Entry Manhole Plastic Base
+  rate: 73.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.239
+  description: nrn Entry Sealing Ring
+  rate: 5.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.240
+  description: nrn Entry Reducer
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.241
+  description: nrn Entry Manhole Shaft 1.5M
+  rate: 82.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.242
+  description: Tegra Manhole Shaft 3.0M
+  rate: 165.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.243
+  description: Tegra 600mm Manhole Base
+  rate: 370.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.244
+  description: Tegra 600mm Restrictor Cap
+  rate: 45.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.245
+  description: Raising Piece 17mm Deep X 450mm Dia
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.246
+  description: 300mm Concrete Pipe
+  rate: 17.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.247
+  description: 375mm Concrete Pipe
+  rate: 21.6
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.248
+  description: 450mm Concrete Pipe
+  rate: 25.85
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.249
+  description: 525mm Concrete Pipe
+  rate: 33.25
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.250
+  description: 600mm Concrete Pipe
+  rate: 42.050000000000004
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.251
+  description: 750mm Concrete Pipe
+  rate: 78.80000000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.252
+  description: 900mm Concrete Pipe
+  rate: 116.35000000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.253
+  description: 1050mm Concrete Pipe
+  rate: 141.1
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.254
+  description: 1200mm Concrete Pipe
+  rate: 190.3
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.255
+  description: 1350mm Concrete Pipe
+  rate: 271.15000000000003
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.256
+  description: 1500mm Concrete Pipe
+  rate: 344.45000000000005
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.257
+  description: 1800mm Concrete Pipe
+  rate: 479.65000000000003
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.258
+  description: 2100mm Concrete Pipe
+  rate: 618.5500000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.259
+  description: 2400mm Concrete Pipe
+  rate: 677.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.260
+  description: 300mm Concrete Bend
+  rate: 65.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.261
+  description: 375mm Concrete Bend
+  rate: 85.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.262
+  description: 450mm Concrete Bend
+  rate: 110.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.263
+  description: 525mm Concrete Bend
+  rate: 140.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.264
+  description: 600mm Concrete Bend
+  rate: 190.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.265
+  description: 750mm Concrete Bend
+  rate: 280.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.266
+  description: 900mm Concrete Bend
+  rate: 400.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.267
+  description: 1050mm Concrete Bend
+  rate: 550.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.268
+  description: 1200mm Concrete Bend
+  rate: 750.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.269
+  description: 1350mm Concrete Bend
+  rate: 1000.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.270
+  description: 1500mm Concrete Bend
+  rate: 1300.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.271
+  description: 1800mm Concrete Bend
+  rate: 1800.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.272
+  description: 2100mm Concrete Bend
+  rate: 2400.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.273
+  description: 2400mm Concrete Bend
+  rate: 3000.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.274
+  description: 300mm Concrete Rocker
+  rate: 52.45
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.275
+  description: 375mm Concrete Rocker
+  rate: 64.7
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.276
+  description: 450mm Concrete Rocker
+  rate: 77.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.277
+  description: 525mm Concrete Rocker
+  rate: 99.65
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.278
+  description: 600mm Concrete Rocker
+  rate: 126.10000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.279
+  description: 750mm Concrete Rocker
+  rate: 236.4
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.280
+  description: 900mm Concrete Rocker
+  rate: 349.05
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.281
+  description: 1050mm Concrete Rocker
+  rate: 423.20000000000005
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.282
+  description: 1200mm Concrete Rocker
+  rate: 570.85
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.283
+  description: 1350mm Concrete Rocker
+  rate: 813.45
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.284
+  description: 1500mm Concrete Rocker
+  rate: 1033.3
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.285
+  description: 1800mm Concrete Rocker
+  rate: 1438.95
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.286
+  description: 2100mm Concrete Rocker
+  rate: 1855.65
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.287
+  description: 2400mm Concrete Rocker
+  rate: 2032.4
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.288
+  description: 300mm Concrete Junction
+  rate: 116.10000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.289
+  description: 375mm Concrete Junction
+  rate: 137.95000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.290
+  description: 450mm Concrete Junction
+  rate: 156.55
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.291
+  description: 525mm Concrete Junction
+  rate: 161.3
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.292
+  description: 600mm Concrete Junction
+  rate: 170.65
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.293
+  description: 750mm Concrete Junction
+  rate: 248.35000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.294
+  description: 900mm Concrete Junction
+  rate: 307.90000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.295
+  description: 1050mm Concrete Junction
+  rate: 631.5500000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.296
+  description: 1200mm Concrete Junction
+  rate: 793.4000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.297
+  description: 1350mm Concrete Junction
+  rate: 875.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.298
+  description: 1500mm Concrete Junction
+  rate: 950.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.299
+  description: 1800mm Concrete Junction
+  rate: 1100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.300
+  description: 2100mm Concrete Junction
+  rate: 1500.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.301
+  description: 2400mm Concrete Junction
+  rate: 2100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.302
+  description: 825mm Concrete Junction
+  rate: 275.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.303
+  description: 900X1000mm Manhole Ring
+  rate: 85.55000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.304
+  description: 1050X1000mm Manhole Ring
+  rate: 85.55000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.305
+  description: 1200X1000mm Manhole Ring
+  rate: 110.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.306
+  description: 1350X1000mm Manhole Ring
+  rate: 136.35
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.307
+  description: 1500X1000mm Manhole Ring
+  rate: 150.70000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.308
+  description: 1800X1000mm Manhole Ring
+  rate: 209.65
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.309
+  description: 2100X1000mm Manhole Ring
+  rate: 377.45000000000005
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.310
+  description: 2400X1000mm Manhole Ring
+  rate: 494.1
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.311
+  description: 3000X1000mm Manhole Ring
+  rate: 839.0500000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.312
+  description: 4000X1000mm Manhole Ring
+  rate: 1200.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.313
+  description: 900mm Cover Slab 600X600 Opening
+  rate: 54.2
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.314
+  description: 1050mm Cover Slab 600X600 Opening
+  rate: 64.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.315
+  description: 1200mm Cover Slab 600X600 Opening
+  rate: 84.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.316
+  description: 1200mm Cover Slab 750X600 Opening
+  rate: 76.45
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.317
+  description: 1350mm Cover Slab 600X600 Opening
+  rate: 118.9
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.318
+  description: 1350mm Cover Slab 750X600 Opening
+  rate: 118.9
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.319
+  description: 1350mm Cover Slab 1200X675 Opening
+  rate: 167.3
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.320
+  description: 1500mm Cover Slab 600X600 Opening
+  rate: 145.3
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.321
+  description: 1500mm Cover Slab 750X600 Opening
+  rate: 145.3
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.322
+  description: 1500mm Cover Slab 1200X675 Opening
+  rate: 191.85000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.323
+  description: 1800mm Cover Slab 600X600 Opening
+  rate: 218.05
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.324
+  description: 1800mm Cover Slab 750X600 Opening
+  rate: 218.05
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.325
+  description: 1800mm Cover Slab 1200X675 Opening
+  rate: 274.40000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.326
+  description: 2100mm Cover Slab 600X600 Opening
+  rate: 477.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.327
+  description: 2100mm Cover Slab 750X600 Opening
+  rate: 477.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.328
+  description: 2100mm Cover Slab 1200X675 Opening
+  rate: 580.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.329
+  description: 2400mm Cover Slab 600X600 Opening
+  rate: 609.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.330
+  description: 2400mm Cover Slab 750X600 Opening
+  rate: 609.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.331
+  description: 2400mm Cover Slab 1200X675 Opening
+  rate: 763.1500000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.332
+  description: 2700mm Cover Slab 600X600 Opening
+  rate: 974.1500000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.333
+  description: 2700mm Cover Slab 750X600 Opening
+  rate: 974.1500000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.334
+  description: 2700mm Cover Slab 1200X675 Opening
+  rate: 1258.15
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.335
+  description: 3000mm Cover Slab 600X600 Opening
+  rate: 1246.3000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.336
+  description: 3000mm Cover Slab 750X600 Opening
+  rate: 1246.3000000000002
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.337
+  description: 3000mm Cover Slab 1200X675 Opening
+  rate: 1604.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.338
+  description: 3660mm Cover Slab 600X600 Opening
+  rate: 2800.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.339
+  description: 3660mm Cover Slab 750X600 Opening
+  rate: 2800.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.340
+  description: 3660mm Cover Slab 1200X675 Opening
+  rate: 3100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.341
+  description: 4000mm Cover Slab 600X600 Opening
+  rate: 3500.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.342
+  description: 4000mm Cover Slab 750X600 Opening
+  rate: 3500.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.343
+  description: 4000mm Cover Slab 1200X675 Opening
+  rate: 3800.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.344
+  description: Concrete Seating Ring
+  rate: 35.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.345
+  description: 1200X750mm Manhole Ring
+  rate: 75.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.346
+  description: 1200X500mm Manhole Ring
+  rate: 70.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.347
+  description: 1350X750mm Manhole Ring
+  rate: 114.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.348
+  description: 1350X500mm Manhole Ring
+  rate: 110.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.349
+  description: 1500X750mm Manhole Ring
+  rate: 135.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.350
+  description: 1500X500mm Manhole Ring
+  rate: 124.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.351
+  description: 1800X750mm Manhole Ring
+  rate: 189.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.352
+  description: 1800X500mm Manhole Ring
+  rate: 154.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.353
+  description: 2100X750mm Manhole Ring
+  rate: 269.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.354
+  description: 2100X500mm Manhole Ring
+  rate: 262.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.355
+  description: 2400X750mm Manhole Ring
+  rate: 340.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.356
+  description: 2400X500mm Manhole Ring
+  rate: 333.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.357
+  description: 2400X250mm Manhole Ring
+  rate: 315.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.358
+  description: 1050X750mm Manhole Ring
+  rate: 70.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.359
+  description: 2700X1000mm Manhole Ring
+  rate: 380.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.360
+  description: 750X600mm Gully Cover Slab
+  rate: 21.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.361
+  description: 375X750mm Gully Pot
+  rate: 38.35
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.362
+  description: 375X900mm Gully Pot
+  rate: 39.75
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.363
+  description: 450X750mm Gully Pot
+  rate: 40.45
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.364
+  description: 450X900mm Gully Pot
+  rate: 41.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.365
+  description: 450X1050mm Gully Pot
+  rate: 47.45
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.366
+  description: 450X1240mm Gully Pot
+  rate: 55.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.367
+  description: Pcc Dished Channel
+  rate: 25.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.368
+  description: 375X450mm D400 Gully Grating
+  rate: 65.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.369
+  description: 600X600mm D400 Cover & Frame
+  rate: 150.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.370
+  description: 600X600mm D400 Recessed Cover & Frame
+  rate: 310.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.371
+  description: 1200X675mm D400 Cover & Frame
+  rate: 355.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.372
+  description: 1200X675mm D400 Recessed Cover & Frame
+  rate: 450.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.373
+  description: nrn Entry Manhole Cover
+  rate: 40.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.374
+  description: Grade B Manhole Cover
+  rate: 30.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.375
+  description: nrn Entry Manhole Sealing Ring
+  rate: 5.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.376
+  description: Attenuation Tank Materials
+  rate: 150.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.377
+  description: Bypass Separator
+  rate: 750.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.378
+  description: Petrol Interceptor
+  rate: 3000.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.379
+  description: Flow Control Device - precast chamber
+  rate: 1800.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.380
+  description: Klargester Unit
+  rate: 4250.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.381
+  description: Storage Tank Liner
+  rate: 6.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.382
+  description: Storage Tank Crates Nrn Trafficked
+  rate: 100.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.383
+  description: Storage Tank Crates Trafficked
+  rate: 125.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.384
+  description: Aco Channel C/W Grating
+  rate: 45.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.385
+  description: Silt Trap
+  rate: 90.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.386
+  description: Aco End Outlet
+  rate: 10.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.387
+  description: Aco Drain Md100 D400 Grating
+  rate: 44.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.388
+  description: Aco Drain Md100 End Unit
+  rate: 75.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.389
+  description: Aco Drain Md100 Sump Unit
+  rate: 75.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.390
+  description: Aco Multi Drain Brickslot Channel
+  rate: 135.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.391
+  description: Aco End Cap
+  rate: 5.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.392
+  description: Aco Multi Drain Brickslot Sump Unit
+  rate: 175.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.393
+  description: 150X305mm HB1 Kerb; Straight
+  rate: 13.8
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.394
+  description: 150X305mm HB1 Kerb; Radius
+  rate: 21.55
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.395
+  description: 125X255mm HB2 Kerb; Straight
+  rate: 12.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.396
+  description: 125X255mm HB2 Kerb; Radius
+  rate: 8.1
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.397
+  description: 150X305mm BN Kerb; Straight
+  rate: 13.8
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.398
+  description: 150X305mm BN Kerb; Radius
+  rate: 21.55
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.399
+  description: 125X255mm BN Kerb; Straight
+  rate: 5.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.400
+  description: 125X255mm BN Kerb; Radius
+  rate: 21.55
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.401
+  description: 125X150mm BN Kerb; Straight
+  rate: 9.4
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.402
+  description: 125X150mm BN Kerb; Radius
+  rate: 7.550000000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.403
+  description: Transition Kerb
+  rate: 14.15
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.404
+  description: Quadrant Kerb
+  rate: 15.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.405
+  description: Angle Kerb
+  rate: 14.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.406
+  description: 255X205mm Conservation Kerb; Straight
+  rate: 20.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.407
+  description: 255X205mm Conservation Kerb; Radius
+  rate: 29.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.408
+  description: 145X205mm Conservation Kerb; Straight
+  rate: 20.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.409
+  description: 145X205mm Conservation Kerb; Radius
+  rate: 29.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.410
+  description: Titan Kerb; Straight
+  rate: 48.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.411
+  description: Titan Kerb; Radius
+  rate: 65.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.412
+  description: Bus Stop Kerb; Straight
+  rate: 50.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.413
+  description: Bus Stop Kerb; Radius
+  rate: 75.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.414
+  description: 50X150mm PCC Edging
+  rate: 5.4
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.415
+  description: 50X200mm PCC Edging
+  rate: 3.3000000000000003
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.416
+  description: 50X250mm PCC Edging
+  rate: 4.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.417
+  description: Aluminium Edging
+  rate: 35.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.418
+  description: Timber Edging
+  rate: 2.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.419
+  description: Taper Kerb
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.420
+  description: Taper Conservation Kerb
+  rate: 11.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.421
+  description: Quadrant Conservation Kerb
+  rate: 25.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.422
+  description: 63X150 Conservation Edging
+  rate: 8.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.423
+  description: Granite Kerb
+  rate: 30.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.424
+  description: Key Kerb
+  rate: 10.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.425
+  description: 200X200 Speed Check Kerb
+  rate: 9.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.426
+  description: Standard Concrete Paving; 300X300X50mm
+  rate: 10.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.427
+  description: Standard Concrete Paving; 600X300X50mm
+  rate: 10.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.428
+  description: Standard Concrete Paving; 900X300X50mm
+  rate: 10.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.429
+  description: Standard Concrete Paving; 400X400X50mm
+  rate: 10.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.430
+  description: Standard Concrete Paving; 450X450X50mm
+  rate: 21.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.431
+  description: Standard Concrete Paving; 600X600X50mm
+  rate: 10.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.432
+  description: Standard Concrete Paving; 750X600X50mm
+  rate: 10.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.433
+  description: Standard Concrete Paving; 900X600X50mm
+  rate: 10.65
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.434
+  description: Standard Concrete Paving; 450X600X63mm
+  rate: 13.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.435
+  description: Standard Concrete Paving; 600X600X63mm
+  rate: 13.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.436
+  description: Standard Concrete Paving; 750X600X63mm
+  rate: 13.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.437
+  description: Standard Concrete Paving; 900X600X63mm
+  rate: 13.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.438
+  description: Standard Concrete Paving; 400X400X65mm
+  rate: 13.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.439
+  description: Standard Concrete Paving; 450X450X70mm
+  rate: 16.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.440
+  description: Conservation Concrete Paving; 450X450X50mm
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.441
+  description: Conservation Concrete Paving; 600X600X50mm
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.442
+  description: Conservation Concrete Paving; 900X300X50mm
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.443
+  description: Conservation Concrete Paving; 400X400X65mm
+  rate: 23.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.444
+  description: Conservation Concrete Paving; 450X450X70mm
+  rate: 25.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.445
+  description: Perfecta Paving; 400X400X50mm
+  rate: 36.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.446
+  description: Perfecta Paving; 450X450X50mm
+  rate: 36.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.447
+  description: Perfecta Paving; 600X600X50mm
+  rate: 36.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.448
+  description: Perfecta Paving; 450X600X63mm
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.449
+  description: Perfecta Paving; 600X600X63mm
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.450
+  description: Perfecta Paving; 400X400X65mm
+  rate: 42.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.451
+  description: Perfecta Paving; 450X450X70mm
+  rate: 45.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.452
+  description: Saxon Paving; 400X400X50mm
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.453
+  description: Saxon Paving; 450X450X50mm
+  rate: 15.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.454
+  description: Saxon Paving; 450X600X50mm
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.455
+  description: Saxon Paving; 600X600X50mm
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.456
+  description: Saxon Paving; 900X600X50mm
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.457
+  description: Saxon Paving; 450X600X63mm
+  rate: 22.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.458
+  description: Saxon Paving; 600X600X63mm
+  rate: 22.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.459
+  description: Saxon Paving; 900X600X63mm
+  rate: 22.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.460
+  description: Saxon Paving; 400X400X65mm
+  rate: 22.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.461
+  description: Saxon Paving; 450X450X70mm
+  rate: 22.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.462
+  description: Granite Setts; 100X100X100mm
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.463
+  description: Granite Paving; 600X300X20mm
+  rate: 25.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.464
+  description: Granite Paving; 600X600X20mm
+  rate: 25.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.465
+  description: Granite Paving; 900X600X20mm
+  rate: 25.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.466
+  description: 200X100X60mm Brett Alpha Flow
+  rate: 16.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.467
+  description: 200X100X80mm Standard Block Paving
+  rate: 17.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.468
+  description: 60mm Tegula Block Paving
+  rate: 22.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.469
+  description: 80mm Tegula Block Paving
+  rate: 31.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.470
+  description: 80mm Tegula Cobbles
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.471
+  description: 60mm Permeable Block Pavior Brett Alpha Antique
+  rate: 25.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.472
+  description: 80mm Charcon Infilta Permeable Block Pavior
+  rate: 22.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.473
+  description: 100X100X100 Granite Setts
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.474
+  description: Traffica Slabs
+  rate: 25.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.475
+  description: 150X150X150 Granite Setts
+  rate: 45.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.476
+  description: Grasscrete Blocks
+  rate: 30.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.477
+  description: 450X450 Buff Riven Slabs
+  rate: 16.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.478
+  description: 600X600X50 Buff Pcc Slabs
+  rate: 15.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.479
+  description: Sandstone Paving
+  rate: 23.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.480
+  description: 70mm Traffica Paving Slabs
+  rate: 36.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.481
+  description: 450X600X80mm;450X450X80mm;450X300X80mm Buff Charcon Flag Paving
+  rate: 36.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.482
+  description: 600X200X80mm Stonemaster Charcon Light Grey Flag Paving
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.483
+  description: 300X200X80mm Andover Textured Charcon Flag Paving
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.484
+  description: Tactile Blister Paving; 400X400X65mm
+  rate: 71.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.485
+  description: Tactile Blister Paving; 450X450X70mm
+  rate: 30.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.486
+  description: Tactile Hazard Warning Paving; 400X400X50mm
+  rate: 30.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.487
+  description: Tactile Hazard Warning Paving; 450X450X50mm
+  rate: 30.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.488
+  description: Yorkstone Tactile Paving; 400X400X65mm
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.489
+  description: Yorkstone Tactile Paving; 450X450X70mm
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.490
+  description: Granite Tactile Paving; 400X400X65mm
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.491
+  description: Granite Tactile Paving; 450X450X70mm
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.492
+  description: Corduroy Paving
+  rate: 30.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.493
+  description: 54 X 152 X 915mm PC Conc Pin Kerb
+  rate: 2.2
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.494
+  description: Drainage Channel
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.495
+  description: Permastrip Edging 3.2 X 89mm By Permalock
+  rate: 6.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.496
+  description: Permastrip Edging 3.2 X 40mm By Permalock
+  rate: 5.4
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.497
+  description: Excel Edge 65mm X 5mm
+  rate: 7.800000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.498
+  description: Excel Edge 100mm Aluminium Edging Including Ground Spikes For Securing Into Position
+  rate: 12.350000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.499
+  description: Corten Steel Edging 200 X 5mm
+  rate: 39.800000000000004
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.500
+  description: Corten Steel Edging 150 X 5mm Supplied In 3M Lengths
+  rate: 35.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.501
+  description: Edgings - Contour Steel Angle 150 X 3mm
+  rate: 26.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.502
+  description: Edgings - Green Oak Timber 200 X 35mm
+  rate: 6.1000000000000005
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.503
+  description: Edgings - Treated Timber 100 X 20mm
+  rate: 1.2000000000000002
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.504
+  description: Edgings - Treated Timber 100 X 25mm
+  rate: 1.25
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.505
+  description: Edgings - Treated Timber 150 X 38mm
+  rate: 3.3000000000000003
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.506
+  description: Edgings - Treated Timber Pegs 450 X 50 X 50mm
+  rate: 0.6
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.507
+  description: Edgings - Treated Timber Pegs 600 X 50 X 50mm
+  rate: 1.2
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.508
+  description: Edgings Metal - 100 X 2.5mm Powder Coated Everedge
+  rate: 10.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.509
+  description: Edgings Metal - 100 X 3mm Borderline Bl30 Steel Edgings
+  rate: 7.4
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.510
+  description: Edgings Metal - 100 X 3mm Galvanised Borderline Edge With Connectors And Pegs
+  rate: 9.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.511
+  description: Edgings Metal - 150 X 3mm Galvanised Proprietary Edge With Connectors And Pegs
+  rate: 20.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.512
+  description: Edgings Metal - 150 X 5mm Borderline Untreated Edge With Connectors And Pegs
+  rate: 20.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.513
+  description: Edgings Metal - 150 X 5mm Higrade Galvanised Proprietary Edge With Connectors And Pegs
+  rate: 27.3
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.514
+  description: Edgings Metal - 150 X 5mm Untreated Proprietary Edge With Connectors And Pegs
+  rate: 17.150000000000002
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.515
+  description: Edgings Metal - 150 X 6mm Higrade Corten Steel Proprietary Edge With Connectors And Pegs
+  rate: 40.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.516
+  description: Edgings Metal - 150 X 6mm Powder Coated Everedge
+  rate: 28.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.517
+  description: Edgings Metal - 150 X 8mm Corten Steel Proprietary Edge With Connectors And Pegs - Allowance
+  rate: 45.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.518
+  description: Edgings Metal - 150 X 8mm Galvanised Proprietary Edge With Connectors And Pegs
+  rate: 56.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.519
+  description: Edgings Metal - 200 X 3mm Higrade Galvanised & Powder Coated Proprietary Edge With Connectors And Pegs
+  rate: 62.150000000000006
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.520
+  description: Edgings Metal - 200 X 8mm Galvanised Proprietary Edge With Connectors And Pegs
+  rate: 56.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.521
+  description: Edgings Metal - 250 X 8mm Galvanised Proprietary Edge For Pond
+  rate: 50.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.522
+  description: Edgings Metal - 400 X 2.5mm Everedge Slate
+  rate: 18.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.523
+  description: Edgings Metal - Aluexcel Aluminium Edge 150mm High
+  rate: 25.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.524
+  description: Edgings Metal - Aluexcel Aluminium Edge 40mm High
+  rate: 8.9
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.525
+  description: Edgings Metal - Aluexcel Aluminium Edge 50mm High
+  rate: 11.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.526
+  description: Edgings Metal - Aluexcel Aluminium Edge 75mm High
+  rate: 10.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.527
+  description: Edgings Metal - Everedge C5 Black 125 X 1.6mm
+  rate: 8.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.528
+  description: Edgings Metal - Everedge Titan 150 X 6mm
+  rate: 18.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.529
+  description: Edgings Metal - Everedge Titan 150 X 6mm Galv And Painted
+  rate: 20.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.530
+  description: Paving - Granite From De Lank Quarry 240 X 240 X 65 Flamed
+  rate: 15.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.531
+  description: Paving - Granite From De Lank Quarry 608 X 300 X 65 Flamed
+  rate: 37.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.532
+  description: Paving - Granite From De Lank Quarry 608 X 300 X 65 Flamed With Hand Cut Letters
+  rate: 125.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.533
+  description: Paving - Granite Paving - Blue Grey - Rl900/600/300 X 600 X 25mm
+  rate: 22.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.534
+  description: Paving - Granite Paving - Blue Grey - Rl900/600/300 X 600 X 40mm
+  rate: 29.25
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.535
+  description: Paving - Granite Sets - Blue Grey - 100 X 100 X 40/60mm Hand Cut Sides (Each Rate)
+  rate: 0.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.536
+  description: Paving - Granite Sets - Blue Grey - 100 X 100 X 40/60mm Hand Cut Sides (M2 Rate)
+  rate: 35.25
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.537
+  description: Paving - Granite Sets - Grey - 100 X 100 X 100mm Sawn Sides Split Top
+  rate: 65.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.538
+  description: Paving - Granite Sets - Grey - 200/100 X 100 X 100mm Tumbled
+  rate: 65.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.539
+  description: Paving - Granite Sets - Mid Grey - 100 X 100 X 100mm Split Sides
+  rate: 65.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.540
+  description: Paving - Granite Sets - Mid Grey - 200 X 125 X 100 Bh Top
+  rate: 175.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.541
+  description: Paving - Granite Sets - Mixed Colours - Mixed Sizes 200 X 100 X 100mm Approx
+  rate: 60.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.542
+  description: Paving - Granite Sets - Silver Grey - 100 X 100 X 100mm Split All Sides
+  rate: 30.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.543
+  description: Paving - Granite Yellow Flamed - 600 X 600 X 50mm
+  rate: 60.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.544
+  description: Paving - Granite Yellow Flamed - Curved Stone Random X 300 X 50mm - 4.4M Dia Circle
+  rate: 3450.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.545
+  description: Paving - Hazard Warning By Marshalls - 400 X 400 X 50mm Natural
+  rate: 65.45
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.546
+  description: Paving - Limestone - Jura Beige Stone 900 X 600 X 25mm
+  rate: 60.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.547
+  description: Paving - Limestone - Moleanos Blue 900 X 300 X 40mm Flamed
+  rate: 120.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.548
+  description: Paving - Limestone - Moleanos Blue 900 X 600 X 30mm Flamed
+  rate: 120.30000000000001
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.549
+  description: Paving - Limestone - Moleanos Blue 900 X 600 X 40mm Flamed
+  rate: 160.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.550
+  description: Paving - Limestone - Victorian From Silverlands Mixed Sizes X 20mm
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.551
+  description: Paving - Porcelain - Urban Grey 1194 X 596 X 20mm By London Stone
+  rate: 45.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.552
+  description: Paving - Porphyry 100 X 100 X 100 Cropped
+  rate: 70.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.553
+  description: Paving - Porphyry 600 X 600 X 50mm Sawn Sides
+  rate: 90.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.554
+  description: Paving - Portland Stone 900 X 600 X 40mm
+  rate: 85.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.555
+  description: Paving - Portland Stone 900 X 600 X 50mm Deep
+  rate: 175.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.556
+  description: Paving - Reclaimed Granite Sets - Grey - 100 X 100 X 100mm Sawn Sides Split Top
+  rate: 60.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.557
+  description: Paving - Sandstone Leckford 900 X 600 X 30mm Sawn
+  rate: 65.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.558
+  description: Paving - Sandstone Paving - Abbey Sawn - 900/600 X 600 X 40mm Thick
+  rate: 45.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.559
+  description: Paving - Sandstone Paving - Buff Sawn - 900 X 600 X 25mm Thick
+  rate: 50.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.560
+  description: Paving - Sandstone Paving - Fonte Grey Mist Honed 600 X 900 X 20mm
+  rate: 45.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.561
+  description: Paving - Sandstone Paving - Heath Sandstone - 600/400 X 25mm Sawn
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.562
+  description: Paving - Sandstone Paving - Heath Sandstone - 900 X 600 X 25mm Sawn
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.563
+  description: Paving - Sandstone Paving - Lydney Sawn 600 X Random X 38mm
+  rate: 95.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.564
+  description: Paving - Sandstone Paving - Raj Green - Mixed X 20mm Thick
+  rate: 25.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.565
+  description: Paving - Sandstone Riven 25mm
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.566
+  description: Paving - Sandstone Setts - Autumn Brown - 100 X 100 X 30/50mm Hand Cut
+  rate: 0.45
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.567
+  description: Paving - Sandstone Setts - Raj Green - 100 X 100 X 100mm Tumbled
+  rate: 0.45
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.568
+  description: Paving - Sandstone Setts - Raj Green - 200 X 100 X 100mm Tumbled
+  rate: 0.9500000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.569
+  description: Paving - Sandstone Setts 100 X 100 X 50mm
+  rate: 97.2
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.570
+  description: Paving - Sandstone Setts 100 X 200 X 50mm
+  rate: 97.2
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.571
+  description: Paving - Slate - Stonemarket Truslate Paving
+  rate: 35.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.572
+  description: Paving - Specials - Buff York Paver With Resin Cycle Motif For Rpa - 600 X 600 X 75mm
+  rate: 485.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.573
+  description: Paving - Stepping Stones - Porcelain - Urban Grey 1194 X 596 X 20mm By London Stone
+  rate: 55.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.574
+  description: Paving - Stonemarket Truslate Star 1800 X 1800
+  rate: 314.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.575
+  description: Paving - Tiling - Mosa Tiles 216Rl 900 X 900mm
+  rate: 70.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.576
+  description: Paving - Trusloe Seasoned Limestone - Mixed Sizes X 40mm
+  rate: 40.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.577
+  description: Paving - Whitworth York Stone 900 X 900 X 40mm Sawn Flags
+  rate: 95.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.578
+  description: Paving - York Stone 450 X 450mm Tapered To Form Circular Feature
+  rate: 980.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.579
+  description: Paving - York Stone 450W X Random X 50mm Curved - Riven Flags
+  rate: 115.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.580
+  description: Paving - York Stone 450W X Random X 50mm Riven Flags
+  rate: 89.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.581
+  description: Paving - York Stone 600 X 700mm Tapered To Form Circular Feature
+  rate: 2400.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.582
+  description: Paving - York Stone 600W X Random X 40/80mm Riven Flags
+  rate: 85.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.583
+  description: Paving - York Stone 800 X 400 X 40mm Sawn Flags
+  rate: 85.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.584
+  description: Paving - York Stone Paving - Darley Sawn 600 X 800 X 30mm
+  rate: 79.80000000000001
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.585
+  description: Paving - York Stone Pennine 1000 X 250 X 50mm Sawn Stepping Stone
+  rate: 21.150000000000002
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.586
+  description: Paving - York Stone Pennine 1000 X 500 X 50mm Sawn
+  rate: 92.85000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.587
+  description: Paving - York Stone Random X 500 X 50mm Sawn Flags
+  rate: 72.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.588
+  description: Paving - York Stone Random X Random mm New Buff Riven Flags
+  rate: 78.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.589
+  description: Paving - York Stone Random X Random mm Reclaimed Allowance
+  rate: 85.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.590
+  description: Paving - York Stone Setts - 100 X 100 X 100mm Sawn
+  rate: 100.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.591
+  description: Paving - York Stone Setts - 100 X 100 X 100mm Tumbled
+  rate: 79.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.592
+  description: Paving - York Stone Setts - 200 X 100 X 100mm Tumbled
+  rate: 85.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.593
+  description: Paving Specials - Portland Stone 50mm Deep
+  rate: 150.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.594
+  description: Step Risers - Aged Stone - 600 X 150 X 30mm
+  rate: 25.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.595
+  description: Steps - Black Basalt 2000 X 500 X 40mm Sawn/Flamed BullNose Edge
+  rate: 94.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.596
+  description: Steps - Heath Sandstone 2000 X 500 X 40mm Sawn/Flamed BullNose Edge
+  rate: 94.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.597
+  description: Steps - Leckford Sawn Stone - 600 X 450 X 50mm Flat Top Coping With Drip Groove
+  rate: 85.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.598
+  description: Steps - Limestone - Moleanos Blue 400 X 900 X 100mm Flamed
+  rate: 160.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.599
+  description: Steps - Portland Stone 900 X 200 X 50mm Deep
+  rate: 65.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.600
+  description: Steps - Sandstone Paving - Buff Sawn - 2000 X 500 X 40mm Thick With BullNose Edge
+  rate: 94.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.601
+  description: Steps - Sandstone Paving - Whitworth Blue 100 X 300 X 100 Tread
+  rate: 100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.602
+  description: Steps - York Stone - Darley Sawn 485 X 1000 X 60mm BullNose
+  rate: 167.8
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.603
+  description: Steps - York Stone Pennine 1500 X 250 X 50mm Pencil Round And Drip Groove
+  rate: 57.35
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.604
+  description: Stone Sundries Allowance - Cutting / Drip Grooves / Edge Details
+  rate: 10.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.02.605
+  description: York Steps
+  rate: 100.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.001
+  description: Play boulder (Natural stone 300–600 mm)
+  rate: 120.0
+  unit: nr
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Play_Boulder_300_600'
+- code: MAT.STD.04.03.002
+  description: Self-binding gravel 10mm to dust
+  rate: 140.0
+  unit: t
+  supplier: Market_check_2025-10-30
+  notes: 'Legacy: Breedon_10mm_to_dust'
+- code: MAT.STD.04.03.003
+  description: Boulders - Caledonian Boulders - Various Sizes
+  rate: 155.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.004
+  description: Boulders - Yorkstone Rockery Stone 300 X 400 X 600 - 158Kg Each
+  rate: 125.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.005
+  description: Slate Chippings
+  rate: 35.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.006
+  description: Gravel - Black Basalt 14mm - Bulk Bags
+  rate: 120.15
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.007
+  description: Gravel - Black Basalt 14mm - Loose Tipped
+  rate: 65.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.008
+  description: Gravel - Breedon Gravel 10mm To Dust - Bulk Bags
+  rate: 140.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.009
+  description: Gravel - Breedon Gravel 10mm To Dust - Loose Tipped
+  rate: 90.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.010
+  description: Gravel - Breedon Gravel 14/6mm Chippings - Loose Tipped
+  rate: 96.4
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.011
+  description: Gravel - Breedon Gravel 14mm- Bulk Bags
+  rate: 140.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.012
+  description: Gravel - Breedon Gravel 20mm Chippings - Loose Tipped
+  rate: 96.4
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.013
+  description: Breedon Gravel (Alt Supplier)
+  rate: 87.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.014
+  description: Gravel - Buff Self-Binding Path 8mm
+  rate: 56.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.015
+  description: Gravel - Cedec Gold 10mm To Dust
+  rate: 110.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.016
+  description: Gravel - Cedec Grey 10mm Down (Crushed Granite)
+  rate: 60.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.017
+  description: Gravel - Cedec Red 10mm To Dust
+  rate: 110.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.018
+  description: Gravel - Cotswold 10/14mm
+  rate: 59.5
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.019
+  description: Gravel - Cotswold 6/10mm - Bulk Bags
+  rate: 95.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.020
+  description: Gravel - Cotswold 6mm - Bulk Bags
+  rate: 90.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.021
+  description: Gravel - Decorative Allowance - Bulk Bags
+  rate: 80.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.022
+  description: Gravel - Decorative Allowance - Small Poly Bags
+  rate: 6.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.023
+  description: Gravel - Flint 6-10mm In Bulk Bags
+  rate: 65.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.024
+  description: Gravel - Golden Flint 10mm
+  rate: 59.5
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.025
+  description: Gravel - Golden Flint 10mm In Bulk Bags
+  rate: 85.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.026
+  description: Gravel - Goldpath Bound Gravel
+  rate: 36.9
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.027
+  description: Gravel - Hoggin Supplied Loose
+  rate: 45.5
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.028
+  description: Gravel - Old English Self Binding Gravel - Pallet Of Poly Bags
+  rate: 100.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.029
+  description: Gravel - Plastic Gravel Guard Pavers - Gravelring From Kinley Systems 50 X 50 X 25M
+  rate: 15.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.030
+  description: Gravel - Quartz 10mm
+  rate: 187.95000000000002
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.031
+  description: Gravel - Scottish Beach Pebbles - Bulk Bags
+  rate: 160.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.032
+  description: Gravel - Scottish Beach Pebbles - Bulk Bags Sold In tonne
+  rate: 160.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.033
+  description: Gravel - Self Binding Path Gravel 8mm Down
+  rate: 76.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.034
+  description: Gravel - Self Binding Path Gravel 8mm Down Bulk Bag
+  rate: 150.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.035
+  description: Gravel - Silver Grey Granite 14mm In Bulk Bags
+  rate: 85.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.036
+  description: Gravel - Wayfarer Gravel - B/Bag
+  rate: 130.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.037
+  description: Slate - Slate Mulch In Bulk Bags
+  rate: 100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.038
+  description: Slate - Slate Mulch In Poly Bags
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.039
+  description: Cobbles - Scottish Beach Pebbles 100/75mm B/Bag
+  rate: 160.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.040
+  description: Cobbles - Scottish Beach Pebbles 14/8mm B/Bag
+  rate: 100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.041
+  description: Cobbles - Scottish Beach Pebbles 14/8mm Poly/Bag
+  rate: 12.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.03.042
+  description: Cobbles - Scottish Beach Pebbles 50/30mm B/Bag
+  rate: 100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.001
+  description: Reject Stone
+  rate: 18.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.002
+  description: 50mm Duct
+  rate: 1.3
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.003
+  description: 50mm Duct Bend
+  rate: 2.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.004
+  description: 100mm Duct
+  rate: 1.75
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.005
+  description: 100mm Duct Bend
+  rate: 4.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.006
+  description: 150mm Duct
+  rate: 3.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.007
+  description: 150mm Duct Bend
+  rate: 10.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.008
+  description: Draw Rope
+  rate: 0.30000000000000004
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.009
+  description: Marker Tape (Standard, 0.30/m)
+  rate: 0.30000000000000004
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.010
+  description: Duct Spacers
+  rate: 1.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.011
+  description: 600X600mm Draw Pit
+  rate: 100.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.012
+  description: 25mm MDPE Water Pipe
+  rate: 0.45
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.013
+  description: 32mm MDPE Water Pipe
+  rate: 0.30000000000000004
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.014
+  description: 63mm MDPE Water Pipe
+  rate: 3.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.015
+  description: 90mm MDPE Water Pipe
+  rate: 5.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.016
+  description: 125mm Ø Electric Duct
+  rate: 3.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.017
+  description: 25mm Protectorline Pipe
+  rate: 6.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.018
+  description: 32mm Protectorline Pipe
+  rate: 7.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.019
+  description: 63mm Protectorline Pipe
+  rate: 20.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.020
+  description: 63mm Gas Duct
+  rate: 1.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.021
+  description: 38mm Electric Duct
+  rate: 1.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.022
+  description: Marker Tape (Budget, 0.25/m)
+  rate: 0.25
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.023
+  description: Paving Sundries - Allowance For Paving Sealant
+  rate: 12.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.04.024
+  description: Paving Supports - Adjustable Spacers 74-110mm
+  rate: 5.95
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.05.001
+  description: Hooped Cycle Barrier 75mm Od Galvanised (Estimate)
+  rate: 27.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.05.002
+  description: Hooped Cycle Restraint Barrier (1100mm Ht X 980mm Wide)
+  rate: 145.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.05.003
+  description: Cycle Hoops
+  rate: 80.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.04.05.004
+  description: Water Trough And Fixings
+  rate: 300.0
+  unit: item
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.01.001
+  description: Slow Release Fertiliser (10g/m2)
+  rate: 3.8
+  unit: kg
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: SlowRelease_Fertiliser'
+- code: MAT.STD.06.01.002
+  description: Weedkiller
+  rate: 5.0
+  unit: kg
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.01.003
+  description: Chemicals - Weed Control Allowance
+  rate: 0.05
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.02.001
+  description: Grass Seed - Amenity Mix
+  rate: 4.5
+  unit: kg
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.02.002
+  description: Wildflower Seed
+  rate: 50.0
+  unit: kg
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.001
+  description: Terram 1000
+  rate: 1.6500000000000001
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.002
+  description: Terram 2000
+  rate: 0.30000000000000004
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.003
+  description: Woven Geotextile
+  rate: 1.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.004
+  description: Woven Geotextile- Small Qty
+  rate: 1.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.005
+  description: Non Woven Geotextile
+  rate: 0.25
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.006
+  description: Visqueen 500G
+  rate: 3.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.007
+  description: Visqueen 1200G
+  rate: 4.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.008
+  description: Visqueen 2000G
+  rate: 5.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.009
+  description: Gas Membrane
+  rate: 8.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.010
+  description: Double Sided Tape
+  rate: 1.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.011
+  description: 1200G Polythene
+  rate: 0.30000000000000004
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.012
+  description: Protection Fleece
+  rate: 5.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.013
+  description: Treetex T300 Geotextile Separation Fabric
+  rate: 10.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.014
+  description: Tensar Triax Geogrid
+  rate: 2.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.015
+  description: Tensar Biaxial Geogrid
+  rate: 2.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.016
+  description: Tensar Earth Retaining Structure
+  rate: 3.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.017
+  description: 150mm Cellweb Protection
+  rate: 10.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.018
+  description: Coir Erosion Protection Matting 350G/M2
+  rate: 0.8
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.019
+  description: Coir Erosion Protection Matting 700G/M2
+  rate: 2.2
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.020
+  description: Coir Erosion Protection Matting Pre-Seeded
+  rate: 3.3000000000000003
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.021
+  description: Coir Erosion Protection Matting Fixing Pins (3/M2)
+  rate: 0.1
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.022
+  description: Coir Roll Planted Excluding Stakes Planted
+  rate: 38.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.023
+  description: Coir Roll Planted Excluding Stakes Unplanted
+  rate: 13.65
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.024
+  description: Coir Pallets Planted
+  rate: 26.6
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.025
+  description: Coir Pallets Unplanted
+  rate: 13.75
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.026
+  description: Coir Roll Including Stakes At 600 Centres
+  rate: 27.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.027
+  description: 400mm Dia X 2.00M Long Rock Rolls Pre-Filled
+  rate: 88.0
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.028
+  description: 400mm Dia X 2.00M Long Rock Rolls Netting
+  rate: 7.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.029
+  description: 300mm Dia X 2.00M Long Rock Rolls Pre-Filled
+  rate: 55.0
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.030
+  description: 300mm Dia X 2.00M Long Rock Rolls Netting
+  rate: 6.5
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.031
+  description: Grass Reinforcement Paving - Grassform Standard
+  rate: 18.2
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.032
+  description: Gravel Guard - Cedagravel By Ced
+  rate: 12.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.033
+  description: Gravel Guard - Cellweb By Geosyn
+  rate: 25.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.034
+  description: Gravel Guard - Cellweb Perforated 100 By Geosyn
+  rate: 10.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.035
+  description: Gravel Guard - Cellweb Perforated 150 By Geosyn
+  rate: 17.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.03.036
+  description: Gravel Guard - Cellweb Perforated 200 By Geosyn
+  rate: 20.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.04.001
+  description: Misc Allowance For Bird/Bat Boxes
+  rate: 50.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.05.001
+  description: Playbark 10–40 mm
+  rate: 90.0
+  unit: m3
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Playbark_Melcourt'
+- code: MAT.STD.06.05.002
+  description: Mini Pine Mulch (Melcourt)
+  rate: 100.0
+  unit: m3
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Mini_Pine_Mulch'
+- code: MAT.STD.06.05.003
+  description: Bark Mulch - Loose Tipped
+  rate: 45.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.05.004
+  description: Bark Mulch - Bagged
+  rate: 65.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.05.005
+  description: 500x500mm Mulch Mats
+  rate: 0.55
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.05.006
+  description: 1000x1000mm Mulch Mats
+  rate: 1.6500000000000001
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.05.007
+  description: Bamboo Pegs for mulch mats
+  rate: 0.05
+  unit: each
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.001
+  description: 40mm Strapping
+  rate: 0.9500000000000001
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.002
+  description: 40mm Block Spacer
+  rate: 0.8
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.003
+  description: Irrigation Allowance
+  rate: 15.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.004
+  description: Rootbarrier
+  rate: 5.0
+  unit: m
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.005
+  description: Rootbarrier Joining Tape (10m)
+  rate: 25.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.006
+  description: Rootdirector
+  rate: 30.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.007
+  description: Clyde Pattern Tree Grill 1500 X 1500mm C/W Frame, Matt Black Finish
+  rate: 400.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.008
+  description: Castle Pattern Tree Grill 1500 X 1500mm C/W Frame, Galvanised Finish
+  rate: 450.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.009
+  description: Castle Pattern Tree Grill 1800 X 1800mm C/W Frame, Galvanised Finish
+  rate: 550.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.010
+  description: Precast Arbouresin Tree Grill 1200 X 1200mm C/W Galvanised Frame And Subframe
+  rate: 750.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.011
+  description: Standard Tree Shelter
+  rate: 0.9
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.012
+  description: Shrub Shelter
+  rate: 1.25
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.013
+  description: Tree Shelter
+  rate: 2.35
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.014
+  description: Rabbit Spiral
+  rate: 0.35000000000000003
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.07.015
+  description: Tree Irrigator Bag
+  rate: 25.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.08.001
+  description: Amenity Turf
+  rate: 2.5
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.06.08.002
+  description: Wildflower Turf
+  rate: 15.0
+  unit: m2
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.01.001
+  description: PAS100 Compost
+  rate: 32.0
+  unit: m3
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: PAS100_Compost'
+- code: MAT.STD.07.01.002
+  description: Pre-Seed Fertiliser
+  rate: 1.4000000000000001
+  unit: kg
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.01.003
+  description: Planting Fertiliser
+  rate: 1.2000000000000002
+  unit: kg
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.01.004
+  description: Compost - Bagged
+  rate: 70.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.01.005
+  description: Compost - Loose Tipped
+  rate: 30.0
+  unit: m3
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.001
+  description: Topsoil imported screened (BS3882 GP)
+  rate: 30.0
+  unit: m3
+  supplier: Market_check_2025-10-20
+  notes: 'Legacy: Topsoil_imported_screened'
+- code: MAT.STD.07.02.002
+  description: Topsoil — bulk bag (≈0.85 t)
+  rate: 60.0
+  unit: item
+  supplier: Market_check_2025-10-30
+  notes: 'Legacy: Topsoil_Bulk_Bag'
+- code: MAT.STD.07.02.003
+  description: Subsoil — bulk bag (≈0.85 t)
+  rate: 50.0
+  unit: item
+  supplier: Market_check_2025-10-30
+  notes: 'Legacy: Subsoil_Bulk_Bag'
+- code: MAT.STD.07.02.004
+  description: tree Soil (Loose)
+  rate: 70.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.005
+  description: Tree Soil (Bagged 0.85M³)
+  rate: 105.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.006
+  description: Subsoil - Loose Tipped
+  rate: 25.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.007
+  description: Subsoil - Bulk Bag - Assumed 850Kg
+  rate: 50.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.008
+  description: Topsoil - Loose Tipped
+  rate: 30.0
+  unit: t
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.009
+  description: Topsoil - Bulk Bag - Assumed 850Kg
+  rate: 60.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.010
+  description: Lightweight Topsoil - Bulk Bag - Assumed 1.2M3 Per Bag
+  rate: 110.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.07.02.011
+  description: 10/20mm LECA - 1m3
+  rate: 125.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.08.01.001
+  description: Cross Bar Set - 900mm x 38mm x 75mm
+  rate: 2.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.08.01.002
+  description: 50mm Dia X 1500mm Treated Stake
+  rate: 4.5
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.08.01.003
+  description: 25mm X 900 Stake
+  rate: 0.6000000000000001
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.08.01.004
+  description: Cane 90cm x 9-11mm
+  rate: 0.2
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.08.01.005
+  description: Underground Guy
+  rate: 35.0
+  unit: nr
+  supplier: Import
+  notes: ''
+- code: MAT.STD.08.02.001
+  description: Robinia Stump Ø300 × 300 deep, FSC Class 1
+  rate: 45.0
+  unit: nr
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Robinia_Stump_300'
+- code: MAT.STD.08.02.002
+  description: Robinia Stump Ø350 × 300 deep, FSC Class 1
+  rate: 55.0
+  unit: nr
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Robinia_Stump_350'
+- code: MAT.STD.08.02.003
+  description: Robinia Stump Ø400 × 300 deep, FSC Class 1
+  rate: 65.0
+  unit: nr
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Robinia_Stump_400'
+- code: MAT.STD.08.02.004
+  description: Robinia Stump Ø475 × 300 deep, FSC Class 1
+  rate: 85.0
+  unit: nr
+  supplier: Provisional_Allowance_2025-10-30
+  notes: 'Legacy: Robinia_Stump_475'
+- code: MAT.STD.09.01.001
+  description: Root Dipping
+  rate: 0.05
+  unit: nr
+  supplier: Import
+  notes: ''
+rules: []

@@ -1,0 +1,41 @@
+Valesco Agent Report — Session: {{session_hash}} — {{generated_at_utc}}
+Currency: {{currency}}
+
+READY gate:
+Valesco Pack ✅ / Materials ✅ / Tasks ✅ / Subcontractors ✅ — Ready to proceed.
+
+Totals
+- Materials: £{{totals.materials}}
+- Labour: £{{totals.labour}}
+- Plant: £{{totals.plant}}
+- Prelims: £{{totals.prelims}}
+= Grand total: £{{totals.grand_total}}
+
+Summary
+- Open assumptions: {{counts.open_assumptions}}
+- Provisional lines: {{counts.provisional_lines}}
+- Warnings: {{counts.warnings}}
+
+Materials
+{{#each materials}}
+- {{code}} — {{description}} ({{unit}}) @ £{{rate}} [prov_id={{prov_id}}]
+{{/each}}
+
+Assumptions
+{{#each assumptions}}
+- [{{#if suggest}}SUGGEST{{else}}SET{{/if}}] {{id}} — {{context}} = “{{value}}” — {{status}}
+{{/each}}
+
+Lines
+{{#each lines}}
+- {{id}} [{{type}}] {{ref}} — {{qty}} {{unit}} @ {{#if rate}}£{{rate}}{{else}}n/a{{/if}} (basis={{rate_basis}}) = £{{amount}}
+  Effort: labour_days={{labour_days}}{{#if plant_days}} plant_days={{plant_days}}{{/if}}{{#if plant_weeks}} plant_weeks={{plant_weeks}}{{/if}}
+  Reconcile: {{reconcile.expression}} => {{reconcile.computed}} vs {{reconcile.displayed}} (Δ {{reconcile.delta}})
+  {{#if subs_group}}Subcontract: group={{subs_group}} type={{subs_type}}{{/if}}
+  Rules: {{#each rule_ids}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/each}}
+
+Warnings
+{{#each warnings}}
+- {{this}}
+{{/each}}

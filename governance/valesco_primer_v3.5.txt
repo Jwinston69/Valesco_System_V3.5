@@ -1,0 +1,266 @@
+PRIMER — v3.5
+
+1. Purpose
+This Primer defines the governance, behavioural constraints, and architectural rules that regulate how new code, modules, tests, and subsystem modifications enter the Valesco system. It ensures structural consistency, subsystem integrity, and controlled evolution of the platform.
+This document does not specify environment bootstrapping logic, interpreter setup, dependency installation, wrapper script behaviour, or OS-level operations.
+ These concerns belong exclusively to the canonical environment bootstrap script and the operational runtime layer.
+
+2. Foundational Principles
+2.1 Single Source of Truth
+All architectural decisions, subsystem boundaries, and behavioural contracts originate from two sources:
+This Primer (global governance rules), and
+
+The active Session Snapshot (current system state).
+
+The Primer never names active subsystems.
+ The Snapshot is the sole authority for activation state and concrete commands.
+2.2 Subsystem Integrity
+Subsystems operate with strict call-graph and behavioural isolation. No subsystem may bypass or violate another subsystem’s contract, nor rely on implicit or undeclared data formats.
+2.3 Deterministic Development Flow
+All changes to subsystem code or tests occur via Design Instruction Blocks (DIBs).
+ Each DIB must fully specify:
+logical file paths
+
+subsystem and role
+
+required content
+
+behaviour
+
+acceptance criteria
+
+The Advisor must implement DIBs exactly as specified.
+
+3. Directory and Path Governance
+3.1 Logical Paths (Normalised)
+All governance-level file and directory references must use logical paths, not absolute OS paths:
+<VALESCO_ENGINE>/modules/
+<VALESCO_ENGINE>/tests/
+<VALESCO_ENGINE>/common/
+
+Logical paths must be used in all DIBs.
+ DIBs must not use absolute OS paths.
+ The environment bootstrap script resolves logical paths to actual OS filesystem locations.
+3.2 Subsystem Placement
+Only the following locations are considered subsystem-governed:
+<VALESCO_ENGINE>/modules/ → subsystem implementations
+
+<VALESCO_ENGINE>/tests/ → subsystem test suites
+
+Rules:
+Each subsystem is implemented in exactly one module file under modules/.
+
+All tests for that subsystem must reside under tests/.
+
+Only these two directories are governed by subsystem placement rules.
+
+3.3 Non-Subsystem Engine Directories (Clarified)
+Directories under <VALESCO_ENGINE> such as:
+scripts/
+config/
+schemas/
+build/
+prompts/
+python_runtime/
+
+are operational or support directories, not subsystem containers.
+ They are not governed by subsystem placement rules and may evolve operationally without violating this Primer.
+
+4. DIB Governance (v3.5)
+4.1 Behaviour-Level Idempotency Rule
+Re-running a DIB must always be safe.
+The Advisor must either:
+Apply changes that preserve the subsystem’s behaviour and explicitly confirm no behavioural change,
+ or
+
+Reject the DIB with a governance error if the change:
+
+conflicts with the current subsystem version,
+
+regresses validated behaviour,
+
+alters APIs, schemas, output structures, logic, or test expectations,
+
+or targets a subsystem marked FROZEN.
+
+Silent overwrites are prohibited.
+4.2 Frozen Subsystem DIB Rule
+If the Snapshot marks a subsystem as FROZEN, no modifications are permitted.
+ Any DIB targeting such a subsystem must be rejected with a Frozen Subsystem Violation.
+4.3 Test Inclusion Requirement
+A DIB modifying or introducing a subsystem must:
+create or update all required tests,
+
+maintain nominal, failure-mode, and integration coverage,
+
+ensure all tests execute via the canonical test runner.
+
+A subsystem modification without updated tests is invalid.
+4.4 Subsystem Atomicity Rule
+A DIB may not modify more than one subsystem.
+ One DIB = one subsystem, but it may update multiple files belonging to that subsystem (e.g., module + tests).
+
+5. Subsystem Rules and Call-Graph Discipline
+5.1 Universal Constraints
+No circular dependencies.
+
+Lower-tier subsystems may not call higher-tier subsystems.
+
+No subsystem may bypass another subsystem’s API contract.
+
+Subsystems may exchange only data structures explicitly declared in the Snapshot.
+
+No implicit or inferred cross-subsystem data formats are permitted.
+
+Subsystem tiering (lower vs higher) is defined in the Snapshot call-graph.
+
+5.2 Call-Graph Examples (Authoritative)
+CE → Architect: allowed
+
+Architect → CE: forbidden
+
+Pricing Engine → CE/Router/Architect: forbidden
+
+Router → Architect: allowed
+
+Validator → all subsystems (read-only): allowed
+
+Material Manager ↔ Merge Agent: independent, terminating at Estimator Runtime
+
+Estimator Runtime must not depend on CE or higher-order orchestration logic.
+ It consumes validated outputs from Router, Architect, and Validator, and drives Interaction, Resource Builder, and Pricing.
+
+Cortex → Estimator Runtime: allowed (Contract Middleware – see Scoped Exception)
+
+Estimator Runtime consumes validated outputs from Router, Architect, Validator,
+and authorised Cortex invocations.
+
+6. Environment Assumptions (Clarified for Wrappers)
+Before any development or execution:
+The canonical environment bootstrap script must run successfully.
+
+It defines VALESCO_ROOT, VALESCO_ENGINE, and PYTHON_CMD.
+
+It resolves all logical paths in DIBs and Snapshots to concrete OS paths.
+
+It ensures deterministic interpreter and module-resolution behaviour.
+
+Wrapper scripts (_START_VALESCO.bat, bin/*.bat, and tools under <VALESCO_ENGINE>/scripts/) form the operational execution layer.
+ They are outside the governance of subsystem placement rules but depend on the environment bootstrap for correctness.
+The Primer does not define bootstrap logic, dependency installation, wrapper behaviour, or interpreter management.
+
+7. Health Expectations
+System health is validated using the canonical test runner defined operationally.
+Requirements:
+A subsystem may not declare itself healthy without a passing test suite.
+
+A clean system state requires the test runner to return exit code 0.
+
+The Primer does not define test-runner mechanics or exit-code taxonomies.
+
+
+8. Introducing New Subsystems
+When the Snapshot marks a subsystem as ACTIVE:
+All implementation must occur via DIBs.
+
+DIBs must create the subsystem’s module and test files under the correct logical paths.
+
+Behaviour must match the Snapshot’s declared APIs and schemas.
+
+Full coverage must be achieved before the subsystem becomes stable.
+
+A subsystem becomes ACTIVE only through Snapshot declaration, never through the Primer.
+ Upon validation, it may be marked FROZEN.
+
+9. Change Management and Version Evolution
+9.1 Single Active Version Rule
+Only one active version of a subsystem may exist at a time.
+ Previous versions become read-only unless the Snapshot explicitly reactivates them.
+9.2 Primer & Snapshot Co-Evolution
+Primer governs global behaviour and architectural rules.
+
+Snapshot governs active state, schemas, APIs, and next required steps.
+
+Primer does not enumerate subsystems or activation states.
+
+Snapshot evolves as subsystem work proceeds.
+
+
+10. Prohibited Behaviours
+Generating subsystem modules outside authorised logical paths.
+
+Introducing undocumented or implicit dependencies.
+
+Modifying frozen subsystems.
+
+Making subsystem changes without updating tests.
+
+Silent behavioural modifications outside the DIB process.
+
+Weakening or bypassing call-graph boundaries.
+
+Exchanging undeclared or inferred data structures between subsystems.
+
+Any such violation must be rejected immediately.
+
+11. Conclusion — Primer v3.5 
+This Primer establishes:
+strict but flexible governance controls
+
+full DIB determinism and atomicity
+
+safe subsystem evolution
+
+protection of validated components
+
+clean separation of governance vs environment
+
+explicit integration with Snapshot-driven activation
+
+stable behavioural invariants
+
+clear directory semantics consistent with the real engine layout
+
+This is now the canonical Valesco governance specification.
+
+
+### AI Guidance Authority (Constitutional Clause)
+
+The system permits AI-led guidance only within explicitly authorised decision classes.
+
+Authorised AI-led decision classes are:
+- Option selection (default recommendation only)
+- Missing-item routing (state selection only)
+- Variant and sensitivity generation (exploration only)
+
+Within these classes:
+- AI may recommend and rank outcomes.
+- AI may not commit, validate, price, merge, or mutate truth.
+- All confidence signalling is system-derived, not AI-authoritative.
+- Learning Memory, if enabled, is advisory only and must be snapshotted by immutable context reference.
+
+Outside these classes, the system operates in advisory-only mode.
+
+No AI authority exists unless explicitly declared active in the current Snapshot.
+
+
+### AI Guidance Module Access (Scoped Exception)
+
+For the sole purpose of executing authorised AI-guided decision classes,
+the Estimator Runtime is permitted to import and invoke the Cortex module.
+
+This exception applies only when:
+- the decision being executed falls within an authorised AI guidance contract
+  (option selection, missing-item routing, or variant generation), and
+- such authority is explicitly declared active in the current Snapshot.
+
+Outside these conditions:
+- Estimator Runtime must not depend on Cortex,
+- Cortex must not influence pricing, validation, merging, or truth mutation,
+- and the standard call-graph restrictions remain in force.
+
+Cortex must not invoke Router, Architect, or Validator directly.
+All Cortex invocation is mediated by Estimator Runtime under contract control.
+
+This exception does not grant Cortex general execution authority.
+It exists solely to enable authorised AI-guided reasoning paths.

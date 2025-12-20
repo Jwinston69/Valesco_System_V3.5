@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:/02/data/schemas/valesco_subcontractors.schema.json",
+  "title": "Valesco Subcontractors \u2014 Schema v1.0-subc",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "groups"
+  ],
+  "$defs": {
+    "unitToken": {
+      "type": "string",
+      "enum": [
+        "m",
+        "m2",
+        "m3",
+        "lm",
+        "hr",
+        "nr",
+        "day",
+        "item",
+        "t",
+        "l",
+        "kg",
+        "each"
+      ]
+    },
+    "subsItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "unit",
+        "rate_per_unit"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9_\\-\\.]+$"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "$ref": "#/$defs/unitToken"
+        },
+        "rate_per_unit": {
+          "type": "number",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "groupBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/subsItem"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "subcontractors_version",
+        "date",
+        "currency",
+        "units"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0-subc",
+          "description": "Pinned schema contract for subcontractors file."
+        },
+        "subcontractors_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "author": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "const": "GBP"
+        },
+        "units": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/unitToken"
+          }
+        }
+      }
+    },
+    "groups": {
+      "type": "object",
+      "description": "Named subcontractor trade groups keyed by group id.",
+      "additionalProperties": {
+        "$ref": "#/$defs/groupBlock"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Reserved for future rule expressions. No validators at v1.0-subc."
+      }
+    }
+  }
+}

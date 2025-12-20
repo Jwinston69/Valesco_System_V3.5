@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./valesco_shared.schema.json",
+  "title": "Valesco Shared Types",
+  "type": "object",
+  "definitions": {
+    "unitToken": {
+      "type": "string",
+      "enum": [
+        "m",
+        "m2",
+        "m3",
+        "lm",
+        "hr",
+        "nr",
+        "day",
+        "item",
+        "t",
+        "l",
+        "kg",
+        "each"
+      ]
+    },
+    "money": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

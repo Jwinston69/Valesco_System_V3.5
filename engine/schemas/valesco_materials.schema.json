@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./valesco_materials.schema.json",
+  "title": "Valesco Materials (v1.2 Strict)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "materials"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.1.2"
+        },
+        "materials_version": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/material"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "unitToken": {
+      "type": "string",
+      "enum": [
+        "m",
+        "m2",
+        "m3",
+        "lm",
+        "hr",
+        "nr",
+        "day",
+        "item",
+        "t",
+        "l",
+        "kg",
+        "each"
+      ]
+    },
+    "money": {
+      "type": "number",
+      "minimum": 0
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Strict format: MAT.<TYPE>.<CAT>.<GRP>.<SEQ>",
+          "pattern": "^MAT\\.(STD|BES)\\.\\d{2}\\.\\d{2}\\.\\d{3}$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "$ref": "#/$defs/unitToken"
+        },
+        "rate": {
+          "$ref": "#/$defs/money"
+        },
+        "supplier": {
+          "type": "string"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "description",
+        "unit",
+        "rate"
+      ]
+    }
+  }
+}

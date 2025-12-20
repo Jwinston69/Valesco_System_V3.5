@@ -1,0 +1,9 @@
+{
+  "boq_id": "TEST-CRASH-001",
+  "lines": [
+    {
+      "id": 1,
+      "suggestions": []
+    }
+  ],
+  "This line is missing its closing brace" : "Yes"

@@ -1,0 +1,32 @@
+# Valesco Snapshot — TEMPLATE
+# PURPOSE: Blueprint to generate live project snapshots.
+# NOT loaded at runtime. User saves generated versions manually.
+
+project_name: <INSERT>
+date: <YYYY-MM-DD>
+by: James
+
+active_pack_version: <e.g., 2.1>
+active_materials_version: <e.g., 1.4>
+
+project_documents:
+  - <filename / rev / date>
+
+provisional_items:
+  - <material/activity> : <reason pending>
+
+confirmed_assumptions:
+  - <assumption> : <date/time>
+
+pending_risks:
+  - <risk> : <why this matters>
+
+prelims_status:
+  stage: not_started
+  file: none
+  notes: not yet defined
+
+notes:
+  - <optional short context>
+
+# END OF SNAPSHOT

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:/10/reference/Agent Report/export_machine_schema.json",
+  "title": "Valesco Export Machine Schema — v1.5",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "totals", "lines", "assumptions", "warnings"],
+  "$defs": {
+    "unitToken": {
+      "type": "string",
+      "enum": ["m","m2","m3","lm","hr","nr","day","item","t","l","kg","each"]
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generated_at_utc", "session_hash", "currency"],
+      "properties": {
+        "generated_at_utc": { "type": "string" },
+        "session_hash": { "type": "string", "minLength": 1 },
+        "currency": { "type": "string", "const": "£" }
+      }
+    },
+
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["materials","labour","plant","prelims","grand_total"],
+      "properties": {
+        "materials": { "type": "number" },
+        "labour": { "type": "number" },
+        "plant": { "type": "number" },
+        "prelims": { "type": "number" },
+        "grand_total": { "type": "number" }
+      }
+    },
+
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id","type","ref","qty","unit","amount","prov_id","rule_ids","reconcile"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string", "enum": ["material","labour","plant","subcontract","composite"] },
+          "ref": { "type": "string" },
+          "qty": { "type": "number" },
+          "unit": { "$ref": "#/$defs/unitToken" },
+          "rate": { "type": ["number","null"] },
+          "rate_basis": { "type": ["string","null"], "enum": ["day","week","unit",null] },
+          "amount": { "type": "number" },
+          "prov_id": { "type": "string" },
+          "rule_ids": {
+            "type": "array",
+            "items": { "type": "string" },
+            "uniqueItems": true
+          },
+          "subs_group": { "type": "string" },
+          "subs_type": { "type": "string" },
+          "reconcile": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["expression","computed","displayed","delta"],
+            "properties": {
+              "expression": { "type": "string" },
+              "computed": { "type": "number" },
+              "displayed": { "type": "number" },
+              "delta": { "type": "number" }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "type": { "const": "subcontract" } } },
+            "then": { "required": ["subs_group","subs_type"] }
+          }
+        ]
+      }
+    },
+
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id","context","value","status","suggest"],
+        "properties": {
+          "id": { "type": "string" },
+          "context": { "type": "string" },
+          "value": { "type": "string" },
+          "status": { "type": "string", "enum": ["open","confirmed","replaced","expired"] },
+          "suggest": { "type": "boolean" }
+        }
+      }
+    },
+
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,281 @@
+meta:
+  schema_version: "1.0-subc"
+  subcontractors_version: "v1.0"
+  date: "2025-11-07"
+  author: "Valesco Dev"
+  currency: "GBP"
+  units:
+    - m
+    - m2
+    - m3
+    - lm
+    - hr
+    - nr
+    - day
+    - item
+    - t
+    - l
+    - kg
+    - each
+
+groups:
+
+  general_subcontractors:
+    order:
+      - sub.sf.day
+      - sub.sf.pt
+      - sub.shut.day
+      - sub.shut.hr
+      - sub.br.lay
+      - sub.sl.col
+      - sub.cctv.day
+      - sub.piling
+      - sub.flr.lay
+      - sub.gas.lin
+      - sub.blk.lay
+      - sub.wline
+      - sub.jseal
+      - sub.cbr.mob
+      - sub.cbr.tst
+      - sub.pb.mob
+      - sub.pb.tst
+      - sub.heras
+      - sub.rospa
+    items:
+      - { id: sub.sf.day,   type: "Steel Fixer – daywork (labour only)", unit: day,  rate_per_unit: 425.00 }
+      - { id: sub.sf.pt,    type: "Steel Fixer – per tonne fixed (labour only)", unit: t, rate_per_unit: 500.00 }
+      - { id: sub.shut.day, type: "Shuttering Carpenter – daywork (labour only)", unit: day, rate_per_unit: 350.00 }
+      - { id: sub.shut.hr,  type: "Shuttering Carpenter – hourly (labour only)", unit: hr, rate_per_unit: 40.00 }
+      - { id: sub.br.lay,   type: "Bricklayer – lay-only (labour)", unit: m2, rate_per_unit: 50.00 }
+      - { id: sub.sl.col,   type: "Street Lighting – per column incl. test & connect (install only; materials by others)", unit: nr, rate_per_unit: 2200.00 }
+      - { id: sub.cctv.day, type: "CCTV / Jetting – combo unit with report (supply & service)", unit: day, rate_per_unit: 950.00 }
+      - { id: sub.piling,   type: "Piling – provisional allowance (supply & install)", unit: item, rate_per_unit: 25000.00 }
+      - { id: sub.flr.lay,  type: "Floor Layer – latex/vinyl lay-only", unit: m2, rate_per_unit: 20.00 }
+      - { id: sub.gas.lin,  type: "Gas Membrane / Lining – supply & install", unit: m2, rate_per_unit: 10.00 }
+      - { id: sub.blk.lay,  type: "Block Paving Layer – lay-only", unit: m2, rate_per_unit: 9.00 }
+      - { id: sub.wline,    type: "White Lining – thermoplastic 100mm (supply & apply)", unit: m, rate_per_unit: 3.50 }
+      - { id: sub.jseal,    type: "Joint Sealing – hot applied (supply & apply)", unit: m, rate_per_unit: 6.50 }
+      - { id: sub.cbr.mob,  type: "CBR – mobilisation (service)", unit: item, rate_per_unit: 175.00 }
+      - { id: sub.cbr.tst,  type: "CBR – test per location (service)", unit: nr, rate_per_unit: 75.00 }
+      - { id: sub.pb.mob,   type: "Plate Bearing – mobilisation (service)", unit: item, rate_per_unit: 175.00 }
+      - { id: sub.pb.tst,   type: "Plate Bearing – test per point (service)", unit: nr, rate_per_unit: 85.00 }
+      - { id: sub.heras,    type: "GC Fencing – Heras hire (per metre per week)", unit: m, rate_per_unit: 4.00 }
+      - { id: sub.rospa,    type: "RoSPA Inspection – play area (service)", unit: item, rate_per_unit: 600.00 }
+
+  road_base_dbm:
+    order:
+      - sub.dbm.rb.075
+      - sub.dbm.rb.080
+      - sub.dbm.rb.090
+      - sub.dbm.rb.100
+      - sub.dbm.rb.120
+      - sub.dbm.rb.125
+      - sub.dbm.rb.150
+      - sub.dbm.rb.165
+      - sub.dbm.rb.200
+      - sub.dbm.rb.200a
+    items:
+      - { id: sub.dbm.rb.075,  type: "Supply & lay DBM road base 75mm", unit: m2, rate_per_unit: 18.00 }
+      - { id: sub.dbm.rb.080,  type: "Supply & lay DBM road base 80mm", unit: m2, rate_per_unit: 19.00 }
+      - { id: sub.dbm.rb.090,  type: "Supply & lay DBM road base 90mm", unit: m2, rate_per_unit: 21.00 }
+      - { id: sub.dbm.rb.100,  type: "Supply & lay DBM road base 100mm", unit: m2, rate_per_unit: 23.00 }
+      - { id: sub.dbm.rb.120,  type: "Supply & lay DBM road base 120mm", unit: m2, rate_per_unit: 28.00 }
+      - { id: sub.dbm.rb.125,  type: "Supply & lay DBM road base 125mm", unit: m2, rate_per_unit: 28.00 }
+      - { id: sub.dbm.rb.150,  type: "Supply & lay DBM road base 150mm", unit: m2, rate_per_unit: 34.00 }
+      - { id: sub.dbm.rb.165,  type: "Supply & lay DBM road base 165mm", unit: m2, rate_per_unit: 37.00 }
+      - { id: sub.dbm.rb.200,  type: "Supply & lay DBM road base 200mm", unit: m2, rate_per_unit: 39.00 }
+      - { id: sub.dbm.rb.200a, type: "Supply & lay DBM road base 200mm (alt)", unit: m2, rate_per_unit: 42.00 }
+
+  binder_course_dbm:
+    order:
+      - sub.dbm.bnd.040
+      - sub.dbm.bnd.050
+      - sub.dbm.bnd.060
+      - sub.dbm.bnd.075
+      - sub.dbm.bnd.080
+      - sub.dbm.bnd.090
+      - sub.dbm.bnd.100
+      - sub.dbm.bnd.120
+      - sub.dbm.bnd.130
+      - sub.dbm.bnd.150
+      - sub.dbm.bnd.165
+      - sub.dbm.bnd.200
+      - sub.dbm.bnd.reg
+      - sub.dbm.surf.reg
+    items:
+      - { id: sub.dbm.bnd.040,   type: "Supply & lay DBM binder 40mm", unit: m2, rate_per_unit: 11.00 }
+      - { id: sub.dbm.bnd.050,   type: "Supply & lay DBM binder 50mm", unit: m2, rate_per_unit: 13.00 }
+      - { id: sub.dbm.bnd.060,   type: "Supply & lay DBM binder 60mm", unit: m2, rate_per_unit: 15.00 }
+      - { id: sub.dbm.bnd.075,   type: "Supply & lay DBM binder 75mm", unit: m2, rate_per_unit: 18.00 }
+      - { id: sub.dbm.bnd.080,   type: "Supply & lay DBM binder 80mm", unit: m2, rate_per_unit: 19.00 }
+      - { id: sub.dbm.bnd.090,   type: "Supply & lay DBM binder 90mm", unit: m2, rate_per_unit: 21.00 }
+      - { id: sub.dbm.bnd.100,   type: "Supply & lay DBM binder 100mm", unit: m2, rate_per_unit: 25.00 }
+      - { id: sub.dbm.bnd.120,   type: "Supply & lay DBM binder 120mm", unit: m2, rate_per_unit: 28.00 }
+      - { id: sub.dbm.bnd.130,   type: "Supply & lay DBM binder 130mm", unit: m2, rate_per_unit: 31.00 }
+      - { id: sub.dbm.bnd.150,   type: "Supply & lay DBM binder 150mm", unit: m2, rate_per_unit: 35.00 }
+      - { id: sub.dbm.bnd.165,   type: "Supply & lay DBM binder 165mm", unit: m2, rate_per_unit: 39.00 }
+      - { id: sub.dbm.bnd.200,   type: "Supply & lay DBM binder 200mm", unit: m2, rate_per_unit: 44.00 }
+      - { id: sub.dbm.bnd.reg,   type: "Regulating with binder – supply & lay", unit: t, rate_per_unit: 120.00 }
+      - { id: sub.dbm.surf.reg,  type: "Regulating with wearing course – supply & lay", unit: t, rate_per_unit: 120.00 }
+
+  binder_course_hra:
+    order:
+      - sub.hra.bnd.040
+      - sub.hra.bnd.050
+      - sub.hra.bnd.060
+      - sub.hra.bnd.075
+      - sub.hra.bnd.090
+      - sub.hra.bnd.100
+      - sub.hra.bnd.130
+      - sub.hra.bnd.150
+    items:
+      - { id: sub.hra.bnd.040, type: "Supply & lay HRA binder 40mm", unit: m2, rate_per_unit: 11.00 }
+      - { id: sub.hra.bnd.050, type: "Supply & lay HRA binder 50mm", unit: m2, rate_per_unit: 13.00 }
+      - { id: sub.hra.bnd.060, type: "Supply & lay HRA binder 60mm", unit: m2, rate_per_unit: 15.00 }
+      - { id: sub.hra.bnd.075, type: "Supply & lay HRA binder 75mm", unit: m2, rate_per_unit: 18.00 }
+      - { id: sub.hra.bnd.090, type: "Supply & lay HRA binder 90mm", unit: m2, rate_per_unit: 21.00 }
+      - { id: sub.hra.bnd.100, type: "Supply & lay HRA binder 100mm", unit: m2, rate_per_unit: 25.00 }
+      - { id: sub.hra.bnd.130, type: "Supply & lay HRA binder 130mm", unit: m2, rate_per_unit: 31.00 }
+      - { id: sub.hra.bnd.150, type: "Supply & lay HRA binder 150mm", unit: m2, rate_per_unit: 36.00 }
+
+  wearing_course:
+    order:
+      - sub.dbm.surf.ac06.20
+      - sub.dbm.surf.ac10.25
+      - sub.dbm.surf.ac10.25a
+      - sub.dbm.surf.ac10.30
+      - sub.dbm.surf.ac10.30a
+      - sub.dbm.surf.ac10.35
+      - sub.dbm.surf.ac10.40
+      - sub.sma.10.25
+      - sub.sma.10.30
+      - sub.sma.10.35
+      - sub.sma.25.00
+      - sub.hra.30.00
+      - sub.hra.40.00
+      - sub.hra.40.pcc
+      - sub.hra.50.pcc
+      - sub.res.bnd
+      - sub.res.bound
+      - sub.dbl.tack
+      - sub.ac10.surf.40
+      - sub.dbm.red.06.20
+      - sub.dbm.red.10.25
+      - sub.plan.minv
+      - sub.plan.depth
+    items:
+      - { id: sub.dbm.surf.ac06.20,  type: "Supply & lay DBM 6mm agg 20mm", unit: m2, rate_per_unit: 8.00 }
+      - { id: sub.dbm.surf.ac10.25,  type: "Supply & lay DBM 10mm agg 25mm", unit: m2, rate_per_unit: 9.50 }
+      - { id: sub.dbm.surf.ac10.25a, type: "Supply & lay DBM 10mm agg 25mm (alt)", unit: m2, rate_per_unit: 10.50 }
+      - { id: sub.dbm.surf.ac10.30,  type: "Supply & lay DBM 10mm agg 30mm", unit: m2, rate_per_unit: 11.50 }
+      - { id: sub.dbm.surf.ac10.30a, type: "Supply & lay DBM 10mm agg 30mm (alt)", unit: m2, rate_per_unit: 12.00 }
+      - { id: sub.dbm.surf.ac10.35,  type: "Supply & lay DBM 10mm agg 35mm", unit: m2, rate_per_unit: 13.00 }
+      - { id: sub.dbm.surf.ac10.40,  type: "Supply & lay DBM 10mm agg 40mm", unit: m2, rate_per_unit: 15.00 }
+      - { id: sub.sma.10.25,        type: "Supply & lay SMA 10mm agg 25mm", unit: m2, rate_per_unit: 10.00 }
+      - { id: sub.sma.10.30,        type: "Supply & lay SMA 10mm agg 30mm", unit: m2, rate_per_unit: 11.50 }
+      - { id: sub.sma.10.35,        type: "Supply & lay SMA 10mm agg 35mm", unit: m2, rate_per_unit: 13.00 }
+      - { id: sub.sma.25.00,        type: "Supply & lay SMA 25mm", unit: m2, rate_per_unit: 10.00 }
+      - { id: sub.hra.30.00,        type: "Supply & lay HRA 30mm", unit: m2, rate_per_unit: 13.00 }
+      - { id: sub.hra.40.00,        type: "Supply & lay HRA 40mm", unit: m2, rate_per_unit: 16.00 }
+      - { id: sub.hra.40.pcc,       type: "Supply & lay HRA 40mm with 20mm PCC chippings", unit: m2, rate_per_unit: 20.00 }
+      - { id: sub.hra.50.pcc,       type: "Supply & lay HRA 50mm with 20mm PCC chippings", unit: m2, rate_per_unit: 24.00 }
+      - { id: sub.res.bnd,          type: "Resin bonded gravel – supply & apply", unit: m2, rate_per_unit: 35.00 }
+      - { id: sub.res.bound,        type: "Resin bound gravel – supply & lay", unit: m2, rate_per_unit: 90.00 }
+      - { id: sub.dbl.tack,         type: "Double tack coat & shingle finish – supply & apply", unit: m2, rate_per_unit: 9.50 }
+      - { id: sub.ac10.surf.40,     type: "Supply & lay AC10 surf 40mm", unit: m2, rate_per_unit: 15.00 }
+      - { id: sub.dbm.red.06.20,    type: "Supply & lay red DBM 6mm agg 20mm", unit: m2, rate_per_unit: 9.00 }
+      - { id: sub.dbm.red.10.25,    type: "Supply & lay red DBM 10mm agg 25mm", unit: m2, rate_per_unit: 11.00 }
+      - { id: sub.plan.minv,        type: "Planer – minimum visit (service)", unit: item, rate_per_unit: 1500.00 }
+      - { id: sub.plan.depth,       type: "Planing to specified depth – supply & service", unit: m2, rate_per_unit: 7.00 }
+
+  play_surfacing:
+    order: [sub.wetpour, sub.tigerm]
+    items:
+      - { id: sub.wetpour, type: "Wetpour", unit: m2, rate_per_unit: 110.00, notes: "S&F; colours TBC; includes trims/minor waste; excludes base build-up, drainage, MC prelims" }
+      - { id: sub.tigerm,  type: "Tigermulch", unit: m2, rate_per_unit: 100.00, notes: "S&F; 50mm nominal; includes trims/minor waste; excludes base build-up, drainage, MC prelims" }
+
+  saw_cut_works:
+    order: [sub.saw.ne100, sub.saw.joint]
+    items:
+      - { id: sub.saw.ne100, type: "Saw cut tarmac NE 100mm deep (service)", unit: m, rate_per_unit: 22.00 }
+      - { id: sub.saw.joint, type: "Saw cut tarmac joint (service)", unit: m, rate_per_unit: 6.00 }
+
+  standard_keyblock_paving:
+    order: [sub.block.200.65, sub.block.200.80]
+    items:
+      - { id: sub.block.200.65, type: "Block paving 200x100x65mm – lay-only", unit: m2, rate_per_unit: 8.00 }
+      - { id: sub.block.200.80, type: "Block paving 200x100x80mm – lay-only", unit: m2, rate_per_unit: 9.00 }
+
+  tegula_paving:
+    order: [sub.teg.60, sub.teg.80, sub.teg.cob]
+    items:
+      - { id: sub.teg.60,  type: "Lay 60mm Tegula block – lay-only", unit: m2, rate_per_unit: 9.00 }
+      - { id: sub.teg.80,  type: "Lay 80mm Tegula block – lay-only", unit: m2, rate_per_unit: 10.00 }
+      - { id: sub.teg.cob, type: "Lay 80mm Tegula cobbles – lay-only", unit: m2, rate_per_unit: 14.00 }
+
+  permeable_block_paving:
+    order: [sub.priora.60, sub.priora.80]
+    items:
+      - { id: sub.priora.60, type: "Lay 60mm Priora or similar – lay-only", unit: m2, rate_per_unit: 10.00 }
+      - { id: sub.priora.80, type: "Lay 80mm Priora or similar – lay-only", unit: m2, rate_per_unit: 11.00 }
+
+  substructure_brickwork:
+    order:
+      - sub.bw.50
+      - sub.bw.100
+      - sub.bw.140
+      - sub.tb.215
+      - sub.tb.300
+      - sub.cmn.100
+      - sub.cmn.215
+      - sub.stepoc.265
+      - sub.stepoc.325
+      - sub.fb.100
+      - sub.fb.100.sf
+      - sub.cop.215
+      - sub.pier.215
+      - sub.lint.600
+      - sub.lint.900
+      - sub.lint.1050
+      - sub.lint.1200
+      - sub.dpc.100
+      - sub.dpc.200
+      - sub.dpc.300
+      - sub.vent.tel
+      - sub.air.brk
+      - sub.sb.100
+      - sub.sb.140
+      - sub.riw.1ct
+    items:
+      - { id: sub.bw.50,      type: "50mm blockwork – lay-only", unit: m2, rate_per_unit: 15.00 }
+      - { id: sub.bw.100,     type: "100mm blockwork – lay-only", unit: m2, rate_per_unit: 20.00 }
+      - { id: sub.bw.140,     type: "140mm blockwork – lay-only", unit: m2, rate_per_unit: 22.00 }
+      - { id: sub.tb.215,     type: "215mm trench block – lay-only", unit: m2, rate_per_unit: 26.00 }
+      - { id: sub.tb.300,     type: "300mm trench block – lay-only", unit: m2, rate_per_unit: 30.00 }
+      - { id: sub.cmn.100,    type: "100mm commons – lay-only", unit: m2, rate_per_unit: 22.00 }
+      - { id: sub.cmn.215,    type: "215mm commons – lay-only", unit: m2, rate_per_unit: 45.00 }
+      - { id: sub.stepoc.265, type: "265mm Stepoc blocks – lay & concrete infill (labour only)", unit: m2, rate_per_unit: 55.00 }
+      - { id: sub.stepoc.325, type: "325mm Stepoc blocks – lay & concrete infill (labour only)", unit: m2, rate_per_unit: 80.00 }
+      - { id: sub.fb.100,     type: "100mm facing bricks – lay-only", unit: m2, rate_per_unit: 35.00 }
+      - { id: sub.fb.100.sf,  type: "100mm facing bricks – supply & lay", unit: m2, rate_per_unit: 70.00 }
+      - { id: sub.cop.215,    type: "215mm brick coping – lay-only", unit: m, rate_per_unit: 18.00 }
+      - { id: sub.pier.215,   type: "215x215 vertical pier – lay-only", unit: m, rate_per_unit: 20.00 }
+      - { id: sub.lint.600,   type: "Lintel 600mm wide – install only", unit: nr, rate_per_unit: 55.00 }
+      - { id: sub.lint.900,   type: "Lintel 900mm wide – install only", unit: nr, rate_per_unit: 65.00 }
+      - { id: sub.lint.1050,  type: "Lintel 1050mm wide – install only", unit: nr, rate_per_unit: 70.00 }
+      - { id: sub.lint.1200,  type: "Lintel 1200mm wide – install only", unit: nr, rate_per_unit: 80.00 }
+      - { id: sub.dpc.100,    type: "100mm DPC – supply & place", unit: m, rate_per_unit: 2.50 }
+      - { id: sub.dpc.200,    type: "200mm DPC – supply & place", unit: m, rate_per_unit: 3.50 }
+      - { id: sub.dpc.300,    type: "300mm DPC – supply & place", unit: m, rate_per_unit: 4.50 }
+      - { id: sub.vent.tel,   type: "Telescopic vent – install only", unit: nr, rate_per_unit: 15.00 }
+      - { id: sub.air.brk,    type: "Air brick – install only", unit: nr, rate_per_unit: 12.00 }
+      - { id: sub.sb.100,     type: "100mm wide slip brick – lay-only", unit: m, rate_per_unit: 7.00 }
+      - { id: sub.sb.140,     type: "140mm wide slip brick – lay-only", unit: m, rate_per_unit: 8.00 }
+      - { id: sub.riw.1ct,    type: "RIW paint (1 coat) – supply & apply", unit: m2, rate_per_unit: 20.00 }
+
+  drainage_contractor:
+    order: [sub.suds]
+    items:
+      - { id: sub.suds, type: "SUDS drainage system – supply & install complete (provisional)", unit: item, rate_per_unit: 12000.00 }
+
+rules: []
