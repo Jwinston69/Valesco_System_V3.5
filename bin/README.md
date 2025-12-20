@@ -8,6 +8,8 @@
 
 ## Legacy scripts (archived)
 
+Legacy scripts are retained for provenance and recovery only and are not part of the current execution path.
+
 - start_valesco_v1.9.bat — Retired legacy launcher
   Replaced by:
   - install_deps.bat (Python bootstrap)

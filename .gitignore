@@ -1,0 +1,4 @@
+install_deps_bootstrap.log
+workspace/outputs/
+workspace/vector_input/*.jsonl
+workspace/proposals/incoming/TEST_CRASH.json
