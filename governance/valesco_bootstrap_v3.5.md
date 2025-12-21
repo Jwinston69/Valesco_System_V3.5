@@ -92,7 +92,7 @@ Upload the file: valesco\_primer\_v3.5.txt, then paste the following message:
 
 
 
-**Agent replies: Primer received.**
+Agent replies: Primer received.
 
 
 
@@ -122,7 +122,7 @@ Upload the file: valesco\_snapshot\_v3.5.1.txt, then paste:
 
 
 
-**Agent replies: Snapshot received.**
+Agent replies: Snapshot received.
 
 
 
@@ -282,7 +282,7 @@ Upload the file: valesco\_snapshot\_template\_v3.5.txt, then paste:
 
 
 
-**Agent replies: Template received.**
+Agent replies: Template received.
 
 
 

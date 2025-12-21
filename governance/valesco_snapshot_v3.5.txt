@@ -1,12 +1,11 @@
-SNAPSHOT v3.5.6
-
+SNAPSHOT v3.6.0
 AI Guidance Contracts (Active)
 
 option_selection_contract: v2
 missing_item_routing_contract: v2
 variant_generation_contract: v2
 
-AI authority is limited strictly to these contracts.
+AI authority remains limited strictly to these contracts.
 Validator veto applies in all cases.
 
 Learning Memory
@@ -15,22 +14,26 @@ enabled: false
 enabled_domains: []
 outcome_learning_enabled: false
 
-Learning Memory is advisory only and does not alter truth, pricing, or validation.
+Learning Memory remains advisory only and does not alter truth, pricing, or validation.
 
 Required Decision Metadata
 
 All AI-led decisions must record:
 
 functional_intent_id
+
 declared_confidence
+
 evidence_count
-effective_confidence (placeholder; system-derived in Phase 2+)
+
+effective_confidence (system-derived)
+
 learning_memory_used (true/false)
+
 memory_context_hash (if learning memory enabled)
 
 SYSTEM STATE
-
-implemented/stable
+implemented / stable
 
 CE Retrieval v2.1
 Router v2.1
@@ -45,28 +48,29 @@ Performance Optimisation v4.x
 System Packaging v4.x
 Cortex v1.0 (deterministic baseline frozen)
 ELI v1.0
-Resource Builder v1.0
 
-implemented/frozen
+implemented / active
+
+Estimator Runtime v2.1
+Pricing Engine v2.1
+
+implemented / frozen
 
 Universal Runner v2.2 (real CE backend invocation; mock removed)
-
-implemented/active
-
-Estimator Runtime v2.1 (Resource Builder wiring only; provisional resource pass-through; no pricing, validation, or Cortex changes)
 
 pending
 
 (none)
 
-Health
+HEALTH
 
 Environment bootstrap: successful
-Canonical test runner: exit code 0
+Canonical test runner: exit code 0 (full suite)
 
 FROZEN SUBSYSTEMS
 
 Any subsystem not listed as active or pending is frozen.
+
 Explicitly frozen for this phase:
 
 CE Retrieval
@@ -83,37 +87,42 @@ System Packaging
 Catalog ingestion
 Catalog CE adapter
 CE backend adapter
-Pricing Engine and all Pricing subsystem components
-ELI v1.0
-Resource Builder v1.0
 Universal Runner v2.2
 
 ACTIVE SUBSYSTEMS
 
-Estimator Runtime v2.1 (limited activation: Resource Builder wiring only)
+Estimator Runtime v2.1
+Pricing Engine v2.1
 
 ACTIVE SUBSYSTEM MODULE & TEST PATHS
 
+Estimator Runtime
+
 module path: <VALESCO_ENGINE>/modules/estimator_runtime_v2_1.py
+
 test path: <VALESCO_ENGINE>/tests/test_estimator_runtime_resource_builder.py
+
+Pricing Engine
+
+module path: <VALESCO_ENGINE>/modules/pricing_engine_v2_1.py
+
+test paths: <VALESCO_ENGINE>/tests/pricing_engine_*
+
+CALL-GRAPH AUTHORISATION
+
+Estimator Runtime → Pricing Engine: allowed
+
+Pricing Engine → CE / Router / Architect / Validator: forbidden
+
+Cortex authority unchanged and restricted per contracts
 
 SYSTEM LIMITATION
 
-Pricing remains non end-to-end. Estimator Runtime consumes only provisional Resource Builder outputs and must not price, validate, or mutate truth.
+Pricing is now authoritative for cost computation.
+Estimator Runtime delegates pricing truth and must not embed pricing logic.
 
-OUTSTANDING CONCERNS (CRITICAL CONTEXT)
+OUTSTANDING CONCERNS
 
-AI authority remains limited strictly to the declared contracts.
-Cortex deterministic baseline must remain unchanged.
-All Resource Builder outputs consumed by Estimator Runtime must remain provisional and traceable.
-Universal Runner now invokes real CE backend (mock removed).
+(None)
 
-NEXT REQUIRED STEP
-
-Estimator Runtime: validate Resource Builder wiring under embedded Windows runtime and close DIB for wiring scope.
-
-CONCERNS
-
-(None blocking at this time.)
-
-END OF SNAPSHOT v3.5.6
+END OF SNAPSHOT v3.6.0

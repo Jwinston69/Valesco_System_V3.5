@@ -1,5 +1,2 @@
-# Default: LF everywhere
 * text=auto eol=lf
-
-# Windows scripts
 *.bat text eol=crlf

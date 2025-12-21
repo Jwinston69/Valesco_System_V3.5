@@ -56,6 +56,10 @@ def catalog_to_ce_backend_format(internal_catalog: Dict[str, Dict[str, Any]]) ->
     if not isinstance(internal_catalog, dict):
         raise ValueError("internal_catalog must be a dict {id: item_dict}.")
 
+    for key in internal_catalog.keys():
+        if not isinstance(key, str):
+            raise ValueError("Catalog keys (ids) must be strings.")
+
     # Collect IDs deterministically
     sorted_ids = sorted(internal_catalog.keys())
 
@@ -69,6 +73,15 @@ def catalog_to_ce_backend_format(internal_catalog: Dict[str, Dict[str, Any]]) ->
         for key in ("id", "name", "category", "attributes"):
             if key not in item:
                 raise ValueError(f"Catalog item '{item_id}' missing field '{key}'.")
+
+        if not isinstance(item["id"], str):
+            raise ValueError(f"Catalog item '{item_id}' has invalid 'id' type.")
+        if not isinstance(item["name"], str):
+            raise ValueError(f"Catalog item '{item_id}' has invalid 'name' type.")
+        if not isinstance(item["category"], str):
+            raise ValueError(f"Catalog item '{item_id}' has invalid 'category' type.")
+        if not isinstance(item["attributes"], dict):
+            raise ValueError(f"Catalog item '{item_id}' has invalid 'attributes' type.")
 
         # Construct backend-ready item (drop score_placeholder)
         backend_item = {

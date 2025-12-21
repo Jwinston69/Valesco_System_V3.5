@@ -27,9 +27,7 @@ from engine.modules.rate_retrieval_v3_2 import (
     load_rate_library,
     get_rate_record,
 )
-from engine.modules.rate_build_up_v3_3 import (
-    build_up_rate,
-)
+from engine.modules import rate_build_up_v3_3 as rate_build_up
 
 
 LineItem = Dict[str, Any]
@@ -131,7 +129,7 @@ def price_line_item(item: LineItem, rate_library: RateLibrary) -> PricingResult:
         return {"pricing": "quantity_required"}
 
     # Build up rate from components (may raise ValueError for mismatched units, etc.)
-    built = build_up_rate(rate_record)
+    built = rate_build_up.build_up_rate(rate_record)
 
     unit = built.get("unit")
     total_rate = built.get("total_rate")

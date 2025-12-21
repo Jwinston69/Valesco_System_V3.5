@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional
 import copy
 
 import engine.modules.resource_builder as resource_builder
+import engine.modules.pricing_logic_v2_1 as pricing_logic
 
 
 def _map_required_action_to_next_action(required_action: str) -> Optional[str]:
@@ -188,15 +189,23 @@ def estimator_runtime_step(validator_output: Dict[str, Any], user_reply: Optiona
 
 def estimator_runtime_resource_step(eli_output: Any, ce_output: Optional[Any] = None) -> Dict[str, Any]:
     """
-    Orchestrate provisional resources from ELI output via Resource Builder.
+    Orchestrate provisional resources from ELI output via Resource Builder
+    and invoke Pricing exactly once.
     """
-    resources = resource_builder.build_resources(eli_output, ce_output=ce_output)
-    if resources.get("all_provisional") is True:
-        return resources
+    try:
+        resources = resource_builder.build_resources(eli_output, ce_output=ce_output)
+    except (TypeError, ValueError):
+        resources = resource_builder.build_resources([], ce_output=ce_output)
 
-    resources_copy = copy.deepcopy(resources)
-    resources_copy["all_provisional"] = True
-    return resources_copy
+    pricing_output = pricing_logic.price_estimate(resources)
+
+    if resources.get("all_provisional") is not True:
+        resources = copy.deepcopy(resources)
+        resources["all_provisional"] = True
+
+    output = dict(resources)
+    output["pricing"] = pricing_output
+    return output
 
 
 if __name__ == "__main__":
