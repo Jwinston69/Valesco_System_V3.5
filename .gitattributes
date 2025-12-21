@@ -1,3 +1,5 @@
-# Auto detect text files and perform LF normalization
+# Default: LF everywhere
 * text=auto eol=lf
 
+# Windows scripts
+*.bat text eol=crlf
