@@ -17,6 +17,8 @@
 
 from typing import Any, Dict, List, Optional
 
+from engine.modules import pack_registry_v3_5 as pack_registry
+
 
 # ---------------------------------------------------------------------------
 # Static, Deterministic Mock Pricing Table
@@ -36,6 +38,13 @@ MOCK_PRICING: Dict[str, Dict[str, Any]] = {
 # API: Unit Rate Lookup
 # ---------------------------------------------------------------------------
 
+def _require_pack_registry() -> None:
+    try:
+        pack_registry.require_registry()
+    except Exception as exc:
+        raise RuntimeError("Pricing blocked: pack registry incomplete.") from exc
+
+
 def get_unit_rate(item_id: str) -> Optional[Dict[str, Any]]:
     """
     Return the static unit rate and unit for a catalog item.
@@ -50,6 +59,7 @@ def get_unit_rate(item_id: str) -> Optional[Dict[str, Any]]:
         }
         or None if the item_id is not priced.
     """
+    _require_pack_registry()
     entry = MOCK_PRICING.get(item_id)
     if entry is None:
         return None
@@ -78,6 +88,7 @@ def price_item(item_id: str, quantity: float) -> Optional[Dict[str, Any]]:
         }
         or None if item_id has no defined pricing.
     """
+    _require_pack_registry()
     rate_info = get_unit_rate(item_id)
     if rate_info is None:
         return None
@@ -142,6 +153,7 @@ def price_estimate(estimate_snapshot: Dict[str, Any]) -> Dict[str, Any]:
             ]
         }
     """
+    _require_pack_registry()
     items: List[Dict[str, Any]] = estimate_snapshot.get("items", []) or []
     priced_items: List[Dict[str, Any]] = []
 

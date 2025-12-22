@@ -17,6 +17,7 @@ import json
 import os
 import shlex
 import subprocess
+import io
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -29,6 +30,27 @@ from engine.scripts.ready_gate_v3_5 import assert_ready_or_exit, evaluate_ready
 
 _READY_OK: bool | None = None
 _READY_REPORT: list[str] | None = None
+
+
+def _force_utf8_stdio() -> None:
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        try:
+            sys.stdout = io.TextIOWrapper(
+                sys.stdout.buffer, encoding="utf-8", errors="replace", line_buffering=True
+            )
+        except Exception:
+            pass
+    try:
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        try:
+            sys.stderr = io.TextIOWrapper(
+                sys.stderr.buffer, encoding="utf-8", errors="replace", line_buffering=True
+            )
+        except Exception:
+            pass
 
 
 def _assert_ready_v3_5_silent_on_success() -> None:
@@ -59,6 +81,7 @@ from engine.modules.merge_agent_v2_1 import (
 from engine.modules.material_manager_v2_1 import get_metadata
 from engine.modules.pricing_logic_v2_1 import price_estimate
 from engine.modules.quantity_logic_v2_1 import set_quantity, clear_quantity, apply_quantities
+from engine.modules import pack_registry_v3_5 as pack_registry
 
 
 # ---------------------------------------------------------------------------
@@ -217,7 +240,11 @@ def _print_item_resolution_snapshot(line: Dict[str, Any]) -> None:
     if source == "catalog" and item_id:
         meta = get_metadata(item_id)
         print("  raw_metadata:", meta)
-    print("  note: Quantity not set")
+    qty = line.get("quantity")
+    if isinstance(qty, (int, float)):
+        print(f"  quantity: {float(qty)}")
+    else:
+        print("  note: Quantity not set")
 
 
 def _run_single_item(description: str) -> None:
@@ -350,6 +377,7 @@ def run_mvp_case_programmatic(description: str, user_responses: List[str]) -> Di
     Quantity handling is not invoked here; it remains a separate concern.
     """
     _assert_ready_v3_5_silent_on_success()
+    pack_registry.initialize_registry(log=False)
 
     init_estimate()
     current_description = description
@@ -475,7 +503,9 @@ def _print_pricing() -> None:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    _force_utf8_stdio()
     assert_ready_or_exit(str(REPO_ROOT))
+    pack_registry.initialize_registry(log=True)
 
     print("Welcome to Valesco MVP Runner v2.2")
     print("Type an item description to start CE handling.")

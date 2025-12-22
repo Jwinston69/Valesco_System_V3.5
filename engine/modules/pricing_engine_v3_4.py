@@ -28,6 +28,7 @@ from engine.modules.rate_retrieval_v3_2 import (
     get_rate_record,
 )
 from engine.modules import rate_build_up_v3_3 as rate_build_up
+from engine.modules import pack_registry_v3_5 as pack_registry
 
 
 LineItem = Dict[str, Any]
@@ -38,6 +39,13 @@ PricingResult = Dict[str, Any]
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+def _require_pack_registry() -> None:
+    try:
+        pack_registry.require_registry()
+    except Exception as exc:
+        raise RuntimeError("Pricing blocked: pack registry incomplete.") from exc
+
 
 def _get_quantity_from_item(item: LineItem) -> Optional[float]:
     """
@@ -104,6 +112,7 @@ def price_line_item(item: LineItem, rate_library: RateLibrary) -> PricingResult:
         - If built["unit"] is None but quantity exists → ValueError
         - If built["total_rate"] is None but quantity exists → treated as no_pricing_defined
     """
+    _require_pack_registry()
     # Provisional items: never internally priced.
     if _is_provisional(item):
         return {"pricing": "user-supplied only"}
@@ -202,6 +211,7 @@ def price_estimate_snapshot(snapshot: Dict[str, Any], rate_library: RateLibrary)
             * total_cost is sum of their 'total_cost'.
         - Deterministic ordering preserved.
     """
+    _require_pack_registry()
     items: List[LineItem] = snapshot.get("items", [])
     if not isinstance(items, list):
         raise ValueError("snapshot['items'] must be a list.")

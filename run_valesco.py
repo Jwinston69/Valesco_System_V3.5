@@ -22,6 +22,7 @@ if MODULES not in sys.path:
 
 # READY v3.5 fail-closed gate (governance)
 from engine.scripts.ready_gate_v3_5 import evaluate_ready
+from engine.modules import pack_registry_v3_5 as pack_registry
 
 
 def safe_import(module, symbol=None):
@@ -84,6 +85,7 @@ def main():
         sys.exit(1)
 
     _print_ready_summary_line_safely(ready_summary_line)
+    pack_registry.initialize_registry(log=True)
 
     print("\n===============================================")
     print("     V A L E S C O   U N I V E R S A L   R E P L")

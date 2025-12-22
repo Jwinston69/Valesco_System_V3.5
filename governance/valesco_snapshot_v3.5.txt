@@ -1,5 +1,5 @@
 SNAPSHOT v3.6.0
-AI Guidance Contracts (Active)
+AI Guidance Contracts (Inactive for this phase)
 
 option_selection_contract: v2
 missing_item_routing_contract: v2
@@ -7,6 +7,7 @@ variant_generation_contract: v2
 
 AI authority remains limited strictly to these contracts.
 Validator veto applies in all cases.
+No AI or Cortex activation in this phase.
 
 Learning Memory
 
@@ -51,6 +52,7 @@ ELI v1.0
 
 implemented / active
 
+Pack Registry v3.5 (pack-centric pricing authority enforced)
 Estimator Runtime v2.1
 Pricing Engine v2.1
 
@@ -91,10 +93,17 @@ Universal Runner v2.2
 
 ACTIVE SUBSYSTEMS
 
+Pack Registry v3.5
 Estimator Runtime v2.1
 Pricing Engine v2.1
 
 ACTIVE SUBSYSTEM MODULE & TEST PATHS
+
+Pack Registry
+
+module path: <VALESCO_ENGINE>/modules/pack_registry_v3_5.py
+
+test path: (none)
 
 Estimator Runtime
 
@@ -120,6 +129,22 @@ SYSTEM LIMITATION
 
 Pricing is now authoritative for cost computation.
 Estimator Runtime delegates pricing truth and must not embed pricing logic.
+
+PRICING AUTHORITY (PACK-CENTRIC)
+
+Pricing is ACTIVE and deterministic.
+Pack registry loads once per run, fixed order, before pricing.
+Pricing authority packs:
+- library/packs/valesco_pack.yaml
+- library/core/valesco_materials.yaml
+- library/core/valesco_subcontractors.yaml
+Tasks pack:
+- library/core/valesco_tasks.yaml (productivity-only)
+Pricing fails closed if registry is incomplete.
+
+REALITY INGESTION (NON-AI)
+
+Deterministic CE backend ingestion is present.
 
 OUTSTANDING CONCERNS
 

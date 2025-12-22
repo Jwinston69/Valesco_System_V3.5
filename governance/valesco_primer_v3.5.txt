@@ -135,6 +135,13 @@ Cortex → Estimator Runtime: allowed (Contract Middleware – see Scoped Except
 Estimator Runtime consumes validated outputs from Router, Architect, Validator,
 and authorised Cortex invocations.
 
+5.3 Pricing Authority (Clarified)
+Pricing authority resides in:
+library/packs/valesco_pack.yaml
+library/core/valesco_materials.yaml
+library/core/valesco_subcontractors.yaml
+library/core/valesco_tasks.yaml is productivity-only and must not be treated as pricing authority.
+
 6. Environment Assumptions (Clarified for Wrappers)
 Before any development or execution:
 The canonical environment bootstrap script must run successfully.

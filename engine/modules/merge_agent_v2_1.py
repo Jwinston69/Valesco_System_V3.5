@@ -45,6 +45,9 @@ def add_catalog_item(item: Dict[str, Any]) -> None:
         "metadata": item,      # store raw item dict
         "status": "confirmed",
     }
+    quantity = item.get("quantity")
+    if isinstance(quantity, (int, float)):
+        entry["quantity"] = float(quantity)
     ESTIMATE_MODEL["items"].append(entry)
 
 
