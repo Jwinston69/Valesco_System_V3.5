@@ -11,7 +11,7 @@
 #   - One-time initialization (immutable after init)
 #   - Logging limited to one line per pack on request
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 from pathlib import Path
 import copy
 
@@ -25,6 +25,14 @@ _PACK_ORDER = [
     ("tasks", "library/core/valesco_tasks.yaml", "productivity-only"),
 ]
 
+_REQUIRED_AUTHORITY_PACKS = [
+    "library/packs/valesco_pack.yaml",
+    "library/core/valesco_materials.yaml",
+    "library/core/valesco_subcontractors.yaml",
+]
+
+_TASKS_PACK_PATH = "library/core/valesco_tasks.yaml"
+
 _REGISTRY: Optional[Dict[str, Any]] = None
 _REGISTRY_ROOT: Optional[Path] = None
 _LOGGED: bool = False
@@ -34,6 +42,57 @@ def _repo_root(root_dir: Optional[str]) -> Path:
     if root_dir:
         return Path(root_dir).resolve()
     return Path(__file__).resolve().parents[2]
+
+
+def _find_duplicates(values: List[str]) -> List[str]:
+    seen = set()
+    duplicates = []
+    for value in values:
+        if value in seen and value not in duplicates:
+            duplicates.append(value)
+        seen.add(value)
+    return duplicates
+
+
+def _assert_pack_order_valid() -> None:
+    keys = [key for key, _, _ in _PACK_ORDER]
+    paths = [rel_path for _, rel_path, _ in _PACK_ORDER]
+    dup_keys = _find_duplicates(keys)
+    dup_paths = _find_duplicates(paths)
+    if dup_keys or dup_paths:
+        details = []
+        if dup_keys:
+            details.append(f"keys={', '.join(dup_keys)}")
+        if dup_paths:
+            details.append(f"paths={', '.join(dup_paths)}")
+        detail_text = "; ".join(details)
+        raise RuntimeError(f"Pack registry duplicate entries detected: {detail_text}")
+
+    missing_required = []
+    for required in _REQUIRED_AUTHORITY_PACKS:
+        matches = [role for _, rel_path, role in _PACK_ORDER if rel_path == required]
+        if not matches:
+            missing_required.append(required)
+            continue
+        if any(role != "pricing-authority" for role in matches):
+            raise RuntimeError(f"Pack registry invalid authority role for: {required}")
+    if missing_required:
+        missing_text = ", ".join(missing_required)
+        raise RuntimeError(f"Pack registry missing required authority packs: {missing_text}")
+
+    for _, rel_path, role in _PACK_ORDER:
+        if rel_path == _TASKS_PACK_PATH and role != "productivity-only":
+            raise RuntimeError(f"Pack registry tasks pack must be productivity-only: {rel_path}")
+
+
+def _assert_required_authority_files(root: Path) -> None:
+    missing = []
+    for rel_path in _REQUIRED_AUTHORITY_PACKS:
+        if not (root / rel_path).exists():
+            missing.append(rel_path)
+    if missing:
+        missing_text = ", ".join(missing)
+        raise RuntimeError(f"Pack registry missing required authority packs: {missing_text}")
 
 
 def _load_yaml(root: Path, rel_path: str) -> Dict[str, Any]:
@@ -60,15 +119,27 @@ def _emit_registry_logs() -> None:
 def initialize_registry(root_dir: Optional[str] = None, log: bool = True) -> None:
     """
     Initialize the pack registry once, loading all packs in deterministic order.
+    Subsequent calls are idempotent unless a different root_dir is provided.
     """
     global _REGISTRY, _REGISTRY_ROOT
-    if _REGISTRY is None:
-        root = _repo_root(root_dir)
-        loaded: Dict[str, Any] = {}
-        for key, rel_path, _ in _PACK_ORDER:
-            loaded[key] = _load_yaml(root, rel_path)
-        _REGISTRY = {key: copy.deepcopy(value) for key, value in loaded.items()}
-        _REGISTRY_ROOT = root
+    if _REGISTRY is not None:
+        if root_dir is not None and _REGISTRY_ROOT is not None:
+            root = _repo_root(root_dir)
+            if root != _REGISTRY_ROOT:
+                raise RuntimeError("Pack registry already initialized for a different root.")
+        if log:
+            _emit_registry_logs()
+        return
+
+    _assert_pack_order_valid()
+    root = _repo_root(root_dir)
+    _assert_required_authority_files(root)
+
+    loaded: Dict[str, Any] = {}
+    for key, rel_path, _ in _PACK_ORDER:
+        loaded[key] = _load_yaml(root, rel_path)
+    _REGISTRY = {key: copy.deepcopy(value) for key, value in loaded.items()}
+    _REGISTRY_ROOT = root
     if log:
         _emit_registry_logs()
 
@@ -108,4 +179,3 @@ def get_tasks() -> Dict[str, Any]:
 
 def get_registry_root() -> Optional[Path]:
     return _REGISTRY_ROOT
-

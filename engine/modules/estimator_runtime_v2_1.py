@@ -67,6 +67,25 @@ def _handle_selection_reply(items: List[Dict[str, Any]], user_reply: str) -> Dic
     return {"user_decision": "INVALID_SELECTION"}
 
 
+def _require_pricing_output(pricing_output: Any) -> Dict[str, Any]:
+    """
+    Enforce the pricing output contract for Estimator Runtime.
+    """
+    if pricing_output is None:
+        raise RuntimeError("Pricing failed: output missing.")
+    if not isinstance(pricing_output, dict):
+        raise RuntimeError("Pricing failed: output invalid.")
+    items = pricing_output.get("items")
+    if not isinstance(items, list):
+        raise RuntimeError("Pricing failed: output invalid.")
+    if not items:
+        raise RuntimeError("Pricing failed: output empty.")
+    for entry in items:
+        if not isinstance(entry, dict):
+            raise RuntimeError("Pricing failed: output invalid.")
+    return pricing_output
+
+
 def estimator_runtime_step(validator_output: Dict[str, Any], user_reply: Optional[str] = None) -> Dict[str, Any]:
     """
     Processes a Validator-approved payload and produces the Estimator's next
@@ -194,10 +213,11 @@ def estimator_runtime_resource_step(eli_output: Any, ce_output: Optional[Any] = 
     """
     try:
         resources = resource_builder.build_resources(eli_output, ce_output=ce_output)
-    except (TypeError, ValueError):
-        resources = resource_builder.build_resources([], ce_output=ce_output)
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError("Estimator Runtime halted: invalid resource input.") from exc
 
     pricing_output = pricing_logic.price_estimate(resources)
+    pricing_output = _require_pricing_output(pricing_output)
 
     if resources.get("all_provisional") is not True:
         resources = copy.deepcopy(resources)

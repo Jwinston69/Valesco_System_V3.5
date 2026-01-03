@@ -35,16 +35,54 @@ LineItem = Dict[str, Any]
 RateLibrary = Dict[str, Dict[str, Any]]
 PricingResult = Dict[str, Any]
 
+_REQUIRED_AUTHORITY_PACKS = [
+    ("pack", "library/packs/valesco_pack.yaml"),
+    ("materials", "library/core/valesco_materials.yaml"),
+    ("subcontractors", "library/core/valesco_subcontractors.yaml"),
+]
+
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
 def _require_pack_registry() -> None:
-    try:
-        pack_registry.require_registry()
-    except Exception as exc:
-        raise RuntimeError("Pricing blocked: pack registry incomplete.") from exc
+    if not pack_registry.is_initialized():
+        raise RuntimeError("Pack registry not initialized.")
+
+    if pack_registry.get_registry_root() is None:
+        raise RuntimeError("Pack registry state invalid: missing root.")
+
+    missing: List[str] = []
+    invalid: List[str] = []
+
+    for key, rel_path in _REQUIRED_AUTHORITY_PACKS:
+        try:
+            if key == "pack":
+                pack = pack_registry.get_pack()
+            elif key == "materials":
+                pack = pack_registry.get_materials()
+            else:
+                pack = pack_registry.get_subcontractors()
+        except KeyError:
+            missing.append(rel_path)
+            continue
+        except Exception as exc:
+            raise RuntimeError(f"Pack registry invalid authority pack: {rel_path}") from exc
+
+        if not isinstance(pack, dict) or not pack:
+            invalid.append(rel_path)
+
+    if missing:
+        missing_text = ", ".join(missing)
+        raise RuntimeError(
+            f"Pack registry missing required authority pack(s): {missing_text}"
+        )
+    if invalid:
+        invalid_text = ", ".join(invalid)
+        raise RuntimeError(
+            f"Pack registry invalid authority pack(s): {invalid_text}"
+        )
 
 
 def _get_quantity_from_item(item: LineItem) -> Optional[float]:
@@ -257,6 +295,7 @@ def price_estimate_for_runner(rate_library_path: str) -> Callable[[Dict[str, Any
         - Does not alter snapshot structures.
         - Does not introduce side effects beyond reading the rate library.
     """
+    _require_pack_registry()
     rate_library = load_rate_library(rate_library_path)
 
     def _price_snapshot(snapshot: Dict[str, Any]) -> Dict[str, Any]:

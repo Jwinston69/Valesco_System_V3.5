@@ -1,25 +1,20 @@
-SNAPSHOT v3.6.0
-AI Guidance Contracts (Inactive for this phase)
+Valesco Session Snapshot — v3.7.5
+
+(Scope clarification only; no code or activation changes)
+
+AI Guidance Contracts (Inactive)
 
 option_selection_contract: v2
 missing_item_routing_contract: v2
 variant_generation_contract: v2
 
-AI authority remains limited strictly to these contracts.
+AI authority remains inactive for this phase.
 Validator veto applies in all cases.
-No AI or Cortex activation in this phase.
+No AI or Cortex activation is permitted.
 
-Learning Memory
+Required Decision Metadata (Defined, Not Used)
 
-enabled: false
-enabled_domains: []
-outcome_learning_enabled: false
-
-Learning Memory remains advisory only and does not alter truth, pricing, or validation.
-
-Required Decision Metadata
-
-All AI-led decisions must record:
+Defined for traceability only; applies only if AI Guidance is activated in a future Snapshot:
 
 functional_intent_id
 
@@ -32,6 +27,14 @@ effective_confidence (system-derived)
 learning_memory_used (true/false)
 
 memory_context_hash (if learning memory enabled)
+
+Learning Memory
+
+enabled: false
+enabled_domains: []
+outcome_learning_enabled: false
+
+Learning Memory remains advisory only and does not alter truth, pricing, or validation.
 
 SYSTEM STATE
 implemented / stable
@@ -47,31 +50,97 @@ Logging / Telemetry v4.x
 Error Handling v4.x
 Performance Optimisation v4.x
 System Packaging v4.x
-Cortex v1.0 (deterministic baseline frozen)
+Cortex v1.0 (deterministic baseline)
 ELI v1.0
+
+implemented / frozen (validated in this phase via targeted suites)
+
+Pack Registry v3.5
+Estimator Runtime v2.1
+Pricing Engine v3.4
 
 implemented / active
 
-Pack Registry v3.5 (pack-centric pricing authority enforced)
-Estimator Runtime v2.1
-Pricing Engine v2.1
+Catalog Ingestion v3.0
 
-implemented / frozen
+Deterministic catalog normalization and serialization utility.
+Baseline deterministic tests present and passing.
+No CE adapter or backend ingestion integration in this phase.
 
-Universal Runner v2.2 (real CE backend invocation; mock removed)
+SUBSYSTEM PATHS
+Catalog Ingestion v3.0 (ACTIVE)
 
-pending
+module path: <VALESCO_ENGINE>/modules/catalog_ingestion_v3_0.py
+test path: <VALESCO_ENGINE>/tests/test_catalog_ingestion_v3_0.py
 
-(none)
+PRICING AUTHORITY (PACK-CENTRIC)
 
-HEALTH
+Pricing authority is deterministic and pack-centric within the Pricing Engine path.
 
-Environment bootstrap: successful
-Canonical test runner: exit code 0 (full suite)
+Required pricing authority packs:
 
-FROZEN SUBSYSTEMS
+library/packs/valesco_pack.yaml
 
-Any subsystem not listed as active or pending is frozen.
+library/core/valesco_materials.yaml
+
+library/core/valesco_subcontractors.yaml
+
+Productivity-only pack:
+
+library/core/valesco_tasks.yaml (must not be treated as pricing authority)
+
+Pricing fails closed if the authority registry is incomplete when the Pricing Engine path is invoked.
+
+CALL-GRAPH AUTHORISATION (Clarified)
+
+Estimator Runtime → Pricing Engine: allowed
+
+Pricing Engine authority rule (inputs):
+Pricing Engine pricing authority inputs must derive from an initialized Pack Registry with required authority packs present.
+Internal pricing support modules (e.g., rate retrieval, rate build-up) remain permitted.
+
+Pricing Engine → CE / Router / Architect / Validator: forbidden
+
+Catalog Ingestion scope rule:
+Catalog Ingestion must not call Router / Architect / Validator in this phase.
+
+SYSTEM LIMITATIONS
+
+AI-led decision authority is inactive.
+
+Operational MVP runner pricing currently uses pricing_logic_v2_1 with mock pricing data and is not pack-authoritative.
+
+Pack-centric pricing authority applies to the Pricing Engine execution path only and is not yet wired into the MVP runner.
+
+Catalog Ingestion does not integrate with CE adapters or backends in this phase.
+
+REALITY INGESTION (NON-AI)
+
+Deterministic CE backend ingestion is present and unchanged.
+
+No AI-mediated ingestion or mutation paths exist.
+
+HEALTH (Evidence-based)
+
+Canonical test runner (default suite): exit code 0
+
+Additional targeted suites executed this phase (exit code 0):
+
+pricing_engine_test_suite_v3_4.py
+
+test_pack_registry_v3_5.py
+
+test_estimator_runtime_resource_builder.py
+
+test_catalog_ingestion_v3_0.py
+
+Test execution evidence recorded (no coverage metrics implied).
+
+CONCERNS
+
+Operational MVP runner pricing is not yet aligned with Pricing Engine v3.4 pack-centric authority; migration will require re-activating Estimator Runtime and updating runner wiring in a future phase.
+
+FROZEN SUBSYSTEMS (Explicit)
 
 Explicitly frozen for this phase:
 
@@ -86,68 +155,15 @@ Logging / Telemetry
 Error Handling
 Performance Optimisation
 System Packaging
-Catalog ingestion
 Catalog CE adapter
 CE backend adapter
 Universal Runner v2.2
-
-ACTIVE SUBSYSTEMS
-
 Pack Registry v3.5
 Estimator Runtime v2.1
-Pricing Engine v2.1
+Pricing Engine v3.4
+Cortex v1.0
+ELI v1.0
 
-ACTIVE SUBSYSTEM MODULE & TEST PATHS
+Rule: Any subsystem not listed as ACTIVE or PENDING is frozen.
 
-Pack Registry
-
-module path: <VALESCO_ENGINE>/modules/pack_registry_v3_5.py
-
-test path: (none)
-
-Estimator Runtime
-
-module path: <VALESCO_ENGINE>/modules/estimator_runtime_v2_1.py
-
-test path: <VALESCO_ENGINE>/tests/test_estimator_runtime_resource_builder.py
-
-Pricing Engine
-
-module path: <VALESCO_ENGINE>/modules/pricing_engine_v2_1.py
-
-test paths: <VALESCO_ENGINE>/tests/pricing_engine_*
-
-CALL-GRAPH AUTHORISATION
-
-Estimator Runtime → Pricing Engine: allowed
-
-Pricing Engine → CE / Router / Architect / Validator: forbidden
-
-Cortex authority unchanged and restricted per contracts
-
-SYSTEM LIMITATION
-
-Pricing is now authoritative for cost computation.
-Estimator Runtime delegates pricing truth and must not embed pricing logic.
-
-PRICING AUTHORITY (PACK-CENTRIC)
-
-Pricing is ACTIVE and deterministic.
-Pack registry loads once per run, fixed order, before pricing.
-Pricing authority packs:
-- library/packs/valesco_pack.yaml
-- library/core/valesco_materials.yaml
-- library/core/valesco_subcontractors.yaml
-Tasks pack:
-- library/core/valesco_tasks.yaml (productivity-only)
-Pricing fails closed if registry is incomplete.
-
-REALITY INGESTION (NON-AI)
-
-Deterministic CE backend ingestion is present.
-
-OUTSTANDING CONCERNS
-
-(None)
-
-END OF SNAPSHOT v3.6.0
+END OF SNAPSHOT v3.7.5

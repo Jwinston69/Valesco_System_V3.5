@@ -12,6 +12,7 @@
 #   engine.modules.pricing_engine_v3_4
 
 import unittest
+from unittest.mock import patch
 import tempfile
 import os
 import copy
@@ -22,6 +23,7 @@ from engine.modules.pricing_engine_v3_4 import (
     price_estimate_snapshot,
     price_estimate_for_runner,
 )
+from engine.modules import pack_registry_v3_5 as pack_registry
 from engine.modules.rate_library_ingestion_v3_1 import (
     load_raw_rate_library,
     build_internal_rate_library,
@@ -36,6 +38,9 @@ def _build_rate_library(external_rates):
 
 
 class TestPricingEngineV34(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        pack_registry.initialize_registry(log=False)
 
     # ------------------------------------------------------------------
     # GROUP A — Line-Level Pricing (8 tests)
@@ -485,6 +490,45 @@ class TestPricingEngineV34(unittest.TestCase):
             with self.assertRaises(ValueError):
                 _ = price_estimate_for_runner(path)
                 # load_rate_library/load_internal_rate_library should raise
+
+    # ------------------------------------------------------------------
+    # GROUP D - Pack Registry Authority (2 tests)
+    # ------------------------------------------------------------------
+
+    def test_15_registry_not_initialized_raises(self):
+        item = {
+            "item_id": None,
+            "source": "provisional",
+            "display_name": "Custom Item",
+            "metadata": {},
+            "status": "confirmed",
+        }
+
+        with patch(
+            "engine.modules.pricing_engine_v3_4.pack_registry.is_initialized",
+            return_value=False,
+        ):
+            with self.assertRaisesRegex(RuntimeError, "Pack registry not initialized"):
+                price_line_item(item, {})
+
+    def test_16_missing_authority_pack_raises(self):
+        item = {
+            "item_id": None,
+            "source": "provisional",
+            "display_name": "Custom Item",
+            "metadata": {},
+            "status": "confirmed",
+        }
+
+        with patch(
+            "engine.modules.pricing_engine_v3_4.pack_registry.get_subcontractors",
+            side_effect=KeyError("subcontractors"),
+        ):
+            with self.assertRaisesRegex(
+                RuntimeError,
+                "library/core/valesco_subcontractors.yaml",
+            ):
+                price_line_item(item, {})
 
 
 if __name__ == "__main__":

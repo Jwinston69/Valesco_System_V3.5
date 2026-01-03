@@ -4,7 +4,6 @@ import unittest
 from unittest.mock import patch
 
 import engine.modules.eli as eli
-import engine.modules.pricing_logic_v2_1 as pricing_logic
 import engine.modules.resource_builder as resource_builder
 import engine.modules.estimator_runtime_v2_1 as estimator_runtime
 
@@ -18,11 +17,21 @@ class TestEstimatorRuntimeResourceBuilderV10(unittest.TestCase):
         ]
         return eli.analyze_boq(lines, {"source": "boq", "section": "General"})
 
+    def _pricing_output(self) -> dict:
+        return {"items": [{"pricing": "user-supplied only"}]}
+
     def test_nominal_orchestration_with_eli(self) -> None:
         eli_output = self._eli_output()
-        output = estimator_runtime.estimator_runtime_resource_step(eli_output)
+        sentinel = self._pricing_output()
+
+        with patch(
+            "engine.modules.estimator_runtime_v2_1.pricing_logic.price_estimate",
+            return_value=sentinel,
+        ):
+            output = estimator_runtime.estimator_runtime_resource_step(eli_output)
 
         self.assertIn("pricing", output)
+        self.assertEqual(output["pricing"], sentinel)
         self.assertTrue(output["all_provisional"])
         self.assertGreaterEqual(len(output["labour"]), 1)
         self.assertGreaterEqual(len(output["plant"]), 1)
@@ -35,23 +44,36 @@ class TestEstimatorRuntimeResourceBuilderV10(unittest.TestCase):
 
     def test_deterministic_repeatability(self) -> None:
         eli_output = self._eli_output()
-        first = estimator_runtime.estimator_runtime_resource_step(eli_output)
-        second = estimator_runtime.estimator_runtime_resource_step(eli_output)
+        sentinel = self._pricing_output()
+
+        with patch(
+            "engine.modules.estimator_runtime_v2_1.pricing_logic.price_estimate",
+            return_value=sentinel,
+        ):
+            first = estimator_runtime.estimator_runtime_resource_step(eli_output)
+            second = estimator_runtime.estimator_runtime_resource_step(eli_output)
         self.assertEqual(first, second)
 
     def test_schema_pass_through(self) -> None:
         eli_output = self._eli_output()
         ce_output = {"context": "reference-only"}
+        sentinel = self._pricing_output()
 
         direct = resource_builder.build_resources(eli_output, ce_output=ce_output)
-        orchestrated = estimator_runtime.estimator_runtime_resource_step(
-            eli_output,
-            ce_output=ce_output,
-        )
+
+        with patch(
+            "engine.modules.estimator_runtime_v2_1.pricing_logic.price_estimate",
+            return_value=sentinel,
+        ) as mock_price:
+            orchestrated = estimator_runtime.estimator_runtime_resource_step(
+                eli_output,
+                ce_output=ce_output,
+            )
 
         resources_only = {key: orchestrated[key] for key in direct.keys()}
         self.assertEqual(direct, resources_only)
-        self.assertEqual(orchestrated["pricing"], pricing_logic.price_estimate(direct))
+        mock_price.assert_called_once_with(direct)
+        self.assertEqual(orchestrated["pricing"], sentinel)
 
     def test_nominal_pricing_invoked_once(self) -> None:
         eli_output = self._eli_output()
@@ -68,22 +90,27 @@ class TestEstimatorRuntimeResourceBuilderV10(unittest.TestCase):
         self.assertEqual(mock_price.call_args[0][0], expected_resources)
         self.assertEqual(output["pricing"], sentinel)
 
-    def test_invalid_resource_input_falls_back_to_empty(self) -> None:
+    def test_invalid_resource_input_raises(self) -> None:
+        with patch(
+            "engine.modules.estimator_runtime_v2_1.pricing_logic.price_estimate",
+        ) as mock_price:
+            with self.assertRaisesRegex(RuntimeError, "invalid resource input"):
+                estimator_runtime.estimator_runtime_resource_step("invalid")
+
+        mock_price.assert_not_called()
+
+    def test_empty_pricing_output_raises(self) -> None:
+        eli_output = self._eli_output()
         sentinel = {"items": []}
 
         with patch(
             "engine.modules.estimator_runtime_v2_1.pricing_logic.price_estimate",
             return_value=sentinel,
         ) as mock_price:
-            output = estimator_runtime.estimator_runtime_resource_step("invalid")
+            with self.assertRaisesRegex(RuntimeError, "output empty"):
+                estimator_runtime.estimator_runtime_resource_step(eli_output)
 
         mock_price.assert_called_once()
-        self.assertEqual(output["labour"], [])
-        self.assertEqual(output["plant"], [])
-        self.assertEqual(output["materials"], [])
-        self.assertEqual(output["assumptions"], [])
-        self.assertTrue(output["all_provisional"])
-        self.assertEqual(output["pricing"], sentinel)
 
     def test_prohibition_no_forbidden_imports(self) -> None:
         source = inspect.getsource(estimator_runtime)
