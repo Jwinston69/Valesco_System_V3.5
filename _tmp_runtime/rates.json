@@ -1,0 +1,12 @@
+{
+  "A001": {
+    "id": "A001",
+    "description": "Test rate A001",
+    "components": {
+      "material": {"rate": 12.5, "unit": "m2"},
+      "labour": null,
+      "plant": null,
+      "overhead": null
+    }
+  }
+}

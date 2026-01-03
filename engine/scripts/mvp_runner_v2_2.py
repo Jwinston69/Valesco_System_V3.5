@@ -70,7 +70,10 @@ def _assert_ready_v3_5_silent_on_success() -> None:
 from engine.modules.router_v2_1 import route
 from engine.modules.architect_v2_1 import build_architect_payload
 from engine.modules.validator_v2_1 import validate
-from engine.modules.estimator_runtime_v2_1 import estimator_runtime_step
+from engine.modules.estimator_runtime_v2_1 import (
+    estimator_runtime_step,
+    estimator_runtime_price_snapshot,
+)
 from engine.modules.merge_agent_v2_1 import (
     init_estimate,
     add_catalog_item,
@@ -79,7 +82,6 @@ from engine.modules.merge_agent_v2_1 import (
     ESTIMATE_MODEL,
 )
 from engine.modules.material_manager_v2_1 import get_metadata
-from engine.modules.pricing_logic_v2_1 import price_estimate
 from engine.modules.quantity_logic_v2_1 import set_quantity, clear_quantity, apply_quantities
 from engine.modules import pack_registry_v3_5 as pack_registry
 
@@ -469,7 +471,7 @@ def _print_pricing() -> None:
         return
 
     snapshot_with_quantities = apply_quantities(raw_snapshot)
-    pricing_result = price_estimate(snapshot_with_quantities)
+    pricing_result = estimator_runtime_price_snapshot(snapshot_with_quantities)
     items = pricing_result.get("items", [])
 
     print("Pricing:")

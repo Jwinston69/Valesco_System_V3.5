@@ -11,11 +11,19 @@
 #
 # Behaviour is strictly deterministic.
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Callable
 import copy
+import os
+from pathlib import Path
 
 import engine.modules.resource_builder as resource_builder
-import engine.modules.pricing_logic_v2_1 as pricing_logic
+from engine.modules import pack_registry_v3_5 as pack_registry
+from engine.modules import pricing_engine_v3_4 as pricing_engine
+
+
+_RATE_LIBRARY_ENV = "VALESCO_RATE_LIBRARY_PATH"
+_PRICING_FN: Optional[Callable[[Dict[str, Any]], Dict[str, Any]]] = None
+_PRICING_FN_PATH: Optional[str] = None
 
 
 def _map_required_action_to_next_action(required_action: str) -> Optional[str]:
@@ -84,6 +92,81 @@ def _require_pricing_output(pricing_output: Any) -> Dict[str, Any]:
         if not isinstance(entry, dict):
             raise RuntimeError("Pricing failed: output invalid.")
     return pricing_output
+
+
+def _resolve_rate_library_path(rate_library_path: Optional[str] = None) -> str:
+    raw = rate_library_path or os.environ.get(_RATE_LIBRARY_ENV, "")
+    path = raw.strip()
+    if not path:
+        raise RuntimeError("Pricing failed: rate library path not configured.")
+    resolved = Path(path).expanduser()
+    if not resolved.is_file():
+        raise RuntimeError(f"Pricing failed: rate library not found at {resolved}.")
+    return str(resolved)
+
+
+def _get_pricing_fn(rate_library_path: str) -> Callable[[Dict[str, Any]], Dict[str, Any]]:
+    global _PRICING_FN, _PRICING_FN_PATH
+    if _PRICING_FN is None or _PRICING_FN_PATH != rate_library_path:
+        _PRICING_FN = pricing_engine.price_estimate_for_runner(rate_library_path)
+        _PRICING_FN_PATH = rate_library_path
+    return _PRICING_FN
+
+
+def _merge_pricing(snapshot: Dict[str, Any], pricing_result: Dict[str, Any]) -> Dict[str, Any]:
+    items = snapshot.get("items", [])
+    lines = pricing_result.get("lines", [])
+    if not isinstance(items, list) or not isinstance(lines, list) or len(items) != len(lines):
+        raise RuntimeError("Pricing failed: output invalid.")
+    priced_items: List[Dict[str, Any]] = []
+    for item, line_pricing in zip(items, lines):
+        quantity = item.get("quantity")
+        priced_items.append(
+            {
+                "item_id": item.get("item_id"),
+                "display_name": item.get("display_name", ""),
+                "source": item.get("source"),
+                "quantity": float(quantity) if isinstance(quantity, (int, float)) else None,
+                "pricing": line_pricing,
+            }
+        )
+    return {"items": priced_items}
+
+
+def _build_pricing_snapshot_from_resources(resources: Dict[str, Any]) -> Dict[str, Any]:
+    items: List[Dict[str, Any]] = []
+    for bucket in ("labour", "plant", "materials"):
+        entries = resources.get(bucket, [])
+        if not isinstance(entries, list):
+            continue
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            items.append(
+                {
+                    "item_id": None,
+                    "source": "provisional",
+                    "display_name": entry.get("description", ""),
+                    "metadata": entry.get("traceability", {}),
+                    "status": "confirmed",
+                }
+            )
+    return {"items": items}
+
+
+def estimator_runtime_price_snapshot(
+    snapshot: Dict[str, Any],
+    rate_library_path: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Price a Merge Agent snapshot using the Pricing Engine, preserving MVP output shape.
+    """
+    pack_registry.require_registry()
+    resolved_path = _resolve_rate_library_path(rate_library_path)
+    pricing_fn = _get_pricing_fn(resolved_path)
+    pricing_result = pricing_fn(snapshot)
+    merged = _merge_pricing(snapshot, pricing_result)
+    return _require_pricing_output(merged)
 
 
 def estimator_runtime_step(validator_output: Dict[str, Any], user_reply: Optional[str] = None) -> Dict[str, Any]:
@@ -216,7 +299,10 @@ def estimator_runtime_resource_step(eli_output: Any, ce_output: Optional[Any] = 
     except (TypeError, ValueError) as exc:
         raise RuntimeError("Estimator Runtime halted: invalid resource input.") from exc
 
-    pricing_output = pricing_logic.price_estimate(resources)
+    pack_registry.require_registry()
+    pricing_snapshot = _build_pricing_snapshot_from_resources(resources)
+    pricing_result = pricing_engine.price_estimate_snapshot(pricing_snapshot, rate_library={})
+    pricing_output = _merge_pricing(pricing_snapshot, pricing_result)
     pricing_output = _require_pricing_output(pricing_output)
 
     if resources.get("all_provisional") is not True:
