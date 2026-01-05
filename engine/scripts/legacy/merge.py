@@ -5,7 +5,19 @@ import yaml
 import time
 
 # --- CONFIGURATION ---
-ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+def resolve_root_dir(start_dir):
+    cur = os.path.abspath(start_dir)
+    for _ in range(6):
+        if os.path.isdir(os.path.join(cur, "engine")) and os.path.isdir(os.path.join(cur, "library")):
+            return cur
+        parent = os.path.dirname(cur)
+        if parent == cur:
+            break
+        cur = parent
+    return os.path.abspath(os.path.join(start_dir, "..", ".."))
+
+
+ROOT_DIR = resolve_root_dir(os.path.dirname(__file__))
 PROPOSALS_DIR = os.path.join(ROOT_DIR, "workspace", "proposals")
 EXTENSIONS_DIR = os.path.join(ROOT_DIR, "library", "extensions")
 TARGET_FILE = os.path.join(EXTENSIONS_DIR, "materials_ext.yaml")
