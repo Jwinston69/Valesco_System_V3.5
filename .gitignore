@@ -1,9 +1,9 @@
 install_deps_bootstrap.log
 workspace/inputs/
 workspace/outputs/
+AGENT_ORIENTATION_PACK_*
 workspace/proposals/incoming/TEST_CRASH.json
 workspace/vector_input/*.jsonl
 **/*.pyc
 **/_pycache__/
 **/__pycache__/
-
