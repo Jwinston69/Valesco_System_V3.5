@@ -1,4 +1,4 @@
-SNAPSHOT v3.7.9
+SNAPSHOT v3.7.10
 
 AI Guidance Contracts (Inactive for this phase)
 
@@ -68,16 +68,17 @@ OPERATIONAL PRICING AUTHORITY (PACK-CENTRIC)
 
 Operational pricing authority path:
 
-MVP Runner v2.2 -> Estimator Runtime v2.1 -> Pricing Engine v3.4 -> Pack Registry v3.5 + Rate Library
+MVP Runner v2.2
+→ Estimator Runtime v2.1
+→ Pricing Engine v3.4
+→ Pack Registry v3.5 + Rate Library
 
 Mock pricing (pricing_logic_v2_1 / static mock tables) is not used for operational MVP pricing.
 
 Required authority packs:
 
 library/packs/valesco_pack.yaml
-
 library/core/valesco_materials.yaml
-
 library/core/valesco_subcontractors.yaml
 
 Productivity-only pack (non-authority):
@@ -96,41 +97,62 @@ ACTIVE SUBSYSTEM MODULE & TEST PATHS
 
 (none)
 
+DOCUMENTATION & TOOLING STATE (VERIFIED THIS SESSION)
+
+Documentation archival:
+
+v1.x legacy documentation moved to docs/_archive/v1.x/
+
+Tooling and onboarding scripts now prefer archive paths with safe fallbacks to current docs/
+
+No runtime or operational code depends directly on archived documentation paths
+
+Legacy tooling status:
+
+Legacy operational scripts relocated to archive-safe locations with fallback resolution
+
+No legacy scripts are invoked by active runtime entrypoints
+
+Legacy scripts remain callable for tooling, onboarding, and context generation only
+
+No runtime subsystem behaviour changed as part of this work.
+
 HEALTH CHECK
 
 Canonical test runner:
 
 Run: engine/scripts/run_tests_portable.py (no VALESCO_TEST_PATTERN)
-
 Result: exit code 0 (verified this session)
 
 Targeted suites executed this session (exit code 0):
 
 <VALESCO_ENGINE>/tests/test_pack_registry_v3_5.py
-
 <VALESCO_ENGINE>/tests/pricing_engine_test_suite_v3_4.py
-
 <VALESCO_ENGINE>/tests/test_catalog_ingestion_v3_0.py
-
 <VALESCO_ENGINE>/tests/test_mvp_runner_pricing_alignment_v2_2.py
-
 <VALESCO_ENGINE>/tests/test_estimator_runtime_resource_builder.py
+
+Additional verified commands (exit code 0):
+
+engine/scripts/mvp_runner_v2_2.py
+bin/validate.bat
+export_ai_context_bundle.py
 
 Runtime verification evidence:
 
-MVP runner pricing succeeds with valid VALESCO_RATE_LIBRARY_PATH.
+MVP runner pricing succeeds with valid VALESCO_RATE_LIBRARY_PATH
 
-Fail-closed verified for missing or invalid VALESCO_RATE_LIBRARY_PATH.
+Fail-closed verified for missing or invalid VALESCO_RATE_LIBRARY_PATH
 
-Fail-closed verified at READY gate when a required authority pack file is absent.
+Fail-closed verified at READY gate when a required authority pack file is absent
 
-Fail-closed verified post-initialisation when Pack Registry is initialised but incomplete (test-only hardening).
+Fail-closed verified post-initialisation when Pack Registry is initialised but incomplete (test-only hardening)
 
 Determinism:
 
-Pricing outputs are deterministic for identical inputs.
+Pricing outputs are deterministic for identical inputs
 
-Timestamp-prefixed log lines are the only non-deterministic elements and were normalised for comparison.
+Timestamp-prefixed log lines are the only non-deterministic elements and were normalised for comparison
 
 RATE LIBRARY VALIDATION (CLARIFIED)
 
@@ -141,15 +163,15 @@ There is no external standalone schema-file validation contract beyond this inge
 
 SYSTEM LIMITATIONS
 
-Determinism excludes timestamp-prefixed log lines.
+Determinism excludes timestamp-prefixed log lines
 
-Catalog Ingestion v3.0 is limited to deterministic normalization and serialization.
+Catalog Ingestion v3.0 is limited to deterministic normalization and serialization
 
-No CE adapter or backend integration exists at this stage.
+No CE adapter or backend integration exists at this stage
 
 SNAPSHOT INTEGRITY STATEMENT
 
 This Snapshot records verified runtime behaviour and executed test evidence only.
 No future intent, roadmap guidance, or untested assumptions are included.
 
-END OF SNAPSHOT v3.7.9
+END OF SNAPSHOT v3.7.10
