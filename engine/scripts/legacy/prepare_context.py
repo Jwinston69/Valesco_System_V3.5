@@ -10,18 +10,32 @@ if len(sys.argv) < 2:
 OUTPUT_DIR = sys.argv[1]
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "VALESCO_FULL_CONTEXT.txt")
+ARCHIVE_DIR = os.path.join(ROOT_DIR, "docs", "_archive", "v1.x")
+
+
+def prefer_existing_path(*paths):
+    for path in paths:
+        if os.path.exists(path):
+            return path
+    return paths[-1]
 
 # --- OPERATIONAL FILE REGISTRY ---
 FILES_TO_BUNDLE = [
     # 1. SYSTEM DEFINITION
-    os.path.join(ROOT_DIR, "docs", "VALESCO_SYSTEM_MANIFEST_v1.9.1.md"),
+    prefer_existing_path(
+        os.path.join(ARCHIVE_DIR, "VALESCO_SYSTEM_MANIFEST_v1.9.1.md"),
+        os.path.join(ROOT_DIR, "docs", "VALESCO_SYSTEM_MANIFEST_v1.9.1.md"),
+    ),
     
     # 2. THE LAWS (Logic & Hierarchy)
     os.path.join(ROOT_DIR, "docs", "governance", "VALESCO_TRUTH_HIERARCHY.md"),
     os.path.join(ROOT_DIR, "docs", "governance", "valesco_instructions.txt"),
     
     # 3. THE SAFETY RAILS
-    os.path.join(ROOT_DIR, "docs", "VALESCO_DEPENDENCY_MAP.md"),
+    prefer_existing_path(
+        os.path.join(ARCHIVE_DIR, "VALESCO_DEPENDENCY_MAP.md"),
+        os.path.join(ROOT_DIR, "docs", "VALESCO_DEPENDENCY_MAP.md"),
+    ),
     
     # 4. THE CODES (Registry)
     os.path.join(ROOT_DIR, "engine", "config", "materials_allocator.yaml"),

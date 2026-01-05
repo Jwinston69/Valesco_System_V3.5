@@ -50,17 +50,17 @@ REM ============================================================================
 REM VISION & INTENT (REFERENCE-ONLY)
 REM ============================================================================
 call :COPY "%SYSROOT%\docs\VALESCO_ROADMAP_v2.0.md" "%OUT%\03_VISION_REFERENCE_ONLY\VALESCO_ROADMAP_v2.0.md"
-call :COPY "%SYSROOT%\docs\VALESCO_SYSTEM_MANIFEST_v1.9.1.md" "%OUT%\03_VISION_REFERENCE_ONLY\VALESCO_SYSTEM_MANIFEST_v1.9.1.md"
+call :COPY_FALLBACK "%SYSROOT%\docs\_archive\v1.x\VALESCO_SYSTEM_MANIFEST_v1.9.1.md" "%SYSROOT%\docs\VALESCO_SYSTEM_MANIFEST_v1.9.1.md" "%OUT%\03_VISION_REFERENCE_ONLY\VALESCO_SYSTEM_MANIFEST_v1.9.1.md"
 call :COPY "%SYSROOT%\docs\VALESCO_ROADMAP_v2.0_CONTEXT_ENGINEERING_ADDENDUM.md" "%OUT%\03_VISION_REFERENCE_ONLY\VALESCO_ROADMAP_v2.0_CONTEXT_ENGINEERING_ADDENDUM.md"
 call :COPY "%SYSROOT%\docs\governance\VALESCO_TRUTH_HIERARCHY.md" "%OUT%\03_VISION_REFERENCE_ONLY\VALESCO_TRUTH_HIERARCHY.md"
 
 REM ============================================================================
 REM OPTIONAL CONTEXT (NON-BINDING)
 REM ============================================================================
-call :COPY "%SYSROOT%\docs\VALESCO_DEPENDENCY_MAP.md" "%OUT%\04_OPTIONAL_CONTEXT\VALESCO_DEPENDENCY_MAP.md"
-call :COPY "%SYSROOT%\docs\VALESCO_FULL_SYSTEM_HANDOVER_v2.0.md" "%OUT%\04_OPTIONAL_CONTEXT\VALESCO_FULL_SYSTEM_HANDOVER_v2.0.md"
-call :COPY "%SYSROOT%\docs\VALESCO_REGRESSION_SUITE_v1.9.md" "%OUT%\04_OPTIONAL_CONTEXT\VALESCO_REGRESSION_SUITE_v1.9.md"
-call :COPY "%SYSROOT%\docs\dev\history\mvp_completion_report_v2.1.md" "%OUT%\04_OPTIONAL_CONTEXT\mvp_completion_report_v2.1.md"
+call :COPY_FALLBACK "%SYSROOT%\docs\_archive\v1.x\VALESCO_DEPENDENCY_MAP.md" "%SYSROOT%\docs\VALESCO_DEPENDENCY_MAP.md" "%OUT%\04_OPTIONAL_CONTEXT\VALESCO_DEPENDENCY_MAP.md"
+call :COPY_FALLBACK "%SYSROOT%\docs\_archive\v1.x\VALESCO_FULL_SYSTEM_HANDOVER_v2.0.md" "%SYSROOT%\docs\VALESCO_FULL_SYSTEM_HANDOVER_v2.0.md" "%OUT%\04_OPTIONAL_CONTEXT\VALESCO_FULL_SYSTEM_HANDOVER_v2.0.md"
+call :COPY_FALLBACK "%SYSROOT%\docs\_archive\v1.x\VALESCO_REGRESSION_SUITE_v1.9.md" "%SYSROOT%\docs\VALESCO_REGRESSION_SUITE_v1.9.md" "%OUT%\04_OPTIONAL_CONTEXT\VALESCO_REGRESSION_SUITE_v1.9.md"
+call :COPY_FALLBACK "%SYSROOT%\docs\_archive\v1.x\dev\history\mvp_completion_report_v2.1.md" "%SYSROOT%\docs\dev\history\mvp_completion_report_v2.1.md" "%OUT%\04_OPTIONAL_CONTEXT\mvp_completion_report_v2.1.md"
 
 REM ============================================================================
 REM README
@@ -86,6 +86,14 @@ set "SRC=%~1"
 set "DST=%~2"
 if not exist "%SRC%" set /a MISSING+=1 & >>"%MANIFEST%" echo MISS  "%SRC%" & goto :eof
 copy /y "%SRC%" "%DST%" >nul & >>"%MANIFEST%" echo OK    "%SRC%" ^> "%DST%"
+goto :eof
+
+:COPY_FALLBACK
+set "SRC_PRIMARY=%~1"
+set "SRC_FALLBACK=%~2"
+set "DST=%~3"
+if exist "%SRC_PRIMARY%" call :COPY "%SRC_PRIMARY%" "%DST%" & goto :eof
+call :COPY "%SRC_FALLBACK%" "%DST%"
 goto :eof
 
 :WRITE_README
