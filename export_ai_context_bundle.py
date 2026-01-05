@@ -96,6 +96,14 @@ def collect_matching(root: str, patterns):
     return sorted(set(results))
 
 
+def prefer_existing(root: str, primary: str, fallback: str) -> str:
+    primary = rel(primary)
+    fallback = rel(fallback)
+    if os.path.isfile(os.path.join(root, primary)):
+        return primary
+    return fallback
+
+
 # ================================================================
 # CHECKSUM
 # ================================================================
@@ -198,8 +206,23 @@ def get_layer1_files(root):
     # Layer 1 = operational entrypoints and thin wrappers.
     # Keep this layer aligned with the real on-disk structure and avoid duplicating
     # Context Engineering scripts that are already included in Layer 2.
+    legacy_start = prefer_existing(
+        root,
+        r"bin/_archive/v1.x/legacy/start_valesco_v1.9.bat",
+        r"bin/legacy/start_valesco_v1.9.bat",
+    )
+    legacy_merge = prefer_existing(
+        root,
+        r"engine/scripts/_archive/v1.x/merge.py",
+        r"engine/scripts/legacy/merge.py",
+    )
+    legacy_material_manager = prefer_existing(
+        root,
+        r"engine/scripts/_archive/v1.x/material_manager.py",
+        r"engine/scripts/legacy/material_manager.py",
+    )
     patterns = [
-        r"start_valesco_v1.9.bat",  # legacy ops console (non-authoritative)
+        legacy_start,  # legacy ops console (non-authoritative)
         r"run_valesco.py",
         r"export_ai_context_bundle.py",
         r"bin\\*.bat",
@@ -207,8 +230,8 @@ def get_layer1_files(root):
         r"engine\\scripts\\run_tests_portable.py",
         # Historical/legacy operational scripts (still referenced by tooling)
         r"engine\\scripts\\legacy\\prepare_context.py",
-        r"engine\\scripts\\legacy\\material_manager.py",
-        r"engine\\scripts\\legacy\\merge.py",
+        legacy_material_manager,
+        legacy_merge,
         # MVP runners
         r"engine\\scripts\\mvp_runner_v2_1.py",
         r"engine\\scripts\\mvp_runner_v2_2.py",
