@@ -1,0 +1,153 @@
+SNAPSHOT v3.6.0
+AI Guidance Contracts (Inactive for this phase)
+
+option_selection_contract: v2
+missing_item_routing_contract: v2
+variant_generation_contract: v2
+
+AI authority remains limited strictly to these contracts.
+Validator veto applies in all cases.
+No AI or Cortex activation in this phase.
+
+Learning Memory
+
+enabled: false
+enabled_domains: []
+outcome_learning_enabled: false
+
+Learning Memory remains advisory only and does not alter truth, pricing, or validation.
+
+Required Decision Metadata
+
+All AI-led decisions must record:
+
+functional_intent_id
+
+declared_confidence
+
+evidence_count
+
+effective_confidence (system-derived)
+
+learning_memory_used (true/false)
+
+memory_context_hash (if learning memory enabled)
+
+SYSTEM STATE
+implemented / stable
+
+CE Retrieval v2.1
+Router v2.1
+Architect v2.1
+Validator v2.1
+Merge Agent v2.1
+Material Manager v2.1
+Missing-Item Engine v2.1 (States A–E complete)
+Logging / Telemetry v4.x
+Error Handling v4.x
+Performance Optimisation v4.x
+System Packaging v4.x
+Cortex v1.0 (deterministic baseline frozen)
+ELI v1.0
+
+implemented / active
+
+Pack Registry v3.5 (pack-centric pricing authority enforced)
+Estimator Runtime v2.1
+Pricing Engine v2.1
+
+implemented / frozen
+
+Universal Runner v2.2 (real CE backend invocation; mock removed)
+
+pending
+
+(none)
+
+HEALTH
+
+Environment bootstrap: successful
+Canonical test runner: exit code 0 (full suite)
+
+FROZEN SUBSYSTEMS
+
+Any subsystem not listed as active or pending is frozen.
+
+Explicitly frozen for this phase:
+
+CE Retrieval
+Router
+Architect
+Validator
+Missing-Item Engine
+Merge Agent
+Material Manager
+Logging / Telemetry
+Error Handling
+Performance Optimisation
+System Packaging
+Catalog ingestion
+Catalog CE adapter
+CE backend adapter
+Universal Runner v2.2
+
+ACTIVE SUBSYSTEMS
+
+Pack Registry v3.5
+Estimator Runtime v2.1
+Pricing Engine v2.1
+
+ACTIVE SUBSYSTEM MODULE & TEST PATHS
+
+Pack Registry
+
+module path: <VALESCO_ENGINE>/modules/pack_registry_v3_5.py
+
+test path: (none)
+
+Estimator Runtime
+
+module path: <VALESCO_ENGINE>/modules/estimator_runtime_v2_1.py
+
+test path: <VALESCO_ENGINE>/tests/test_estimator_runtime_resource_builder.py
+
+Pricing Engine
+
+module path: <VALESCO_ENGINE>/modules/pricing_engine_v2_1.py
+
+test paths: <VALESCO_ENGINE>/tests/pricing_engine_*
+
+CALL-GRAPH AUTHORISATION
+
+Estimator Runtime → Pricing Engine: allowed
+
+Pricing Engine → CE / Router / Architect / Validator: forbidden
+
+Cortex authority unchanged and restricted per contracts
+
+SYSTEM LIMITATION
+
+Pricing is now authoritative for cost computation.
+Estimator Runtime delegates pricing truth and must not embed pricing logic.
+
+PRICING AUTHORITY (PACK-CENTRIC)
+
+Pricing is ACTIVE and deterministic.
+Pack registry loads once per run, fixed order, before pricing.
+Pricing authority packs:
+- library/packs/valesco_pack.yaml
+- library/core/valesco_materials.yaml
+- library/core/valesco_subcontractors.yaml
+Tasks pack:
+- library/core/valesco_tasks.yaml (productivity-only)
+Pricing fails closed if registry is incomplete.
+
+REALITY INGESTION (NON-AI)
+
+Deterministic CE backend ingestion is present.
+
+OUTSTANDING CONCERNS
+
+(None)
+
+END OF SNAPSHOT v3.6.0

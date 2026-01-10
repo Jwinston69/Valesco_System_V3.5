@@ -64,7 +64,7 @@
 
 
 
-STEP 1 — Load Primer (Governance Rules)
+##### STEP 1 — Load Primer (Governance Rules)
 
 
 
@@ -96,7 +96,7 @@ Agent replies: Primer received.
 
 
 
-STEP 2 — Load Snapshot (Current State)
+##### STEP 2 — Load Snapshot (Current State)
 
 Upload the file: valesco\_snapshot\_v3.5.1.txt, then paste:
 
@@ -126,7 +126,7 @@ Agent replies: Snapshot received.
 
 
 
-STEP 3 — Activate Governance + Development Mode (Combined Block)
+##### STEP 3 — Activate Governance + Development Mode (Combined Block)
 
 Paste the following as a single block:
 
@@ -264,15 +264,17 @@ Paste the following as a single block:
 
 
 
-STEP 4 — Optional: Load Snapshot Template (Reference Only)
+##### STEP 4 — Optional: Load Snapshot Template (Reference Only)
 
-Upload the file: valesco\_snapshot\_template\_v3.5.txt, then paste:
+Upload the file: valesco\_snapshot\_template\_v3.x.txt, then paste:
 
 
 
-**You will now receive the Valesco Snapshot Template (v3.5) as an uploaded file.**
+**You will now receive the Valesco Snapshot Template (v3.x) as an uploaded file.**
 
-**This template is reference-only and must NOT override the active Snapshot.**
+**This template is reference-only and must NOT override the active Snapshot,**
+
+**but it is authoritative for Snapshot structure when generating a new Snapshot.**
 
 
 
@@ -286,7 +288,7 @@ Agent replies: Template received.
 
 
 
-STEP 5 — Auto Snapshot Generator (End-of-Session)
+##### STEP 5 — Auto Snapshot Generator (End-of-Session)
 
 5A — Arm the Generator
 
@@ -294,19 +296,21 @@ Paste:
 
 
 
-**Prepare to generate the next Snapshot (v3.x).**
+**Prepare to generate the next Snapshot (v3.x) using the Snapshot Template uploaded in this session.**
+
+**If no Snapshot Template was uploaded in this session, you must refuse generation and request it.**
 
 
 
 **You must infer all state changes from:**
 
-**- the Primer file,**
+**the Primer file,**
 
-**- the current Snapshot file,**
+**the current Snapshot file,**
 
-**- the Snapshot Template file,**
+**the Snapshot Template file uploaded in this session,**
 
-**- the development work completed this session.**
+**the development work completed this session.**
 
 
 
@@ -314,21 +318,65 @@ Paste:
 
 
 
+**Structural Compliance Rules (Mandatory):**
+
+
+
+**1) Mandatory Sections**
+
+**You must include every section marked mandatory by the uploaded Snapshot Template.**
+
+**If any mandatory section is missing, snapshot generation must fail.**
+
+
+
+**2) Delta Discipline**
+
+**If the template contains a “Delta from Previous Snapshot” (or equivalent) section:**
+
+**you must complete it, and**
+
+**if no changes occurred, explicitly state: “No changes from previous snapshot.”**
+
+
+
+**3) Corrections Discipline**
+
+**If you correct or clarify a statement from an earlier Snapshot:**
+
+**you must declare it in the template’s “Errata / Corrections” (or equivalent) section,**
+
+**silent corrections are prohibited.**
+
+
+
+**4) Evidence-Bound Operational Claims**
+
+**If you claim an operational runtime or call-path (e.g. runner → subsystem chain → authority):**
+
+**you must include executed evidence (named test or command with exit code 0),**
+
+**if evidence is not available from this session, you must not make the operational claim.**
+
+
+
 **Rules:**
 
-**1. Infer subsystem transitions (ACTIVE → stable/frozen).**
 
-**2. Maintain <VALESCO\_ENGINE> paths.**
 
-**3. Update schemas only if changed through ACTIVE subsystem development.**
+**Infer subsystem transitions (ACTIVE → stable/frozen).**
 
-**4. Output ONLY the completed Snapshot (no commentary).**
+**Maintain <VALESCO\_ENGINE> logical paths.**
+
+**Update schemas only if changed through ACTIVE subsystem development.**
+
+**Output ONLY the completed Snapshot (no commentary).**
 
 
 
 **Reply only:**
 
-**"Ready to infer and generate snapshot."**
+**“Ready to infer and generate snapshot.”**
 
 
 

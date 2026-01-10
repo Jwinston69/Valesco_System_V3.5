@@ -1,0 +1,28 @@
+{
+  "A001": {
+    "id": "A001",
+    "description": "Rate A001",
+    "components": {
+      "material": {
+        "rate": 1.0,
+        "unit": "m2"
+      },
+      "labour": null,
+      "plant": null,
+      "overhead": null
+    }
+  },
+  "D004": {
+    "id": "D004",
+    "description": "Rate D004",
+    "components": {
+      "material": {
+        "rate": 3.0,
+        "unit": "m2"
+      },
+      "labour": null,
+      "plant": null,
+      "overhead": null
+    }
+  }
+}

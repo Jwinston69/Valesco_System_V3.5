@@ -1,0 +1,208 @@
+SNAPSHOT TEMPLATE — v3.6+
+SNAPSHOT METADATA
+
+Snapshot version:
+
+Date:
+
+Supersedes snapshot:
+
+Scope type: (activation / clarification / maintenance / archival / correction)
+
+DELTA FROM PREVIOUS SNAPSHOT (MANDATORY)
+
+List only what changed since the prior snapshot.
+
+For each item, use one line:
+
+Subsystem / Area → change summary → verification (test, command, or explicit confirmation)
+
+Example:
+
+MVP Runner v2.2 → pricing path aligned to Pricing Engine v3.4 → test_mvp_runner_pricing_alignment_v2_2.py (pass)
+
+ERRATA / CORRECTIONS (IF APPLICABLE)
+
+Declare any corrections to earlier snapshots without rewriting history.
+
+Format:
+
+Snapshot affected:
+
+Original statement:
+
+Corrected statement:
+
+Reason / evidence:
+
+(If none, state: "None")
+
+AI GUIDANCE CONTRACTS (CARRY FORWARD)
+
+Declare the AI guidance state for the next system snapshot.
+
+Required fields:
+
+option_selection_contract: (version or disabled)
+
+missing_item_routing_contract: (version or disabled)
+
+variant_generation_contract: (version or disabled)
+
+Learning Memory:
+
+enabled: true/false
+
+enabled_domains: [preference, pattern, outcome]
+
+memory_context_version or hash (if enabled)
+
+If AI guidance contracts change, explain why in Snapshot Notes.
+
+SYSTEM STATE (AUTHORITATIVE)
+
+List every subsystem referenced in this snapshot with exactly one state:
+
+implemented/active → permitted to change
+
+implemented/frozen → validated; no changes allowed
+
+implemented/stable → legacy but still relied upon
+
+pending → planned, not yet present
+
+Rules:
+
+Only subsystems explicitly marked active may be modified.
+
+All unlisted subsystems are frozen by default.
+
+Health declaration (required):
+
+Environment bootstrap: required and assumed successful
+
+Canonical test runner: exit code 0 required
+
+ACTIVE SUBSYSTEMS
+
+List all subsystems currently under development. If another subsystem is expected immediately next, mark it as queued.
+
+FROZEN SUBSYSTEMS
+
+List subsystems frozen for this phase. (Anything not listed as active or queued is frozen automatically.)
+
+ACTIVE SUBSYSTEM MODULE & TEST PATHS
+
+For each active subsystem, specify deterministic paths:
+
+module path: <VALESCO_ENGINE>/modules/<subsystem_name>_vX_Y.py
+
+test path: <VALESCO_ENGINE>/tests/test_<subsystem_name>_vX_Y.py
+
+(The environment bootstrap resolves <VALESCO_ENGINE> to its OS path.)
+
+OPERATIONAL PATH DECLARATIONS (MANDATORY WHEN CLAIMED)
+
+If this snapshot claims an operational runtime path (e.g. runner → engine → registry):
+
+Declare explicitly:
+
+Entry point
+
+Call chain
+
+Authority source
+
+Evidence (executed test or command, exit code 0)
+
+No operational-path claim is valid without evidence.
+
+ELI REQUIRED FUNCTIONS
+
+(Include only if ELI is ACTIVE.)
+
+parse_boq_text(text) -> dict
+
+identify_missing_information(parsed) -> list
+
+generate_resource_hints(parsed, missing) -> dict
+
+eli_interpret(text) -> dict
+
+ELI OUTPUT SCHEMA
+
+(Include only if ELI is ACTIVE.) { "parsed": { ... }, "missing_information": [ ... ], "resource_hints": { "labour_categories": [ ... ], "plant_categories": [ ... ], "material_categories": [ ... ], "output_ranges": [ ... ], "assumptions": [ ... ] }, "all_provisional": true }
+
+Provisional Category Rule:
+
+Generic human-readable provisional labour/plant/material categories are allowed.
+
+These are not library items and remain advisory only.
+
+RESOURCE BUILDER REQUIRED FUNCTION
+
+(Include only if Resource Builder is ACTIVE.)
+
+build_resources(eli_output, ce_output) -> dict
+
+RESOURCE BUILDER OUTPUT SCHEMA
+
+(Include only if Resource Builder is ACTIVE.) { "labour": [ ... ], "plant": [ ... ], "materials": [ ... ], "assumptions": [ ... ], "all_provisional": true }
+
+PRICING CONTRACT
+
+Declare the authoritative pricing engine and version.
+
+Rules:
+
+Frozen pricing engines may consume outputs but must not be modified.
+
+Bridging code is permitted only if it respects declared schemas and does not mutate authoritative data.
+
+DESIGN INFERENCE RULE
+
+Missing minor design details do not constitute a fork.
+
+Advisor constraints:
+
+Infer only the minimal structures required to satisfy declared APIs and schemas.
+
+Do not include internal reasoning or implementation detail.
+
+(Applies only to ACTIVE subsystems.)
+
+HEALTH CHECK (MANDATORY)
+
+Environment:
+
+Run: canonical environment bootstrap script
+
+Expect: exit code 0
+
+System tests:
+
+Run: canonical test runner defined in ops/runtime documentation
+
+Expect: exit code 0
+
+A subsystem is not considered healthy without a corresponding passing test suite.
+
+SNAPSHOT NOTES
+
+Short clarifications, rationale, or context that do not change system state.
+
+NEXT REQUIRED STEP
+
+A single deterministic action beginning with the subsystem name.
+
+Examples:
+
+ELI: implement eli_interpret() and corresponding tests.
+
+Resource Builder: implement build_resources() and schema-compliance tests.
+
+CONCERNS
+
+List non-blocking concerns only, one sentence each.
+
+END OF TEMPLATE
