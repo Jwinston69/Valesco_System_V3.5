@@ -83,6 +83,14 @@ def load_jsonl(path: Path) -> List[dict]:
     return items
 
 
+def prefer_existing_path(*relative_paths: str) -> Path:
+    for rel in relative_paths:
+        candidate = ROOT / rel
+        if candidate.exists():
+            return candidate
+    return ROOT / relative_paths[-1]
+
+
 # ----------------------------------------------------------------------
 # Chunk expectations (mirrors chunkers)
 # ----------------------------------------------------------------------
@@ -461,12 +469,16 @@ def build_file_map() -> List[Tuple[Path, str]]:
     mapping: List[Tuple[Path, str]] = []
 
     # Governance
+    manifest_src = prefer_existing_path(
+        "docs/_archive/v1.x/VALESCO_SYSTEM_MANIFEST_v1.9.1.md",
+        "docs/VALESCO_SYSTEM_MANIFEST_v1.9.1.md",
+    )
     governance_files = [
-    ("docs/governance/valesco_instructions.txt", "governance/valesco_instructions.txt"),
-    ("docs/governance/VALESCO_TRUTH_HIERARCHY.md", "governance/VALESCO_TRUTH_HIERARCHY.md"),
-    ("docs/governance/VALESCO_DEVELOPER_CHECKLIST.md", "governance/VALESCO_DEVELOPER_CHECKLIST.md"),
-    ("docs/VALESCO_SYSTEM_MANIFEST_v1.9.1.md", "governance/manifest.md"),
-]
+        ("docs/governance/valesco_instructions.txt", "governance/valesco_instructions.txt"),
+        ("docs/governance/VALESCO_TRUTH_HIERARCHY.md", "governance/VALESCO_TRUTH_HIERARCHY.md"),
+        ("docs/governance/VALESCO_DEVELOPER_CHECKLIST.md", "governance/VALESCO_DEVELOPER_CHECKLIST.md"),
+        (manifest_src, "governance/manifest.md"),
+    ]
 
 
     # Allocator
@@ -497,7 +509,8 @@ def build_file_map() -> List[Tuple[Path, str]]:
     for src, arc in (
         governance_files + allocator_files + library_files + pack_files + chunk_files
     ):
-        mapping.append((ROOT / src, arc))
+        src_path = src if isinstance(src, Path) else ROOT / src
+        mapping.append((src_path, arc))
 
     return mapping
 

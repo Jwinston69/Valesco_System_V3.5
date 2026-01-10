@@ -5,7 +5,11 @@ setlocal EnableExtensions DisableDelayedExpansion
 :: CONFIGURATION
 :: --------------------------------------------------------------------------
 set "WINDOW_TITLE=Valesco v1.9.1 Operations Console [LEGACY]"
-set "ROOT=%~dp0"
+set "ROOT="
+for %%I in ("%~dp0", "%~dp0..", "%~dp0..\..", "%~dp0..\..\..", "%~dp0..\..\..\..") do (
+    if not defined ROOT if exist "%%~fI\engine\python_runtime\python.exe" set "ROOT=%%~fI\"
+)
+if not defined ROOT set "ROOT=%~dp0"
 set "BIN=%ROOT%bin\"
 set "LOCK_FILE=%TEMP%\valesco_v1.9.lock"
 
