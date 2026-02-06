@@ -1,0 +1,161 @@
+SNAPSHOT v3.7.8
+
+AI Guidance Contracts (Inactive for this phase)
+
+option_selection_contract: v2
+missing_item_routing_contract: v2
+variant_generation_contract: v2
+
+AI authority remains inactive.
+Validator veto applies in all cases.
+No AI or Cortex activation in this phase.
+
+SYSTEM STATE
+
+implemented / stable
+
+CE Retrieval v2.1
+Router v2.1
+Architect v2.1
+Validator v2.1
+Merge Agent v2.1
+Material Manager v2.1
+Missing-Item Engine v2.1 (States A–E complete)
+Logging / Telemetry v4.x
+Error Handling v4.x
+Performance Optimisation v4.x
+System Packaging v4.x
+Cortex v1.0 (deterministic baseline)
+ELI v1.0
+
+implemented / frozen (validated and wired)
+
+Pack Registry v3.5
+Pricing Engine v3.4
+Estimator Runtime v2.1
+Catalog Ingestion v3.0
+
+implemented / active
+
+(none)
+
+FROZEN SUBSYSTEMS
+
+CE Retrieval
+Router
+Architect
+Validator
+Missing-Item Engine
+Merge Agent
+Material Manager
+Logging / Telemetry
+Error Handling
+Performance Optimisation
+System Packaging
+Catalog CE Adapter
+CE Backend Adapter
+Universal Runner v2.2
+Pack Registry v3.5
+Pricing Engine v3.4
+Estimator Runtime v2.1
+Catalog Ingestion v3.0
+Cortex v1.0
+ELI v1.0
+
+Rule: any subsystem not listed as active or queued is frozen automatically.
+
+OPERATIONAL PRICING AUTHORITY (PACK-CENTRIC)
+
+Operational pricing authority path:
+
+MVP Runner v2.2 → Estimator Runtime v2.1 → Pricing Engine v3.4 → Pack Registry v3.5 + Rate Library
+
+Mock pricing (pricing_logic_v2_1 / static mock tables) is not used for operational MVP pricing.
+
+Required authority packs:
+
+library/packs/valesco_pack.yaml
+
+library/core/valesco_materials.yaml
+
+library/core/valesco_subcontractors.yaml
+
+Productivity-only pack (non-authority):
+
+library/core/valesco_tasks.yaml
+
+Operational prerequisite:
+
+VALESCO_RATE_LIBRARY_PATH must be configured; pricing fails closed when missing or invalid.
+
+ACTIVE SUBSYSTEMS
+
+(none)
+
+ACTIVE SUBSYSTEM MODULE & TEST PATHS
+
+(none)
+
+HEALTH CHECK
+
+Environment bootstrap: required and assumed successful.
+
+Canonical test runner:
+
+Run: engine/scripts/run_tests_portable.py (no VALESCO_TEST_PATTERN)
+
+Result: exit code 0 (verified this session)
+
+Targeted suites executed this session (exit code 0):
+
+<VALESCO_ENGINE>/tests/test_pack_registry_v3_5.py
+
+<VALESCO_ENGINE>/tests/pricing_engine_test_suite_v3_4.py
+
+<VALESCO_ENGINE>/tests/test_catalog_ingestion_v3_0.py
+
+<VALESCO_ENGINE>/tests/test_mvp_runner_pricing_alignment_v2_2.py
+
+<VALESCO_ENGINE>/tests/test_estimator_runtime_resource_builder.py
+
+Runtime verification evidence:
+
+MVP runner pricing succeeds with valid VALESCO_RATE_LIBRARY_PATH.
+
+Fail-closed verified for missing or invalid VALESCO_RATE_LIBRARY_PATH.
+
+Fail-closed verified at READY gate when a required authority pack file is absent.
+
+Fail-closed verified post-initialisation when Pack Registry is initialised but incomplete (test-only hardening).
+
+Determinism:
+
+Pricing outputs are deterministic for identical inputs.
+
+Timestamp-prefixed log lines are the only non-deterministic elements and were normalised for comparison.
+
+RATE LIBRARY VALIDATION (CLARIFIED)
+
+Rate library is structurally ingested and validated via the rate library ingestion pipeline
+(engine/modules/rate_library_ingestion_v3_1.py, via rate_retrieval_v3_2.py).
+
+There is no external standalone schema file validation contract beyond this ingestion logic.
+
+SYSTEM LIMITATIONS
+
+Determinism excludes timestamp-prefixed log lines.
+
+Catalog Ingestion v3.0 is limited to deterministic normalization and serialization.
+
+No CE adapter or backend integration exists at this stage.
+
+NEXT REQUIRED STEP
+
+Activate and govern the Catalog CE Adapter and CE Backend Adapter subsystems, defining the deterministic integration contract from Catalog Ingestion outputs into CE ingestion, without modifying frozen Catalog Ingestion v3.0.
+
+SNAPSHOT INTEGRITY STATEMENT
+
+This Snapshot reflects verified runtime behaviour and executed test evidence only.
+No future intent, planned wiring, or untested assumptions are recorded.
+
+END OF SNAPSHOT v3.7.8

@@ -1,0 +1,149 @@
+SNAPSHOT v3.7.7
+
+AI Guidance Contracts (Inactive for this phase)
+
+option_selection_contract v2
+missing_item_routing_contract v2
+variant_generation_contract v2
+
+AI authority remains inactive.
+Validator veto applies in all cases.
+No AI or Cortex activation in this phase.
+
+Learning Memory
+
+enabled false
+enabled_domains []
+outcome_learning_enabled false
+
+SYSTEM STATE
+
+implemented  stable
+
+CE Retrieval v2.1
+Router v2.1
+Architect v2.1
+Validator v2.1
+Merge Agent v2.1
+Material Manager v2.1
+Missing-Item Engine v2.1 (States A–E complete)
+Logging  Telemetry v4.x
+Error Handling v4.x
+Performance Optimisation v4.x
+System Packaging v4.x
+Cortex v1.0 (deterministic baseline)
+ELI v1.0
+
+implemented  frozen (validated and wired)
+
+Pack Registry v3.5
+Pricing Engine v3.4
+Estimator Runtime v2.1
+Catalog Ingestion v3.0
+
+implemented  active
+
+(none)
+
+FROZEN SUBSYSTEMS
+
+CE Retrieval
+Router
+Architect
+Validator
+Missing-Item Engine
+Merge Agent
+Material Manager
+Logging  Telemetry
+Error Handling
+Performance Optimisation
+System Packaging
+Catalog CE Adapter
+CE Backend Adapter
+Universal Runner v2.2
+Pack Registry v3.5
+Pricing Engine v3.4
+Estimator Runtime v2.1
+Catalog Ingestion v3.0
+Cortex v1.0
+ELI v1.0
+
+Rule any subsystem not listed as active or queued is frozen automatically.
+
+OPERATIONAL PRICING AUTHORITY (PACK-CENTRIC)
+
+Operational pricing authority path
+
+MVP Runner v2.2 → Estimator Runtime v2.1 → Pricing Engine v3.4 → Pack Registry v3.5 + Rate Library
+
+Mock pricing (pricing_logic_v2_1  static mock tables) is not used for operational MVP pricing.
+
+Required authority packs
+
+librarypacksvalesco_pack.yaml
+
+librarycorevalesco_materials.yaml
+
+librarycorevalesco_subcontractors.yaml
+
+Productivity-only pack (non-authority)
+
+librarycorevalesco_tasks.yaml
+
+Operational prerequisite
+
+VALESCO_RATE_LIBRARY_PATH must be configured; pricing fails closed when missinginvalid.
+
+ACTIVE SUBSYSTEMS
+
+(none)
+
+ACTIVE SUBSYSTEM MODULE & TEST PATHS
+
+(none)
+
+HEALTH CHECK
+
+Environment bootstrap required and assumed successful
+
+Canonical test runner
+
+Run enginescriptsrun_tests_portable.py (no VALESCO_TEST_PATTERN)
+
+Expect exit code 0
+
+Result exit code 0 (verified this session)
+
+Targeted suites executed this session (exit code 0)
+
+VALESCO_ENGINEteststest_pack_registry_v3_5.py
+
+VALESCO_ENGINEtestspricing_engine_test_suite_v3_4.py
+
+VALESCO_ENGINEteststest_catalog_ingestion_v3_0.py
+
+VALESCO_ENGINEteststest_mvp_runner_pricing_alignment_v2_2.py
+
+VALESCO_ENGINEteststest_estimator_runtime_resource_builder.py
+
+Runtime verification evidence (this session)
+
+MVP runner pricing succeeds with valid VALESCO_RATE_LIBRARY_PATH
+
+Fail-closed verified for missinginvalid VALESCO_RATE_LIBRARY_PATH
+
+Fail-closed verified for missing authority pack (ready gate)
+
+Fail-closed verified for incomplete authority state after registry initialization (test-only hardening)
+
+NEXT REQUIRED STEP
+
+Catalog Ingestion define and implement a deterministic CE adapterbackend integration contract and baseline tests (no RouterArchitectValidator calls).
+
+CONCERNS
+
+Timestamp-prefixed log lines introduce benign non-determinism in raw runner transcripts; normalized comparison is required for deterministic diffing.
+
+Rate library schema validation is not asserted at runtime beyond existencereadability checks.
+
+END OF SNAPSHOT v3.7.7

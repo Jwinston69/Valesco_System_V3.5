@@ -1,0 +1,164 @@
+Valesco Session Snapshot — v3.7.6
+
+(Phase transition: operational pricing alignment authorised)
+
+AI Guidance Contracts (Inactive)
+
+option_selection_contract: v2
+missing_item_routing_contract: v2
+variant_generation_contract: v2
+
+AI authority remains inactive.
+Validator veto applies in all cases.
+No AI or Cortex activation is permitted.
+
+Required Decision Metadata (Defined, Not Used)
+
+Defined for traceability only; applies only if AI Guidance is activated in a future Snapshot.
+
+functional_intent_id
+
+declared_confidence
+
+evidence_count
+
+effective_confidence (system-derived)
+
+learning_memory_used (true/false)
+
+memory_context_hash (if learning memory enabled)
+
+Learning Memory
+
+enabled: false
+enabled_domains: []
+outcome_learning_enabled: false
+
+Learning Memory remains advisory only and does not alter truth, pricing, or validation.
+
+SYSTEM STATE
+implemented / stable
+
+CE Retrieval v2.1
+Router v2.1
+Architect v2.1
+Validator v2.1
+Merge Agent v2.1
+Material Manager v2.1
+Missing-Item Engine v2.1 (States A–E complete)
+Logging / Telemetry v4.x
+Error Handling v4.x
+Performance Optimisation v4.x
+System Packaging v4.x
+Cortex v1.0 (deterministic baseline)
+ELI v1.0
+
+implemented / frozen (validated in prior phases)
+
+Pack Registry v3.5
+Pricing Engine v3.4
+
+implemented / active
+
+Catalog Ingestion v3.0
+
+Deterministic catalog normalization and serialization utility.
+Baseline deterministic tests present and passing.
+No CE adapter or backend ingestion integration in this phase.
+
+implemented / pending (new phase)
+
+Estimator Runtime v2.1 — operational pricing alignment
+
+Purpose:
+Align the MVP / operational runner pricing path with pack-centric Pricing Engine authority.
+
+SUBSYSTEM PATHS
+Catalog Ingestion v3.0 (ACTIVE)
+
+module path: <VALESCO_ENGINE>/modules/catalog_ingestion_v3_0.py
+test path: <VALESCO_ENGINE>/tests/test_catalog_ingestion_v3_0.py
+
+Estimator Runtime v2.1 (PENDING)
+
+module path: <VALESCO_ENGINE>/modules/estimator_runtime_v2_1.py
+test path: <VALESCO_ENGINE>/tests/test_estimator_runtime_resource_builder.py
+
+PRICING AUTHORITY (PACK-CENTRIC)
+
+Pricing authority is deterministic and pack-centric for all authoritative pricing paths.
+
+Required pricing authority packs:
+
+library/packs/valesco_pack.yaml
+
+library/core/valesco_materials.yaml
+
+library/core/valesco_subcontractors.yaml
+
+Productivity-only pack:
+
+library/core/valesco_tasks.yaml
+
+Pricing must fail closed if authority packs are missing.
+
+CALL-GRAPH AUTHORISATION (Updated)
+
+Estimator Runtime → Pricing Engine: required
+
+Pricing Engine authority rule (inputs):
+Pricing Engine pricing authority inputs must derive from an initialized Pack Registry with required authority packs present.
+Internal pricing support modules (e.g. rate retrieval, rate build-up) remain permitted.
+
+Pricing Engine → CE / Router / Architect / Validator: forbidden
+
+Catalog Ingestion → Router / Architect / Validator: forbidden
+
+SYSTEM LIMITATIONS
+
+AI-led decision authority remains inactive.
+
+Operational MVP runner pricing is authorised to be migrated from pricing_logic_v2_1 to Pricing Engine v3.4 in this phase.
+
+Mock pricing is no longer considered acceptable for operational MVP runs once this phase completes.
+
+REALITY INGESTION (NON-AI)
+
+Deterministic CE backend ingestion remains unchanged.
+
+No AI-mediated ingestion or mutation paths exist.
+
+HEALTH (Baseline)
+
+Environment bootstrap: required and assumed successful
+Canonical test runner: exit code 0 required for phase completion
+
+FROZEN SUBSYSTEMS (Explicit)
+
+CE Retrieval
+Router
+Architect
+Validator
+Missing-Item Engine
+Merge Agent
+Material Manager
+Logging / Telemetry
+Error Handling
+Performance Optimisation
+System Packaging
+Catalog CE adapter
+CE backend adapter
+Universal Runner v2.2
+Pack Registry v3.5
+Pricing Engine v3.4
+Cortex v1.0
+ELI v1.0
+
+Rule: Any subsystem not listed as ACTIVE or PENDING is frozen.
+
+NEXT REQUIRED STEP
+
+Estimator Runtime:
+Replace operational mock pricing path with pack-centric Pricing Engine invocation and remove reliance on pricing_logic_v2_1 for MVP execution.
+
+END OF SNAPSHOT v3.7.6
