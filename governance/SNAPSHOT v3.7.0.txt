@@ -1,0 +1,78 @@
+Valesco Session Snapshot — v3.7.0
+AI Guidance Contracts
+
+Inactive for this phase
+(No AI-led option selection, routing, or variant generation)
+
+Learning Memory
+
+Disabled
+(advisory-only, no truth mutation)
+
+SYSTEM STATE
+implemented / stable
+
+CE Retrieval v2.1
+Router v2.1
+Architect v2.1
+Validator v2.1
+Merge Agent v2.1
+Material Manager v2.1
+Missing-Item Engine v2.1
+Logging / Telemetry v4.x
+Error Handling v4.x
+Performance Optimisation v4.x
+System Packaging v4.x
+Cortex v1.0 (deterministic baseline)
+ELI v1.0
+
+implemented / frozen (validated in this phase)
+
+Pack Registry v3.5
+Estimator Runtime v2.1
+Pricing Engine v3.4
+
+All pricing authority boundaries enforced, fail-closed, fully tested.
+
+implemented / active (new phase)
+
+Catalog Ingestion v1.0
+(Data normalisation, schema enforcement, and deterministic feed into CE)
+
+pending
+
+(none)
+
+ACTIVE SUBSYSTEM MODULE & TEST PATHS
+Catalog Ingestion
+
+module path:
+<VALESCO_ENGINE>/modules/catalog_ingestion_v1_0.py
+
+test path:
+<VALESCO_ENGINE>/tests/test_catalog_ingestion_v1_0.py
+
+CALL-GRAPH AUTHORISATION
+
+Catalog Ingestion → CE Adapter: allowed
+Catalog Ingestion → CE Backend: allowed (deterministic, non-AI)
+Catalog Ingestion → Router / Architect / Validator: forbidden
+Estimator Runtime → Pricing Engine: allowed
+Pricing Engine → Pack Registry outputs only
+
+SYSTEM ASSERTIONS
+
+Pricing is authoritative, pack-centric, and fail-closed
+
+No subsystem performs inferred pricing
+
+Snapshot reflects verified runtime imports and test coverage
+
+All frozen subsystems are protected from modification
+
+HEALTH
+
+Environment bootstrap: successful
+Canonical test runner: exit code 0 (full suite)
+
+END OF SNAPSHOT v3.7.0

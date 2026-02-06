@@ -1,6 +1,6 @@
-Valesco Session Snapshot — v3.7.5
+Valesco Session Snapshot — v3.7.4
 
-(Scope clarification only; no code or activation changes)
+(State transition only: Catalog Ingestion activation)
 
 AI Guidance Contracts (Inactive)
 
@@ -75,7 +75,7 @@ test path: <VALESCO_ENGINE>/tests/test_catalog_ingestion_v3_0.py
 
 PRICING AUTHORITY (PACK-CENTRIC)
 
-Pricing authority is deterministic and pack-centric within the Pricing Engine path.
+Pricing authority is deterministic and pack-centric.
 
 Required pricing authority packs:
 
@@ -89,7 +89,7 @@ Productivity-only pack:
 
 library/core/valesco_tasks.yaml (must not be treated as pricing authority)
 
-Pricing fails closed if the authority registry is incomplete when the Pricing Engine path is invoked.
+Pricing fails closed if the authority registry is incomplete.
 
 CALL-GRAPH AUTHORISATION (Clarified)
 
@@ -106,11 +106,9 @@ Catalog Ingestion must not call Router / Architect / Validator in this phase.
 
 SYSTEM LIMITATIONS
 
-AI-led decision authority is inactive.
+No AI-led decision authority is active.
 
-Operational MVP runner pricing currently uses pricing_logic_v2_1 with mock pricing data and is not pack-authoritative.
-
-Pack-centric pricing authority applies to the Pricing Engine execution path only and is not yet wired into the MVP runner.
+No pricing inference or fallback logic is permitted outside Pack Registry authority.
 
 Catalog Ingestion does not integrate with CE adapters or backends in this phase.
 
@@ -135,10 +133,6 @@ test_estimator_runtime_resource_builder.py
 test_catalog_ingestion_v3_0.py
 
 Test execution evidence recorded (no coverage metrics implied).
-
-CONCERNS
-
-Operational MVP runner pricing is not yet aligned with Pricing Engine v3.4 pack-centric authority; migration will require re-activating Estimator Runtime and updating runner wiring in a future phase.
 
 FROZEN SUBSYSTEMS (Explicit)
 
@@ -166,4 +160,4 @@ ELI v1.0
 
 Rule: Any subsystem not listed as ACTIVE or PENDING is frozen.
 
-END OF SNAPSHOT v3.7.5
+END OF SNAPSHOT v3.7.4

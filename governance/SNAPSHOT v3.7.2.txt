@@ -1,6 +1,6 @@
-Valesco Session Snapshot — v3.7.5
+Valesco Session Snapshot — v3.7.2
 
-(Scope clarification only; no code or activation changes)
+(Governance clarification only; no scope expansion)
 
 AI Guidance Contracts (Inactive)
 
@@ -14,7 +14,7 @@ No AI or Cortex activation is permitted.
 
 Required Decision Metadata (Defined, Not Used)
 
-Defined for traceability only; applies only if AI Guidance is activated in a future Snapshot:
+The following metadata schema remains defined for traceability only and applies only if AI Guidance is activated in a future Snapshot:
 
 functional_intent_id
 
@@ -50,10 +50,10 @@ Logging / Telemetry v4.x
 Error Handling v4.x
 Performance Optimisation v4.x
 System Packaging v4.x
-Cortex v1.0 (deterministic baseline)
+Cortex v1.0
 ELI v1.0
 
-implemented / frozen (validated in this phase via targeted suites)
+implemented / frozen (validated in prior phases)
 
 Pack Registry v3.5
 Estimator Runtime v2.1
@@ -61,21 +61,24 @@ Pricing Engine v3.4
 
 implemented / active
 
-Catalog Ingestion v3.0
+(none)
 
+implemented / pending
+
+Catalog Ingestion v3.0
 Deterministic catalog normalization and serialization utility.
-Baseline deterministic tests present and passing.
 No CE adapter or backend ingestion integration in this phase.
+Activation gated on baseline test coverage.
 
 SUBSYSTEM PATHS
-Catalog Ingestion v3.0 (ACTIVE)
+Catalog Ingestion v3.0 (PENDING)
 
 module path: <VALESCO_ENGINE>/modules/catalog_ingestion_v3_0.py
-test path: <VALESCO_ENGINE>/tests/test_catalog_ingestion_v3_0.py
+test path: (none — baseline tests required before activation)
 
 PRICING AUTHORITY (PACK-CENTRIC)
 
-Pricing authority is deterministic and pack-centric within the Pricing Engine path.
+Pricing authority is deterministic and pack-centric.
 
 Required pricing authority packs:
 
@@ -89,7 +92,7 @@ Productivity-only pack:
 
 library/core/valesco_tasks.yaml (must not be treated as pricing authority)
 
-Pricing fails closed if the authority registry is incomplete when the Pricing Engine path is invoked.
+Pricing fails closed if the authority registry is incomplete.
 
 CALL-GRAPH AUTHORISATION (Clarified)
 
@@ -104,41 +107,17 @@ Pricing Engine → CE / Router / Architect / Validator: forbidden
 Catalog Ingestion scope rule:
 Catalog Ingestion must not call Router / Architect / Validator in this phase.
 
-SYSTEM LIMITATIONS
-
-AI-led decision authority is inactive.
-
-Operational MVP runner pricing currently uses pricing_logic_v2_1 with mock pricing data and is not pack-authoritative.
-
-Pack-centric pricing authority applies to the Pricing Engine execution path only and is not yet wired into the MVP runner.
-
-Catalog Ingestion does not integrate with CE adapters or backends in this phase.
-
-REALITY INGESTION (NON-AI)
-
-Deterministic CE backend ingestion is present and unchanged.
-
-No AI-mediated ingestion or mutation paths exist.
-
 HEALTH (Evidence-based)
 
 Canonical test runner (default suite): exit code 0
 
 Additional targeted suites executed this phase (exit code 0):
 
-pricing_engine_test_suite_v3_4.py
+pricing_engine_test_suite_v3_4.py (patterned)
 
-test_pack_registry_v3_5.py
-
-test_estimator_runtime_resource_builder.py
-
-test_catalog_ingestion_v3_0.py
+test_pack_registry_v3_5.py (patterned)
 
 Test execution evidence recorded (no coverage metrics implied).
-
-CONCERNS
-
-Operational MVP runner pricing is not yet aligned with Pricing Engine v3.4 pack-centric authority; migration will require re-activating Estimator Runtime and updating runner wiring in a future phase.
 
 FROZEN SUBSYSTEMS (Explicit)
 
@@ -166,4 +145,4 @@ ELI v1.0
 
 Rule: Any subsystem not listed as ACTIVE or PENDING is frozen.
 
-END OF SNAPSHOT v3.7.5
+END OF SNAPSHOT v3.7.2
