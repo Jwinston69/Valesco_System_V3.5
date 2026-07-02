@@ -1,0 +1,185 @@
+SNAPSHOT v3.7.11
+
+Status: current snapshot
+
+Purpose:
+
+Runtime boundary and documentation reconciliation after PR #2 and PR #3.
+
+Prior snapshot:
+
+governance/SNAPSHOT v3.7.10.txt
+
+AUTHORITY POSITION
+
+This snapshot supersedes v3.7.10 for current runtime-state documentation.
+
+This snapshot does not introduce new architecture.
+
+This snapshot does not activate AI authority, Cortex, ELI, or any AI-assisted
+pricing authority.
+
+This snapshot does not make live CE backend integration operational.
+
+AI authority remains inactive.
+Validator veto applies in all cases.
+No AI or Cortex activation is recorded by this snapshot.
+
+RUNTIME PHASE MODEL
+
+Settled runtime phase model:
+
+CE retrieval
+-> Router
+-> Architect
+-> Validator
+-> Estimator Runtime decision adapter
+-> Merge Agent
+-> post-merge quantity/pricing
+
+RUNTIME MODE CLASSIFICATION
+
+Deterministic interface REPL:
+
+run_valesco.py
+bin/run_valesco_portable.bat
+
+This mode uses mock/static CE retrieval before entering the shared kernel
+boundary.
+
+Quantity/pricing execution mode:
+
+engine/scripts/mvp_runner_v2_2.py
+
+This mode uses the CE backend command harness before entering the shared kernel
+boundary and executes explicit quantity/pricing commands.
+
+The two runtime modes share the kernel boundary but are not a single merged
+runtime.
+
+KERNEL BOUNDARY POSITION
+
+Kernel decision chain:
+
+Router
+-> Architect
+-> Validator
+
+Estimator Runtime:
+
+Decision adapter only. It is not pricing authority and is not kernel.
+
+Merge Agent:
+
+State integration / kernel output boundary.
+
+Quantity and pricing:
+
+Post-merge extensions only.
+
+CE acquisition:
+
+Pre-kernel only.
+
+PHASE 1 IMPLEMENTATION RECORD
+
+PR #2 aligned run_valesco.py Validator wrapping with
+engine/scripts/mvp_runner_v2_2.py.
+
+Invalid Validator output is preserved unchanged.
+
+Manual valid-only Validator overwrite was removed.
+
+New boundary regression tests were added.
+
+No pricing maths, CE retrieval, Merge Agent, READY gate, Pack Registry, or
+Estimator Runtime compatibility functions were changed.
+
+DOCUMENTATION RECONCILIATION RECORD
+
+PR #3 updated README.md and bin/README.md.
+
+Stale current-state reference to governance/valesco_snapshot_v3.5.txt was
+removed.
+
+README.md now references governance/SNAPSHOT v3.7.10.txt as the previous latest
+verified snapshot. This v3.7.11 snapshot becomes the current state.
+
+Runtime modes, phase model, CE backend limitation, portable runner behaviour,
+and validate.bat status are now documented.
+
+VALIDATION EVIDENCE
+
+Validation already reported after PR #2 and PR #3:
+
+Boundary tests passed.
+
+engine/scripts/run_tests_portable.py default runner passed.
+
+Snapshot v3.7.10 targeted suites passed:
+
+test_pack_registry_v3_5.py
+pricing_engine_test_suite_v3_4.py
+test_catalog_ingestion_v3_0.py
+test_mvp_runner_pricing_alignment_v2_2.py
+test_estimator_runtime_resource_builder.py
+
+CE backend harness tests passed.
+
+MVP pricing path passed with valid VALESCO_RATE_LIBRARY_PATH.
+
+Missing VALESCO_RATE_LIBRARY_PATH failed closed as expected.
+
+Missing Pack Registry authority pack failed closed as expected.
+
+PR #3 documentation checks passed.
+
+main was clean after both merges.
+
+FROZEN / UNCHANGED COMPONENTS
+
+The following remain unchanged by v3.7.11:
+
+pricing_engine_v3_4.py
+quantity_logic_v2_1.py
+ce_retrieval_layer_v2_1.py
+Merge Agent
+READY gate
+Pack Registry
+
+Estimator Runtime compatibility functions:
+
+estimator_runtime_price_snapshot()
+estimator_runtime_resource_step()
+
+EXPLICIT NON-CLAIMS
+
+v3.7.11 does not prove live production CE backend integration.
+
+v3.7.11 does not make mvp_runner_v2_2.py the only runtime entry point.
+
+v3.7.11 does not merge the two runtime modes.
+
+v3.7.11 does not introduce pricing, quantity, CE, or Merge Agent logic changes.
+
+v3.7.11 does not introduce AI operational authority.
+
+CURRENT STATUS SUMMARY
+
+Repository is stable after Phase 1 boundary alignment.
+
+Runtime mode distinction is documented.
+
+Main is clean and validated.
+
+No active development subsystem is introduced by this snapshot.
+
+SNAPSHOT INTEGRITY STATEMENT
+
+This Snapshot records the settled VALESCO runtime boundary and documentation
+state after PR #2 and PR #3.
+
+No runtime behaviour, architecture, code, tests, pricing logic, quantity logic,
+CE logic, or Merge Agent logic is changed by this snapshot.
+
+END OF SNAPSHOT v3.7.11
