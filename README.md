@@ -1,142 +1,104 @@
-\# Valesco System v3.5 (GitHub Context)
+# Valesco System v3.5
 
+Valesco System is a deterministic estimating engine MVP with a governed,
+modular pipeline for processing scope descriptions and producing consistent,
+auditable outputs. It is designed to run locally with strict separation of
+concerns and no learning side effects.
 
+## What this repository contains
 
-Valesco System is a deterministic estimating engine MVP with a governed, modular
+- Deterministic engine modules for CE retrieval routing, validation, estimator
+  runtime, merge, pricing, and resource grouping.
+- Runner scripts for interactive and programmatic flows under `engine/scripts/`
+  and portable launchers under `bin/`.
+- Test suites that enforce determinism and schema compliance under
+  `engine/tests/`.
+- Governance snapshots and DIBs that declare system state and allowed changes
+  under `governance/`.
+- Static library data, packs, and catalog inputs under `library/`.
 
-pipeline for processing scope descriptions and producing consistent, auditable
+## Runtime modes
 
-outputs. It is designed to be run locally with strict separation of concerns
+The repository currently exposes two runtime modes that share the same kernel
+boundary model but differ in how they are invoked.
 
-and no learning side effects.
+- `run_valesco.py` and `bin/run_valesco_portable.bat` provide the deterministic
+  interface REPL. This path uses the mock/static CE retrieval layer in
+  `engine/modules/ce_retrieval_layer_v2_1.py` before entering the kernel.
+- `engine/scripts/mvp_runner_v2_2.py` provides the MVP execution path for
+  quantity and pricing commands. This path can invoke a CE backend command harness
+  before entering the kernel.
 
+## Runtime phase model
 
+The stable execution order is:
 
-\## What this repository contains
-
-
-
-\- Deterministic engine modules for CE retrieval routing, validation, estimator
-
-&nbsp; runtime, merge, pricing, and resource grouping.
-
-\- Runner scripts for interactive and programmatic flows under `engine/scripts/`.
-
-\- Test suites that enforce determinism and schema compliance under `engine/tests/`.
-
-\- Governance snapshots and DIBs that declare system state and allowed changes
-
-&nbsp; under `governance/`.
-
-\- Static library data (packs, catalog) under `library/`.
-
-
-
-\## Core pipeline (high level)
-
-
-
-CE backend -> Router -> Architect -> Validator -> Estimator Runtime -> Merge Agent
-
-
-
-Pricing and quantity operations are separate, explicit steps in the runner
-
-scripts and test suites.
-
-
-
-\## CE backend configuration (runner scripts)
-
-
-
-Runner scripts (e.g., `engine/scripts/mvp\_runner\_v2\_2.py`) invoke a CE backend
-
-via environment variables:
-
-
-
-\- `VALESCO\_CE\_BACKEND\_CMD`: full command to execute
-
-\- `VALESCO\_CE\_BACKEND\_SCRIPT`: Python script path (invoked with the runner's
-
-&nbsp; interpreter)
-
-
-
-The backend reads JSON from stdin with:
-
-
-
+```text
+CE retrieval
+-> Router
+-> Architect
+-> Validator
+-> Estimator Runtime decision adapter
+-> Merge Agent
+-> post-merge quantity/pricing
 ```
 
+CE retrieval is pre-kernel. Router, Architect, Validator, and Merge Agent form
+the shared kernel pipeline. Estimator Runtime compatibility logic acts as the
+decision adapter at the kernel boundary. Quantity and pricing operations are
+explicit post-merge steps; the interface REPL may not exercise them, while the
+MVP runner does through explicit commands.
+
+## CE backend configuration
+
+`engine/scripts/mvp_runner_v2_2.py` can invoke a CE backend through environment
+variables:
+
+- `VALESCO_CE_BACKEND_CMD`: full command to execute
+- `VALESCO_CE_BACKEND_SCRIPT`: Python script path, invoked with the runner's
+  interpreter
+
+The backend reads JSON from stdin:
+
+```json
 {"description": "<scope text>"}
-
 ```
 
+and returns JSON:
 
-
-and returns JSON with:
-
-
-
-```
-
+```json
 {
-
-&nbsp; "hit\_count": int,
-
-&nbsp; "top\_score": float | null,
-
-&nbsp; "score\_gap\_to\_next": float | null,
-
-&nbsp; "coverage\_flags": dict,
-
-&nbsp; "retrieved\_items": list\[dict]
-
+  "hit_count": 0,
+  "top_score": null,
+  "score_gap_to_next": null,
+  "coverage_flags": {},
+  "retrieved_items": []
 }
-
 ```
 
+The CE backend harness is covered by tests with controlled stubs. Live
+production CE backend integration is not proven by the current repository
+validation.
 
-
-\## Running tests
-
-
+## Running tests
 
 Use the portable test runner:
 
-
-
+```bat
+engine\python_runtime\python.exe engine\scripts\run_tests_portable.py
 ```
 
-engine/python\_runtime/python.exe engine/scripts/run\_tests\_portable.py
+By default, the portable runner executes the configured default integration
+suite rather than full repository discovery. Targeted suites can be selected
+with `VALESCO_TEST_PATTERN`:
 
+```bat
+set VALESCO_TEST_PATTERN=integration_test_suite_v2_1.py
+engine\python_runtime\python.exe engine\scripts\run_tests_portable.py
 ```
 
+## System state
 
+The latest verified system status is tracked in:
 
-You can override the discovery pattern:
-
-
-
-```
-
-set VALESCO\_TEST\_PATTERN=integration\_test\_suite\_v2\_1.py
-
-```
-
-
-
-\## System state
-
-
-
-The current system status (active/frozen/pending subsystems) is tracked in:
-
-
-
-\- `governance/valesco\_snapshot\_v3.5.txt`
-
-
-
+- `governance/SNAPSHOT v3.7.10.txt`
