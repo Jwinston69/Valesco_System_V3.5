@@ -65,6 +65,18 @@ def _print_ready_summary_line_safely(ready_summary_line):
         )
 
 
+def _wrap_validator_output(core_result, architect_output):
+    """
+    Attach Architect payload to Validator result for Estimator Runtime,
+    without changing the validation decision.
+    """
+    if core_result.get("valid"):
+        wrapped = dict(core_result)
+        wrapped["payload"] = architect_output
+        return wrapped
+    return core_result
+
+
 def main():
     # Refuse to start the REPL unless governance READY passes.
     ok, report_lines, ready_summary_line = evaluate_ready(PROJECT_ROOT)
@@ -112,19 +124,12 @@ def main():
             architect_output = build_arch(router_output)
 
             # 4. Validator
-            validator_output = validate_fn(ce_output, router_output, architect_output)
+            validator_core = validate_fn(ce_output, router_output, architect_output)
+            validator_output = _wrap_validator_output(validator_core, architect_output)
 
-            if not validator_output.get("valid"):
-                print("\nVALIDATION FAILURE:", validator_output)
+            if not validator_core.get("valid"):
+                print("\nVALIDATION FAILURE:", validator_core)
                 continue
-
-            # Runtime wants payload packaged inside Validator output
-            validator_output = {
-                "valid": True,
-                "violation_code": None,
-                "message": "OK",
-                "payload": architect_output,
-            }
 
             # 5. Estimator Runtime (phase 1)
             runtime_out = runtime_step(validator_output)
