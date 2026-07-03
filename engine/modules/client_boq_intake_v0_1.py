@@ -403,3 +403,104 @@ def _clean_text(value: Any) -> str:
 
 def _normalize_header(value: str) -> str:
     return " ".join(_clean_text(value).lower().replace("_", " ").split())
+
+
+def build_client_boq_intake_review_summary(intake_result: Dict[str, Any]) -> Dict[str, Any]:
+    """Summarise an existing intake result for controlled estimator review."""
+    rows = list(intake_result.get("rows") or [])
+    grouped_rows = {
+        "passed": [],
+        "blocked": [],
+        "warning": [],
+        "excluded": [],
+        "review_required": [],
+    }
+    validation_messages = {
+        "workbook": list(intake_result.get("workbook_messages") or []),
+        "column_mapping": list(intake_result.get("column_mapping_messages") or []),
+        "rows": [],
+    }
+
+    has_fail = _status_is_fail_closed(intake_result.get("workbook_status")) or _status_is_fail_closed(
+        intake_result.get("column_mapping_status")
+    )
+    has_review = _status_requires_review(intake_result.get("workbook_status")) or _status_requires_review(
+        intake_result.get("column_mapping_status")
+    )
+
+    for row in rows:
+        row_status = _normalize_status(row.get("validation_status"))
+        row_ref = _row_reference(row, intake_result)
+        row_messages = list(row.get("validation_messages") or [])
+
+        if row_status == "pass":
+            grouped_rows["passed"].append(row_ref)
+        elif row_status == "warning":
+            grouped_rows["warning"].append(row_ref)
+            has_review = True
+        elif row_status == "excluded":
+            grouped_rows["excluded"].append(row_ref)
+            has_review = True
+        else:
+            grouped_rows["blocked"].append(row_ref)
+            has_fail = True
+
+        if row.get("estimator_review_required"):
+            grouped_rows["review_required"].append(row_ref)
+            has_review = True
+
+        if row_messages:
+            validation_messages["rows"].append(
+                {
+                    "row_reference": row_ref,
+                    "validation_status": row_status or "blank",
+                    "messages": row_messages,
+                }
+            )
+
+    row_counts = {
+        "total_rows": len(rows),
+        "passed_rows": len(grouped_rows["passed"]),
+        "blocked_rows": len(grouped_rows["blocked"]),
+        "warning_rows": len(grouped_rows["warning"]),
+        "excluded_rows": len(grouped_rows["excluded"]),
+        "review_required_rows": len(grouped_rows["review_required"]),
+    }
+
+    summary_status = "fail" if has_fail else "review_required" if has_review else "pass"
+
+    return {
+        "source_file_ref": intake_result.get("source_file_ref"),
+        "workbook_status": _normalize_status(intake_result.get("workbook_status")),
+        "selected_worksheet": intake_result.get("selected_worksheet"),
+        "column_mapping_status": _normalize_status(intake_result.get("column_mapping_status")),
+        "summary_status": summary_status,
+        "row_counts": row_counts,
+        "row_references": grouped_rows,
+        "validation_messages_for_estimator_review": validation_messages,
+        "pricing_approval": False,
+        "pricing_ready": False,
+        "export_ready": False,
+    }
+
+
+def _row_reference(row: Dict[str, Any], intake_result: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "source_file_ref": row.get("source_file_ref") or intake_result.get("source_file_ref"),
+        "source_sheet_name": row.get("source_sheet_name"),
+        "source_row_number": row.get("source_row_number"),
+    }
+
+
+def _normalize_status(value: Any) -> str:
+    return _normalize_header(_clean_text(value))
+
+
+def _status_is_fail_closed(value: Any) -> bool:
+    status = _normalize_status(value)
+    return status in {"", "fail", "failed", "unknown", "not checked", "not_checked"}
+
+
+def _status_requires_review(value: Any) -> bool:
+    status = _normalize_status(value)
+    return status in {"warning", "review required", "review_required", "excluded"}
