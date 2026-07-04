@@ -504,3 +504,110 @@ def _status_is_fail_closed(value: Any) -> bool:
 def _status_requires_review(value: Any) -> bool:
     status = _normalize_status(value)
     return status in {"warning", "review required", "review_required", "excluded"}
+
+
+def build_client_boq_intake_review_decision(summary: Dict[str, Any]) -> Dict[str, Any]:
+    """Classify an intake review summary for estimator decision routing."""
+    reason_codes: List[str] = []
+    original_summary_status = summary.get("summary_status")
+    summary_status = _normalize_status(original_summary_status)
+    row_counts = summary.get("row_counts")
+    row_references = summary.get("row_references")
+    validation_messages = summary.get("validation_messages_for_estimator_review")
+
+    counts, counts_valid = _decision_row_counts(row_counts)
+    row_references_valid = isinstance(row_references, dict)
+    validation_messages_valid = isinstance(validation_messages, dict)
+
+    if "summary_status" not in summary or summary_status == "":
+        reason_codes.append("summary_status_missing")
+    elif summary_status in {"unknown", "not checked", "not_checked"}:
+        reason_codes.append("summary_status_unknown")
+    elif summary_status in {"fail", "failed"}:
+        reason_codes.append("summary_failed")
+
+    if not counts_valid:
+        reason_codes.append("row_counts_missing")
+    else:
+        if counts["blocked_rows"] > 0:
+            reason_codes.append("blocked_rows_present")
+        if counts["warning_rows"] > 0:
+            reason_codes.append("warning_rows_present")
+        if counts["excluded_rows"] > 0:
+            reason_codes.append("excluded_rows_present")
+        if counts["review_required_rows"] > 0:
+            reason_codes.append("review_required_rows_present")
+
+    if _status_requires_review(summary.get("column_mapping_status")):
+        reason_codes.append("column_mapping_review_required")
+
+    required_evidence_missing = not counts_valid or not row_references_valid or not validation_messages_valid
+    summary_failed = summary_status in {"", "fail", "failed", "unknown", "not checked", "not_checked"}
+    blocked_rows_present = counts_valid and counts["blocked_rows"] > 0
+    excluded_rows_present = counts_valid and counts["excluded_rows"] > 0
+    pass_counts_clean = counts_valid and _decision_row_counts_are_clean(counts)
+
+    if summary_failed or required_evidence_missing or blocked_rows_present:
+        decision_status = "import_failed_pricing_blocked"
+    elif excluded_rows_present:
+        decision_status = "excluded_or_partial_review_required"
+    elif summary_status == "review required":
+        decision_status = "review_required_pricing_blocked"
+    elif summary_status == "pass" and pass_counts_clean:
+        decision_status = "import_clean_pricing_blocked"
+        reason_codes.append("import_clean")
+    else:
+        decision_status = "import_failed_pricing_blocked"
+
+    _append_decision_blockers(reason_codes)
+
+    return {
+        "decision_status": decision_status,
+        "reason_codes": reason_codes,
+        "summary_status": original_summary_status,
+        "row_counts": row_counts,
+        "row_references": row_references,
+        "validation_messages_for_estimator_review": validation_messages,
+        "pricing_approval": False,
+        "pricing_ready": False,
+        "export_ready": False,
+        "client_return_ready": False,
+    }
+
+
+def _decision_row_counts(value: Any) -> Tuple[Dict[str, int], bool]:
+    required_keys = (
+        "total_rows",
+        "passed_rows",
+        "blocked_rows",
+        "warning_rows",
+        "excluded_rows",
+        "review_required_rows",
+    )
+    if not isinstance(value, dict):
+        return {}, False
+
+    counts: Dict[str, int] = {}
+    for key in required_keys:
+        raw_value = value.get(key)
+        if not isinstance(raw_value, int) or raw_value < 0:
+            return {}, False
+        counts[key] = raw_value
+
+    return counts, True
+
+
+def _decision_row_counts_are_clean(counts: Dict[str, int]) -> bool:
+    return (
+        counts["blocked_rows"] == 0
+        and counts["warning_rows"] == 0
+        and counts["excluded_rows"] == 0
+        and counts["review_required_rows"] == 0
+        and counts["total_rows"] == counts["passed_rows"]
+    )
+
+
+def _append_decision_blockers(reason_codes: List[str]) -> None:
+    for code in ("pricing_blocked", "export_blocked", "client_return_blocked"):
+        if code not in reason_codes:
+            reason_codes.append(code)
