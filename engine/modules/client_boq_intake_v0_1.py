@@ -611,3 +611,167 @@ def _append_decision_blockers(reason_codes: List[str]) -> None:
     for code in ("pricing_blocked", "export_blocked", "client_return_blocked"):
         if code not in reason_codes:
             reason_codes.append(code)
+
+
+def build_client_boq_intake_review_packet(
+    summary: Dict[str, Any],
+    decision: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Assemble deterministic estimator-facing review packet evidence."""
+    invalid_reason_codes: List[str] = []
+    summary_valid = isinstance(summary, dict)
+    decision_valid = isinstance(decision, dict)
+    summary_data = summary if summary_valid else {}
+    decision_data = decision if decision_valid else {}
+
+    if not summary_valid:
+        invalid_reason_codes.append("summary_missing")
+    if not decision_valid:
+        invalid_reason_codes.append("decision_missing")
+
+    summary_status = summary_data.get("summary_status")
+    decision_summary_status = decision_data.get("summary_status")
+    decision_status = decision_data.get("decision_status")
+
+    if _packet_status_is_missing_or_unknown(summary_status):
+        invalid_reason_codes.append("summary_status_missing")
+    if _packet_status_is_missing_or_unknown(decision_summary_status):
+        invalid_reason_codes.append("decision_summary_status_missing")
+    decision_status_key = _packet_decision_status_key(decision_status)
+    if decision_status_key == "":
+        invalid_reason_codes.append("decision_status_missing")
+    elif decision_status_key in {"unknown", "not checked", "not_checked"}:
+        invalid_reason_codes.append("decision_status_unknown")
+    elif decision_status_key not in _PACKET_STATUS_BY_DECISION_STATUS:
+        invalid_reason_codes.append("decision_status_unknown")
+
+    if summary_valid and decision_valid:
+        if summary_data.get("summary_status") != decision_data.get("summary_status"):
+            invalid_reason_codes.append("summary_decision_status_mismatch")
+        if summary_data.get("row_counts") != decision_data.get("row_counts"):
+            invalid_reason_codes.append("row_counts_mismatch")
+        if summary_data.get("row_references") != decision_data.get("row_references"):
+            invalid_reason_codes.append("row_references_mismatch")
+        if summary_data.get("validation_messages_for_estimator_review") != decision_data.get(
+            "validation_messages_for_estimator_review"
+        ):
+            invalid_reason_codes.append("validation_messages_mismatch")
+
+    if not _packet_readiness_guards_are_valid(summary_data, decision_data):
+        invalid_reason_codes.append("readiness_guard_invalid")
+
+    if invalid_reason_codes:
+        review_packet_status = "review_packet_invalid_pricing_blocked"
+        reason_codes = invalid_reason_codes + ["packet_invalid"]
+    else:
+        review_packet_status = _PACKET_STATUS_BY_DECISION_STATUS[decision_status_key]
+        reason_codes = list(decision_data.get("reason_codes") or [])
+
+    _append_decision_blockers(reason_codes)
+
+    source_file_ref = summary_data.get("source_file_ref")
+    selected_worksheet = summary_data.get("selected_worksheet")
+    workbook_status = summary_data.get("workbook_status")
+    column_mapping_status = summary_data.get("column_mapping_status")
+    row_counts = summary_data.get("row_counts")
+    row_references = summary_data.get("row_references")
+    validation_messages = summary_data.get("validation_messages_for_estimator_review")
+
+    return {
+        "review_packet_status": review_packet_status,
+        "source_file_ref": source_file_ref,
+        "selected_worksheet": selected_worksheet,
+        "workbook_status": workbook_status,
+        "column_mapping_status": column_mapping_status,
+        "summary_status": summary_status,
+        "decision_status": decision_status,
+        "reason_codes": reason_codes,
+        "row_counts": row_counts,
+        "row_references": row_references,
+        "validation_messages_for_estimator_review": validation_messages,
+        "review_packet_sections": _build_review_packet_sections(
+            source_file_ref,
+            selected_worksheet,
+            workbook_status,
+            column_mapping_status,
+            summary_status,
+            decision_status,
+            row_counts,
+            row_references,
+            validation_messages,
+        ),
+        "pricing_approval": False,
+        "pricing_ready": False,
+        "export_ready": False,
+        "client_return_ready": False,
+    }
+
+
+_PACKET_STATUS_BY_DECISION_STATUS = {
+    "import_clean_pricing_blocked": "review_packet_clean_pricing_blocked",
+    "review_required_pricing_blocked": "review_packet_review_required_pricing_blocked",
+    "import_failed_pricing_blocked": "review_packet_failed_pricing_blocked",
+    "excluded_or_partial_review_required": "review_packet_excluded_or_partial_review_required",
+}
+
+
+def _packet_status_is_missing_or_unknown(value: Any) -> bool:
+    status = _normalize_status(value)
+    return status in {"", "unknown", "not checked", "not_checked"}
+
+
+def _packet_decision_status_key(value: Any) -> str:
+    return _clean_text(value).lower()
+
+
+def _packet_readiness_guards_are_valid(
+    summary: Dict[str, Any],
+    decision: Dict[str, Any],
+) -> bool:
+    summary_guards = ("pricing_approval", "pricing_ready", "export_ready")
+    decision_guards = ("pricing_approval", "pricing_ready", "export_ready", "client_return_ready")
+    for key in summary_guards:
+        if summary.get(key) is not False:
+            return False
+    for key in decision_guards:
+        if decision.get(key) is not False:
+            return False
+    return True
+
+
+def _build_review_packet_sections(
+    source_file_ref: Any,
+    selected_worksheet: Any,
+    workbook_status: Any,
+    column_mapping_status: Any,
+    summary_status: Any,
+    decision_status: Any,
+    row_counts: Any,
+    row_references: Any,
+    validation_messages: Any,
+) -> Dict[str, Any]:
+    return {
+        "source": {
+            "source_file_ref": source_file_ref,
+            "selected_worksheet": selected_worksheet,
+        },
+        "statuses": {
+            "workbook_status": workbook_status,
+            "column_mapping_status": column_mapping_status,
+            "summary_status": summary_status,
+            "decision_status": decision_status,
+        },
+        "row_evidence": {
+            "row_counts": row_counts,
+            "row_references": row_references,
+        },
+        "messages": {
+            "validation_messages_for_estimator_review": validation_messages,
+        },
+        "readiness_guards": {
+            "pricing_approval": False,
+            "pricing_ready": False,
+            "export_ready": False,
+            "client_return_ready": False,
+        },
+    }
